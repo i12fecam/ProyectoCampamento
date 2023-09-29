@@ -4,8 +4,6 @@ public class Asistente {
 
     private int id;
 
-    static private String species;
-
     private String name;
 
     private String surname;
