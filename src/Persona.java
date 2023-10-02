@@ -55,7 +55,9 @@ public class Persona {
     public void setEspecial(boolean especial) {
         this.especial = especial;
     }
-
+    public String getNombreCompleto() {
+        return nombre + apellido1 + apellido2;
+    }
     @Override
     public String toString() {
         return "Persona{" +
