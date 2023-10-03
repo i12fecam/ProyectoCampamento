@@ -109,7 +109,15 @@ public class Campamento{
         }
     }
 
-    public void asociarMonitorEspecial(Monitor monitor) {
-
-    }
+    public void asociarMonitorEspecial(Monitor monitorEspecial) {
+        for (Actividad it : actividades) {
+            if (it.getMonitores().contains(monitorEspecial)) {
+                throw new RuntimeException("El monitor especial no puede estar asociado a ninguna actividad, no se puede añadir");
+            }
+        }
+        if (!monitores.contains(monitorEspecial) && monitorEspecial.isEducadorEspecial()) {
+            monitores.add(monitorEspecial);
+        } else {
+            throw new RuntimeException("El monitor especial ya está asociado como monitor especial.");
+        }
 }
