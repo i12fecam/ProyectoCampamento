@@ -84,12 +84,23 @@ public class Campamento{
     }
 
     public void asociarActividad(Actividad actividad) {
-        if(actividad.getnivelEducativo== this.nivelEducativo && !actividades.containd(actividad)){
+        if(actividad.getnivelEducativo== this.nivelEducativo && !actividades.contains(actividad)){
             actividades.add(actividad);
         }
     }
     public void asociarMonitor(Monitor monitor) {
-
+        boolean monitorEncargadoActividad=false;
+        for (Actividad it : actividades) {
+            if (it.getMonitores().contains(monitor)) {
+                monitorEncargadoActividad=true;
+                break;
+            }
+        }
+        if (monitorEncargadoActividad && !monitores.contains(monitor)) {
+            monitores.add(monitor);
+        } else {
+            throw new RuntimeException("El monitor no está asociado a ninguna actividad del campamento, no se permite añadirlo");
+        }
     }
 
     public void asociarMonitorEspecial(Monitor monitor) {
