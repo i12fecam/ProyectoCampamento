@@ -11,4 +11,12 @@ public class Asistente extends Persona{
                 ", especial=" + isEspecial() +
                 '}';
     }
+
+    public LocalDate getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
 }
