@@ -1,3 +1,10 @@
+/**
+ * Person class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ * */
 
 public class Persona {
     private int identificador;

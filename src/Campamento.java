@@ -1,6 +1,12 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+/**
+ * Campament class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ * */
 public class Campamento{
     private int idCampamento;
     private LocalDate fechaInicio;

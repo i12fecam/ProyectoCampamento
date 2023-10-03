@@ -1,4 +1,11 @@
 import java.time.LocalDate;
+/**
+ * Assistant  class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ * */
 public class Asistente extends Persona{
 
     private LocalDate fechaNacimiento;

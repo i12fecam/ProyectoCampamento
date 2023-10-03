@@ -1,3 +1,10 @@
+/**
+ * Monitor class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ * */
 public class Monitor extends Persona{
     @Override
     private boolean educadorEspecial;

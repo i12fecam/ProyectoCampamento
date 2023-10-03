@@ -1,5 +1,11 @@
 import java.util.ArrayList;
-
+/**
+ * Activity class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ * */
 public class Actividad {
     private String nombre;
     public enum NivelEducativo {
