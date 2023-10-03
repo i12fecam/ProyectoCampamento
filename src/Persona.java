@@ -4,7 +4,7 @@ public class Persona {
     private String nombre;
     private String apellido1;
     private String apellido2;
-    private boolean especial;
+
 
 
     public Persona() {
@@ -50,13 +50,6 @@ public class Persona {
         this.apellido2 = apellido2;
     }
 
-    public boolean isEspecial() {
-        return especial;
-    }
-
-    public void setEspecial(boolean especial) {
-        this.especial = especial;
-    }
     public String getNombreCompleto() {
         return nombre + apellido1 + apellido2;
     }
@@ -66,8 +59,7 @@ public class Persona {
                 "identificador=" + identificador +
                 ", nombre='" + nombre + '\'' +
                 ", apellido1='" + apellido1 + '\'' +
-                ", apellido2='" + apellido2 + '\'' +
-                ", especial=" + especial +
+                ", apellido2='" + apellido2 +
                 '}';
     }
 
