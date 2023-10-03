@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 public class Asistente extends Persona{
 
-    private LocalDate fecha_nacimiento;
+    private LocalDate fechaNacimiento;
     public Asistente(){
 
     }
@@ -15,16 +15,16 @@ public class Asistente extends Persona{
                 ", nombre='" + getNombre() + '\'' +
                 ", apellido1='" + getApellido1() + '\'' +
                 ", apellido2='" + getApellido2() + '\'' +
-                ", Fecha de Nacimiento:'" + getFecha_nacimiento() + '\'' +
+                ", Fecha de Nacimiento:'" + getFechaNacimiento() + '\'' +
                 ", especial=" + isEspecial() +
                 '}';
     }
 
-    public LocalDate getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 }

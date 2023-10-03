@@ -16,7 +16,7 @@ public class Actividad {
     private int maxParticipantes;
     private int monitoresNecesarios;
 
-    ArrayList<Monitor> monitores = new ArrayLis<Monitor>();
+    ArrayList<Monitor> monitores = new ArrayList<Monitor>();
 
 
     public Actividad() {
