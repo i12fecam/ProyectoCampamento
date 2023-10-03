@@ -87,6 +87,6 @@ public class Actividad {
     if(!monitores.contains(monitor)){
         monitores.add(monitor);
     }
-    //añadir aqui excepcion
+    throw new RuntimeException("Este monitor ya esta añadido");
     }
 }
