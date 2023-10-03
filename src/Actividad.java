@@ -84,9 +84,10 @@ public class Actividad {
 
 
     public void asociarMonitor(Monitor monitor) {
-    if(!monitores.contains(monitor)){
-        monitores.add(monitor);
-    }
-    throw new RuntimeException("Este monitor ya esta añadido");
+        if (!monitores.contains(monitor)) {
+            monitores.add(monitor);
+        } else {
+            throw new RuntimeException("Este monitor ya esta añadido");
+        }
     }
 }
