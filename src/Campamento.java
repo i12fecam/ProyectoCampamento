@@ -62,6 +62,14 @@ public class Campamento{
         this.maxAsistentes = maxAsistentes;
     }
 
+    public void setMonitores(ArrayList<Monitor> monitores) {this.monitores = monitores;}
+
+    public ArrayList<Monitor> getMonitores() {return monitores;}
+
+    public ArrayList<Actividad> getActividades() {return actividades;}
+
+    public void setActividades(ArrayList<Actividad> actividades) {this.actividades = actividades;}
+
     @Override
     public String toString() {
         return "Campamento{" +
@@ -76,7 +84,9 @@ public class Campamento{
     }
 
     public void asociarActividad(Actividad actividad) {
-
+        if(actividad.getnivelEducativo== this.nivelEducativo && !actividades.containd(actividad)){
+            actividades.add(actividad);
+        }
     }
     public void asociarMonitor(Monitor monitor) {
 

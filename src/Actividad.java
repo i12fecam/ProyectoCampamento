@@ -70,6 +70,10 @@ public class Actividad {
         this.monitoresNecesarios = monitoresNecesarios;
     }
 
+    public ArrayList<Monitor> getMonitores() {return monitores;}
+
+    public void setMonitores(ArrayList<Monitor> monitores) {this.monitores = monitores;}
+
     @Override
     public String toString() {
         return "Actividad{" +
