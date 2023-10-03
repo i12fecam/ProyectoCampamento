@@ -87,5 +87,6 @@ public class Actividad {
     if(!monitores.contains(monitor)){
         monitores.add(monitor);
     }
+    //añadir aqui excepcion
     }
 }

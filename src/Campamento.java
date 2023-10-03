@@ -1,7 +1,9 @@
 import java.time.LocalDate;
 public class Campamento{
     private int idCampamento;
-    private LocalDate fecha_inicio;
-    private LocalDate fecha_final;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFinal;
+    private Actividad.NivelEducativo nivelEducativo;
+
 
 }
