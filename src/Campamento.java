@@ -22,6 +22,46 @@ public class Campamento{
         this.maxAsistentes = maxAsistentes;
     }
 
+    public int getIdCampamento() {
+        return idCampamento;
+    }
+
+    public void setIdCampamento(int idCampamento) {
+        this.idCampamento = idCampamento;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(LocalDate fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+
+    public Actividad.NivelEducativo getNivelEducativo() {
+        return nivelEducativo;
+    }
+
+    public void setNivelEducativo(Actividad.NivelEducativo nivelEducativo) {
+        this.nivelEducativo = nivelEducativo;
+    }
+
+    public int getMaxAsistentes() {
+        return maxAsistentes;
+    }
+
+    public void setMaxAsistentes(int maxAsistentes) {
+        this.maxAsistentes = maxAsistentes;
+    }
+
     @Override
     public String toString() {
         return "Campamento{" +
