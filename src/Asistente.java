@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 public class Asistente extends Persona{
-    @Override
+
     private LocalDate fecha_nacimiento;
     public Asistente(){
 

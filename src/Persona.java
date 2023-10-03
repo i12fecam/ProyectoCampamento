@@ -70,4 +70,9 @@ public class Persona {
                 ", especial=" + especial +
                 '}';
     }
+
+    public boolean equals (Persona persona) {
+        return persona.identificador == this.identificador;
+
+    }
 }

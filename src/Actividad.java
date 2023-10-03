@@ -16,7 +16,7 @@ public class Actividad {
     private int maxParticipantes;
     private int monitoresNecesarios;
 
-    ArrayList<Monitor> monitores = new ArrayList<Monitor>();
+    ArrayList<Monitor> monitores = new ArrayLis<Monitor>();
 
 
     public Actividad() {
@@ -82,7 +82,10 @@ public class Actividad {
                 '}';
     }
 
+
     public void asociarMonitor(Monitor monitor) {
-        //completar
+    if(!monitores.contains(monitor)){
+        monitores.add(monitor);
+    }
     }
 }
