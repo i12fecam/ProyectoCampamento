@@ -118,6 +118,6 @@ public class Campamento{
         if (!monitores.contains(monitorEspecial) && monitorEspecial.isEducadorEspecial()) {
             monitores.add(monitorEspecial);
         } else {
-            throw new RuntimeException("El monitor especial ya está asociado como monitor especial.");
+            throw new RuntimeException("El monitor ya está asociado o no es educador especial");
         }
 }
