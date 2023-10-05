@@ -8,16 +8,9 @@ import java.util.ArrayList;
  * */
 public class Actividad {
     private String nombre;
-    public enum NivelEducativo {
-        INFANTIL,
-        JUVENIL,
-        ADOLESCENTE
-    }
+
     private NivelEducativo nivelEducativo;
-    public enum Horario {
-        MANIANA,
-        TARDE
-    }
+
     private Horario horario;
     private int maxParticipantes;
     private int monitoresNecesarios;

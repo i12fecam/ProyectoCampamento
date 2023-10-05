@@ -34,7 +34,7 @@ public class Asistente extends Persona{
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-}
+
     public String toString() {
         return "Asistente{" +
                 "identificador=" + getIdentificador() +
@@ -42,6 +42,9 @@ public class Asistente extends Persona{
                 ", apellido1='" + getApellido1() + '\'' +
                 ", apellido2='" + getApellido2() + '\'' +
                 ", Fecha de Nacimiento:'" + getFechaNacimiento() + '\'' +
-                ", especial=" + isEspecial() +
+                ", especial=" + isAtencionEspecial() +
                 '}';
     }
+}
+
+

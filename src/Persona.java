@@ -17,13 +17,14 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int identificador, String nombre, String apellido1, String apellido2, boolean especial) {
+    public Persona(int identificador, String nombre, String apellido1, String apellido2) {
         this.identificador = identificador;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.especial = especial;
     }
+
+
 
     public int getIdentificador() {
         return identificador;
