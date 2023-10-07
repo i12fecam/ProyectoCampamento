@@ -1,2 +1,2 @@
-public class InscripcionTardia extends Inscripcion{
+public class InscripcionTardia extends Inscripcion{//fatima
 }

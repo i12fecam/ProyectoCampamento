@@ -1,4 +1,4 @@
-public class InscripcionFactoryCompleta extends InscripcionFactory{
+public class InscripcionFactoryCompleta extends InscripcionFactory{//abi
     @Override
     public InscripcionTardia crearInscripcionTardia() {
         return null;

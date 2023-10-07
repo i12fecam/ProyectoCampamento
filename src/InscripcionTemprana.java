@@ -1,2 +1,2 @@
-public class InscripcionTemprana extends Inscripcion{
+public class InscripcionTemprana extends Inscripcion{//noe
 }
