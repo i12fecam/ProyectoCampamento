@@ -85,6 +85,7 @@ public class Actividad {
                 '}';
     }
 
+    
 
     public void asociarMonitor(Monitor monitor) {
         if (!monitores.contains(monitor) ) {
