@@ -1,7 +1,9 @@
+import java.time.LocalDate;
+
 public abstract class Inscripcion {//abi
     protected int idParticipante;
     protected int idCampamento;
-    protected localDate fechaInscripcion;
+    protected LocalDate fechaInscripcion;
     protected float precio;
     protected TipoInscripcion tipoInscripcion;
 
@@ -24,11 +26,11 @@ public abstract class Inscripcion {//abi
         this.idCampamento = idCampamento;
     }
 
-    public localDate getFechaInscripcion() {
+    public LocalDate getFechaInscripcion() {
         return fechaInscripcion;
     }
 
-    public void setFechaInscripcion(localDate fechaInscripcion) {
+    public void setFechaInscripcion(LocalDate fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
 
