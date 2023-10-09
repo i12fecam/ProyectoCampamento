@@ -1,15 +1,15 @@
 public class InscripcionFactoryParcial extends InscripcionFactory{//quintero
 
-    private GestorCampamentos ListaCampamentos;
+    private ListaCampamentos listacampamentos;
 
-    public InscripcionFactoryParcial(GestorCampamentos ListaCampamentos) {
-        this.ListaCampamento = ListaCampamentos;
+    public InscripcionFactoryParcial(ListaCampamentos listacampamentos) {
+        this.listacampamentos = listacampamentos;
     }
 
     @Override
     public InscripcionTardia crearInscripcionTardia(int idParticipante,int idCampamento, LocalDate FechaInscripcion,float precio)
     {
-        Campamento campamento = ListaCampamentos.buscarCampamento(idCampamento);
+        Campamento campamento =listacampamentos.buscarCampamento(idCampamento);
         LocalDate fechaLimiteTardia = campamento.getFechaInicio().minusDays(15); // Calcular la fecha límite (15 días antes)
 
         LocalDate fechaInicioCampamento = campamento.getFechaInicio();
@@ -26,7 +26,7 @@ public class InscripcionFactoryParcial extends InscripcionFactory{//quintero
     @Override
     public InscripcionTemprana crearInscricionTemprana(int idParticipante,int idCampamento, LocalDate FechaInscripcion,float precio)
     {
-        Campamento campamento = ListaCampamentos.buscarCampamento(idCampamento);
+        Campamento campamento = listacampamentos.buscarCampamento(idCampamento);
         LocalDate fechaLimiteTemprana = campamento.getFechaInicio().minusDays(15); // Calcular la fecha límite (15 días antes)
 
         LocalDate fechaInicioCampamento = campamento.getFechaInicio();
