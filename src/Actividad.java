@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author Fátima Caballero
  * */
 public class Actividad {
+    /*Attributes*/
     private String nombre;
 
     private NivelEducativo nivelEducativo;
@@ -17,15 +18,15 @@ public class Actividad {
 
     ArrayList<Monitor> monitores = new ArrayList<Monitor>();
 
-
+    /* Constructors */
     /**
-     * Constructor vacio
+     * Empty (default) constructor
      */
     public Actividad() {
     }
 
     /**
-     * Constructor para un objeto Actividad
+     *  Parameterized constructor
      * @param nombre Nombre de la actividad
      * @param nivelEducativo Nivel educativo que tiene la actividad
      * @param horario Horario de la actividad
@@ -39,7 +40,7 @@ public class Actividad {
         this.maxParticipantes = maxParticipantes;
         this.monitoresNecesarios = monitoresNecesarios;
     }
-
+    /*getters and setters*/
     /**
      *
      * @return Nombre de la actividad
