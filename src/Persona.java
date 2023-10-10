@@ -1,5 +1,5 @@
 /**
- * Person class
+ * A class to represent a person
  * @author Noelia Ruiz
  * @author Antonio Javier Quintero
  * @author Abigail Fernández
@@ -7,20 +7,23 @@
  * */
 
 public class Persona {
+    /*Attributes*/
     private int identificador;
     private String nombre;
     private String apellido1;
     private String apellido2;
 
 
+    /* Constructors */
+
     /**
-     * Constructor vacío
-     */
+     * Empty (default) constructor
+     * */
     public Persona() {
     }
 
     /**
-     * Constructor de la clase persona
+     * Parameterized constructor
      * @param identificador
      * @param nombre
      * @param apellido1
@@ -33,7 +36,7 @@ public class Persona {
         this.apellido2 = apellido2;
     }
 
-
+    /* Getters and setters */
     /**
      * @return identificador
      */
