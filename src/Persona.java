@@ -9,6 +9,7 @@ import java.time.LocalDate;
  * */
 
 public class Persona {
+    /*Attributes*/
     private int identificador;
     private String nombre;
     private String apellido1;
@@ -16,14 +17,16 @@ public class Persona {
 
     private LocalDate fechaNacimiento;
 
+    /* Constructors */
+
     /**
-     * Constructor vacío
-     */
+     * Empty (default) constructor
+     * */
     public Persona() {
     }
 
     /**
-     * Constructor de la clase persona
+     * Parameterized constructor
      * @param identificador
      * @param nombre
      * @param apellido1
@@ -40,7 +43,7 @@ public class Persona {
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
-
+    /* Getters and setters*/
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
