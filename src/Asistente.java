@@ -8,7 +8,7 @@ import java.time.LocalDate;
  * */
 public class Asistente extends Persona{
 
-    private LocalDate fechaNacimiento;
+
     private boolean atencionEspecial;
 
     /**
@@ -27,19 +27,11 @@ public class Asistente extends Persona{
      * @param atencionEspecial Indica si el asistente requiere atencion especial
      * @param fechaNacimiento La fecha de nacimiento del asistente
      */
-    public Asistente(int identificador, String nombre, String apellido1, String apellido2, boolean atencionEspecial, LocalDate fechaNacimiento) {
-        super(identificador, nombre, apellido1, apellido2);
-        this.fechaNacimiento = fechaNacimiento;
-        this.atencionEspecial=atencionEspecial;
+    public Asistente(int identificador, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean atencionEspecial) {
+        super(identificador, nombre, apellido1, apellido2, fechaNacimiento);
+        this.atencionEspecial = atencionEspecial;
     }
 
-    /**
-     *  Obtiene la fecha de nacimiento del Asistente
-     * @return Fecha de nacimiento del asistente
-     */
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
 
     /**
      *  Verifica si el Asistente requiere atencion especial
@@ -57,13 +49,7 @@ public class Asistente extends Persona{
         this.atencionEspecial = atencionEspecial;
     }
 
-    /**
-     * Establece la fecha de nacimiento del Asistente
-     * @param fechaNacimiento Fecha de nacimiento del Asistente
-     */
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
+
 
     /**
      * Es una representacion del objeto Asistente

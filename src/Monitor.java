@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /**
  * Monitor class
  * @author Noelia Ruiz
@@ -6,12 +8,12 @@
  * @author Fátima Caballero
  * */
 public class Monitor extends Persona{
-    @Override
+
     private boolean educadorEspecial;
     /**Constructor vacío**/
-    public Monitor{
 
-    }
+
+
     /**Constructor con todos sus parametros obligatorios
      * @param identificador El identificador del monitor.
      * @param nombre El nombre del monitor.
@@ -20,11 +22,11 @@ public class Monitor extends Persona{
      * @param educadorEspecial Indica si el monitor es educador especial.
      * @param fechaNacimiento La fecha de nacimiento del monitor.
     */
-    public Monitor(int identificador, String nombre, String apellido1, String apellido2, boolean educadorEspecial, LocalDate fechaNacimiento) {
-        super(identificador, nombre, apellido1, apellido2);
-        this.fechaNacimiento = fechaNacimiento;
-        this.educadorEspecial=educadorEspecial;
+    public Monitor(int identificador, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean educadorEspecial) {
+        super(identificador, nombre, apellido1, apellido2, fechaNacimiento);
+        this.educadorEspecial = educadorEspecial;
     }
+
     /**Setter atributo educadorEspecial**/
     public void setEducadorEspecial(boolean educadorEspecial) {
         this.educadorEspecial = educadorEspecial;

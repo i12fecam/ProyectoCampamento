@@ -1,4 +1,4 @@
-public class InscripcionFactoryParcial extends InscripcionFactory{//quintero
+/*public class InscripcionFactoryParcial extends InscripcionFactory{//quintero
 
     @Override
     public InscripcionTardia crearInscripcionTardia() {
@@ -9,4 +9,4 @@ public class InscripcionFactoryParcial extends InscripcionFactory{//quintero
     public InscripcionTemprana crearInscricionTemprana() {
         return null;
     }
-}
+}*/

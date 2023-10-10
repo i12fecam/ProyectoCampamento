@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /**
  * Person class
  * @author Noelia Ruiz
@@ -12,6 +14,7 @@ public class Persona {
     private String apellido1;
     private String apellido2;
 
+    private LocalDate fechaNacimiento;
 
     /**
      * Constructor vacío
@@ -26,13 +29,21 @@ public class Persona {
      * @param apellido1
      * @param apellido2
      */
-    public Persona(int identificador, String nombre, String apellido1, String apellido2) {
+    public Persona(int identificador, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento) {
         this.identificador = identificador;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
 
     /**
      * @return identificador
@@ -108,7 +119,8 @@ public class Persona {
                 "identificador=" + identificador +
                 ", nombre='" + nombre + '\'' +
                 ", apellido1='" + apellido1 + '\'' +
-                ", apellido2='" + apellido2 +
+                ", apellido2='" + apellido2 + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
                 '}';
     }
 
