@@ -1,6 +1,19 @@
 import java.time.LocalDate;
-
+/**
+ * InscripcionTemprana class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ * */
 public class InscripcionTemprana extends Inscripcion{
+    /**
+     * Parametrized constructor
+     * @param idParticipante
+     * @param idCampamento
+     * @param fechaInscripcion
+     * @param precio
+     */
     public InscripcionTemprana(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio) {
         this.idParticipante = idParticipante;
         this.idCampamento = idCampamento;
@@ -9,6 +22,9 @@ public class InscripcionTemprana extends Inscripcion{
         this.tipoInscripcion = TipoInscripcion.TEMPRANA;
     }
 
+    /**
+     * @return toda la informacion de inscripcion
+     */
     @Override
     public String toString() {
         return "InscripcionTemprana{" +
