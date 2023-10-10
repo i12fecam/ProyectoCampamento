@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 /**
  * Monitor class
  * @author Noelia Ruiz
@@ -27,17 +25,26 @@ public class Monitor extends Persona{
         this.educadorEspecial = educadorEspecial;
     }
 
-    /**Setter atributo educadorEspecial**/
+    /**
+     * Establece si el Monitor es un educador especial
+     * @param educadorEspecial
+     */
     public void setEducadorEspecial(boolean educadorEspecial) {
         this.educadorEspecial = educadorEspecial;
     }
 
-    /**Devuelve si el Monitor es educador especial**/
+    /**
+     *
+     * @return true si el Monitor es un educador especial, false en caso contrario
+     */
     public boolean isEducadorEspecial() {
         return educadorEspecial;
     }
 
-    /**Imprime toda la informacion del Monitor**/
+    /**
+     *  Imprime la informacion de un Monitor
+     * @return Cadena con toda la informacion necesario de un Monitor
+     */
     public String toString() {
         return "Monitor{" +
                 "identificador=" + getIdentificador() +
