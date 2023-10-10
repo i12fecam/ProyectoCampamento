@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class InscripcionTardia extends Inscripcion{//fatima
 
     public InscripcionTardia (int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio){
@@ -5,7 +7,7 @@ public class InscripcionTardia extends Inscripcion{//fatima
         this.idCampamento=idCampamento;
         this.fechaInscripcion=fechaInscripcion;
         this.precio=precio;
-        this. tipoInscripcion=TipoInscripcion.TARDIA
+        this. tipoInscripcion=TipoInscripcion.TARDIA;
     }
 
 

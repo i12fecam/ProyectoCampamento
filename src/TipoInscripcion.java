@@ -1,4 +1,4 @@
 public enum TipoInscripcion {
-    COMPLETA,
+    TEMPRANA,
     TARDIA
 }

@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class InscripcionTemprana extends Inscripcion{
     public InscripcionTemprana(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio) {
         this.idParticipante = idParticipante;
@@ -18,4 +20,4 @@ public class InscripcionTemprana extends Inscripcion{
                 '}';
     }
 }
-}
+

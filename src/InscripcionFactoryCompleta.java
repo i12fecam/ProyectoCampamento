@@ -1,5 +1,5 @@
 import java.time.LocalDate;
-
+/*
 public class InscripcionFactoryCompleta extends InscripcionFactory{//abi
     @Override
     public InscripcionTardia crearInscripcionTardia(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio) {
@@ -12,3 +12,4 @@ public class InscripcionFactoryCompleta extends InscripcionFactory{//abi
         return null;
     }
 }
+*/
