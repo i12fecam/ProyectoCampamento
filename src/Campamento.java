@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Fátima Caballero
  * */
 public class Campamento{
-
+    /*Attributes*/
     private int idCampamento;
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
@@ -19,13 +19,13 @@ public class Campamento{
     ArrayList<Actividad> actividades = new ArrayList<Actividad>();
 
     /**
-     * Constructor vacio
-     */
+     * Empty (default) constructor
+     * */
     public Campamento() {
     }
 
     /**
-     *  Constructor para un objeto Campamento
+     * Parameterized constructor
      * @param idCampamento id del campamento
      * @param fechaInicio fecha de inicio del campamento
      * @param fechaFinal fecha de fin del campamento
