@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author Fátima Caballero
  * */
 public class Campamento{
+
     private int idCampamento;
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
