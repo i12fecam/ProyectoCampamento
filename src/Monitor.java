@@ -8,10 +8,12 @@ import java.time.LocalDate;
  * @author Fátima Caballero
  * */
 public class Monitor extends Persona{
-
+    /*Attributes*/
     private boolean educadorEspecial;
-    /**Constructor vacío**/
-
+    /**
+     * Empty (default) constructor
+     * */
+    public monitor(){};
 
 
     /**Constructor con todos sus parametros obligatorios
@@ -31,6 +33,7 @@ public class Monitor extends Persona{
      * Establece si el Monitor es un educador especial
      * @param educadorEspecial
      */
+    /* setters and getters*/
     public void setEducadorEspecial(boolean educadorEspecial) {
         this.educadorEspecial = educadorEspecial;
     }
