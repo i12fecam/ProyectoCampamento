@@ -16,13 +16,12 @@ public class Main {
         String filename= "Properties.txt";
 
 
-        System.out.println("Menu:");
+        System.out.println("Menu principal:");
         System.out.println("1.Gestionar asistentes");
         System.out.println("2.Gestionar campamentos");
         System.out.println("3.Gestionar inscripciones");
 
-        int opcion;
-        opcion= scanner.nextLine();
+        int opcion=scanner.nextLine();
 
         switch (opcion){
             case 1:
@@ -50,7 +49,26 @@ public class Main {
                 e.printStackTrace();
             }
 
+            System.out.println("Opciones para gestionar a los asistentes:");
+            System.out.println("1.Dar de alta");
+            System.out.pritnln("2.Modificar asistente");
+            System.out.println("3.Listar a los asistentes actuales");
+            System.out.println("0.Volver al menu principal");
 
+            int opcion2=scanner.nextLine();
+
+            switch (opcion2){
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("Opcion invalida.");
+            }
 
         }
 
@@ -73,5 +91,6 @@ como desees
 
 
 Properties se utiliza en el main, el main lee el fichero properties y a la hora de crear el gestor le pasa como cadena
-la ruta del fichero que ha leido el main.
+la ruta del fichero que ha leido el main. Los gestores deben actualizar la base de datos es decir el fichero al finalizar
+cada una de las opciones posibles.
  */
