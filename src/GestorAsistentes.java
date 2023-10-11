@@ -3,12 +3,29 @@ import java.util.ArrayList;
 
 public class GestorAsistentes {
     private ArrayList<Asistente> asistentes;
+    private String NombreArchivo;
 
     private void cargarFichero(){
 
     }
     public GestorAsistentes() {
     }
+
+    public GestorAsistentes(String NombreArchivo){
+        this.NombreArchivo=NombreArchivo;
+    }
+
+    public String getNombreArchivo() {return NombreArchivo;}
+
+    public void setNombreArchivo(String nombreArchivo) {
+        NombreArchivo = nombreArchivo;
+    }
+
+    public void setAsistentes(ArrayList<Asistente> asistentes) {
+        this.asistentes = asistentes;
+    }
+
+    public ArrayList<Asistente> getAsistentes() {return asistentes;}
 
     public boolean darAlta(Asistente asistente) {
         if (asistentes.contains(asistente)) {
@@ -37,5 +54,6 @@ public class GestorAsistentes {
                     '}');
         }
     }
+
 
 }

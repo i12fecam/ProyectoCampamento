@@ -1,0 +1,3 @@
+Ins=src/Inscripciones.txt
+Camp=src/Campamentos.txt
+Asis=src/Asistentes.txt

@@ -29,22 +29,30 @@ public class GestorCampamentos {
 
         actividades.add(actividad);
     }
-    public boolean asociarMonitorActividad(int idMonitor,int idActividad)
+    public void asociarMonitorActividad(int idMonitor,int idActividad)
     {
         Actividad actividad = actividades.get(idActividad);
         Monitor monitor = monitores.get(idMonitor);
-
+        actividad.asociarMonitor(monitor);
 
     }
-    public boolean asociarActividadCampamento(){
-        return false;
+    public void asociarActividadCampamento(int idActividad,int idCampamento){
+        Actividad actividad = actividades.get(idActividad);
+        Campamento campamento = campamentos.get(idCampamento);
+        campamento.asociarActividad(actividad);
+
     }
 
-    public boolean asociarMonitorCampamento(){
-        return false;
+    public void asociarMonitorCampamento(int idMonitor, int idCampamento){
+        Monitor monitor = monitores.get(idMonitor);
+        Campamento campamento = campamentos.get(idCampamento);
+        campamento.asociarMonitor(monitor);
+
     }
-    public boolean asociarMonitorEspecialCampamento(){
-        return false;
+    public void asociarMonitorEspecialCampamento(int idMonitor, int idCampamento){
+        Monitor monitor = monitores.get(idMonitor);
+        Campamento campamento = campamentos.get(idCampamento);
+        campamento.asociarMonitorEspecial(monitor);
     }
 
     public Campamento buscarCampamento(int idCampamento) {
@@ -55,4 +63,10 @@ public class GestorCampamentos {
         }
         return null;
     }
+
+    public ArrayList<Campamento> getCampamentos() {
+        return campamentos;
+    }
+
+
 }
