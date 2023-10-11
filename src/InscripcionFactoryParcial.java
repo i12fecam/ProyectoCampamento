@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class InscripcionFactoryParcial extends InscripcionFactory{//quintero
+public class InscripcionFactoryParcial extends Inscripcion{//quintero
 
     @Override
     public InscripcionTardia crearInscripcionTardia(int idParticipante,int idCampamento, LocalDate fechaInscripcion,float precio)
