@@ -24,4 +24,13 @@ public class GestorCampamentos {
     public boolean asociarMonitorEspecialCampamento(){
         return false;
     }
+
+    public Campamento buscarCampamento(int idCampamento) {
+        for (Campamento campamento : campamentos) {
+            if (campamento.getIdCampamento() == idCampamento) {
+                return campamento;
+            }
+        }
+        return null;
+    }
 }
