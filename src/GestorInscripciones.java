@@ -3,6 +3,27 @@ import java.util.ArrayList;
 
 public class GestorInscripciones {
     private ArrayList<Inscripcion> inscripciones;
+    private String NombreArchivo;
+
+    public GestorInscripciones(){
+
+    }
+
+    public GestorInscripciones( String NombreArchivo){
+        this.NombreArchivo=NombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        NombreArchivo = nombreArchivo;
+    }
+
+    public void setInscripciones(ArrayList<Inscripcion> inscripciones) {
+        this.inscripciones = inscripciones;
+    }
+
+    public String getNombreArchivo() {return NombreArchivo;}
+
+    public ArrayList<Inscripcion> getInscripciones() {return inscripciones;}
 
     private void cargarFichero(){
 
