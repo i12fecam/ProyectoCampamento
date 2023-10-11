@@ -9,31 +9,32 @@ public class GestorCampamentos {
     private void cargarFichero(){
 
     }
-    public void crearCampamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
+    public void crearCampamento( LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
+        int idCampamento = campamentos.size();
         Campamento campamento = new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes);
-        if(campamentos.contains(campamento)){
-            throw new RuntimeException("El campamento ya existia");
-        }
+
         campamentos.add( new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes));
     }
 
-    public void crearMonitor(int identificador, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean educadorEspecial){
+    public void crearMonitor( String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean educadorEspecial){
+        int identificador = monitores.size();
         Monitor monitor = new Monitor(identificador,nombre,apellido1,apellido2,fechaNacimiento,educadorEspecial);
-        if(monitores.contains(monitor)){
-            throw  new RuntimeException("El monitor ya existía");
-        }
+
         monitores.add(monitor);
     }
 
-    public void crearActividad(String nombre, int identificador, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios){
+    public void crearActividad(String nombre, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios){
+        int identificador = actividades.size();
         Actividad actividad = new Actividad(nombre,identificador,nivelEducativo,horario,maxParticipantes,monitoresNecesarios);
-        if(actividades.contains(actividad)){
-            throw new RuntimeException("la actividad ya existía");
-        }
+
         actividades.add(actividad);
     }
-    public boolean asociarMonitorActividad(){
-        return false;
+    public boolean asociarMonitorActividad(int idMonitor,int idActividad)
+    {
+        Actividad actividad = actividades.get(idActividad);
+        Monitor monitor = monitores.get(idMonitor);
+
+
     }
     public boolean asociarActividadCampamento(){
         return false;
