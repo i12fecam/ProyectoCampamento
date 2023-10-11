@@ -1,72 +1,27 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class GestorCampamentos {
     private ArrayList<Campamento> campamentos;
 
-    private ArrayList<Monitor> monitores;
-    private ArrayList<Actividad> actividades;
+
     private void cargarFichero(){
 
     }
-    public void crearCampamento( LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
-        int idCampamento = campamentos.size();
-        Campamento campamento = new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes);
-
-        campamentos.add( new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes));
+    public boolean crearCampamento(){
+    return false;
     }
 
-    public void crearMonitor( String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean educadorEspecial){
-        int identificador = monitores.size();
-        Monitor monitor = new Monitor(identificador,nombre,apellido1,apellido2,fechaNacimiento,educadorEspecial);
-
-        monitores.add(monitor);
+    public boolean asociarMonitorActividad(){
+        return false;
+    }
+    public boolean asociarActividadCampamento(){
+        return false;
     }
 
-    public void crearActividad(String nombre, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios){
-        int identificador = actividades.size();
-        Actividad actividad = new Actividad(nombre,identificador,nivelEducativo,horario,maxParticipantes,monitoresNecesarios);
-
-        actividades.add(actividad);
+    public boolean asociarMonitorCampamento(){
+        return false;
     }
-    public void asociarMonitorActividad(int idMonitor,int idActividad)
-    {
-        Actividad actividad = actividades.get(idActividad);
-        Monitor monitor = monitores.get(idMonitor);
-        actividad.asociarMonitor(monitor);
-
+    public boolean asociarMonitorEspecialCampamento(){
+        return false;
     }
-    public void asociarActividadCampamento(int idActividad,int idCampamento){
-        Actividad actividad = actividades.get(idActividad);
-        Campamento campamento = campamentos.get(idCampamento);
-        campamento.asociarActividad(actividad);
-
-    }
-
-    public void asociarMonitorCampamento(int idMonitor, int idCampamento){
-        Monitor monitor = monitores.get(idMonitor);
-        Campamento campamento = campamentos.get(idCampamento);
-        campamento.asociarMonitor(monitor);
-
-    }
-    public void asociarMonitorEspecialCampamento(int idMonitor, int idCampamento){
-        Monitor monitor = monitores.get(idMonitor);
-        Campamento campamento = campamentos.get(idCampamento);
-        campamento.asociarMonitorEspecial(monitor);
-    }
-
-    public Campamento buscarCampamento(int idCampamento) {
-        for (Campamento campamento : campamentos) {
-            if (campamento.getIdCampamento() == idCampamento) {
-                return campamento;
-            }
-        }
-        return null;
-    }
-
-    public ArrayList<Campamento> getCampamentos() {
-        return campamentos;
-    }
-
-
 }

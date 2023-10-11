@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class InscripcionTardia extends Inscripcion{//fatima
+public class InscripcionTardia extends InscripcionFactory{//fatima
 
     public InscripcionTardia (int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio){
         this.idParticipante=idParticipante;

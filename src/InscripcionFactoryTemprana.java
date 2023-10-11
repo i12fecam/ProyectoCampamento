@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public class InscripcionTemprana extends Inscripcion{
+public class InscripcionTemprana extends InscripcionFactory{
     /**
      * Parametrized constructor
      * @param idParticipante
