@@ -1,28 +1,55 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Monitor class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ * */
 public class GestorInscripciones {
+    /*Attributes*/
     private ArrayList<Inscripcion> inscripciones;
     private String NombreArchivo;
-
+    /**
+     * Empty (default) constructor
+     * */
     public GestorInscripciones(){
 
     }
 
+    /**
+     * Parametrized constructor
+     * @param NombreArchivo
+     */
     public GestorInscripciones( String NombreArchivo){
         this.NombreArchivo=NombreArchivo;
     }
+    /*Getters and Setters*/
 
+    /**
+     * @param nombreArchivo
+     */
     public void setNombreArchivo(String nombreArchivo) {
         NombreArchivo = nombreArchivo;
     }
 
+    /**
+     * @param inscripciones
+     */
     public void setInscripciones(ArrayList<Inscripcion> inscripciones) {
         this.inscripciones = inscripciones;
     }
 
+    /**
+     * @return NombreArchivo
+     */
     public String getNombreArchivo() {return NombreArchivo;}
 
+    /**
+     * @return inscripciones
+     */
     public ArrayList<Inscripcion> getInscripciones() {return inscripciones;}
 
     private void cargarFichero(){
@@ -31,6 +58,14 @@ public class GestorInscripciones {
     public GestorInscripciones() {
     }
 
+    /**
+     * @param gestorCampamentos
+     * @param gestorAsistentes
+     * @param idAsistente
+     * @param idCampamento
+     * @param fechaInscripcion
+     * @param horario
+     */
     public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
         Campamento campamento = gestorCampamentos.getCampamentos().get(idCampamento);
         Asistente asistente = gestorAsistentes.getAsistentes().get(idAsistente);
