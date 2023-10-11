@@ -15,8 +15,8 @@ public class Campamento{
     private NivelEducativo nivelEducativo;
 
     private int maxAsistentes;
-    ArrayList<Monitor> monitores = new ArrayList<Monitor>();
-    ArrayList<Actividad> actividades = new ArrayList<Actividad>();
+    private ArrayList<Monitor> monitores = new ArrayList<Monitor>();
+    private ArrayList<Actividad> actividades = new ArrayList<Actividad>();
 
     /**
      * Empty (default) constructor
@@ -217,5 +217,13 @@ public class Campamento{
     public boolean equals (Campamento campamento) {
         return campamento.idCampamento == this.idCampamento;
 
+    }
+    public boolean tieneMonitorEspecial(){
+        for(Monitor it:monitores){
+            if(it.isEducadorEspecial()){
+                return true;
+            }
+        }
+        return false;
     }
 }

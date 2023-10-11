@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class GestorAsistentes {
     private ArrayList<Asistente> asistentes;
-    private string NombreArchivo;
+    private String NombreArchivo;
 
     private void cargarFichero(){
 
@@ -11,13 +11,13 @@ public class GestorAsistentes {
     public GestorAsistentes() {
     }
 
-    public GestorAsistentes(string NombreArchivo){
+    public GestorAsistentes(String NombreArchivo){
         this.NombreArchivo=NombreArchivo;
     }
 
-    public string getNombreArchivo() {return NombreArchivo;}
+    public String getNombreArchivo() {return NombreArchivo;}
 
-    public void setNombreArchivo(string nombreArchivo) {
+    public void setNombreArchivo(String nombreArchivo) {
         NombreArchivo = nombreArchivo;
     }
 
@@ -54,5 +54,6 @@ public class GestorAsistentes {
                     '}');
         }
     }
+
 
 }

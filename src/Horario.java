@@ -1,4 +1,4 @@
 public enum Horario {
-    MANIANA,
-    TARDE
+    PARCIAL,
+    COMPLETA
 }
