@@ -72,6 +72,27 @@ public class Main {
 
         }
 
+        public void gestionarCampamentos(){
+            try{
+                BufferedReader reader =new BufferedReader(new FileReader(new File (filename)));
+                prop.load(reader);
+                String Camp=prop.getProperty("Camp");
+                GestorAsistentes GestorAsistentes1 (Camp);
+            }catch (FileNotFoundException e){
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+            System.out.println("Opciones para gestionar los campamentos");
+            System.out.println("1.")
+
+            int opcion3=scanner.nextLine();
+            switch (opcion3){
+
+            }
+        }
+
 
     }
 }
@@ -90,7 +111,7 @@ Deberiamos hace una funcion que se llame cancelar y varie segun el tipo de inscr
 como desees
 
 
-Properties se utiliza en el main, el main lee el fichero properties y a la hora de crear el gestor le pasa como cadena
+Pro proroperties se utiliza en el main, el main lee el ficheperties y a la hora de crear el gestor le pasa como cadena
 la ruta del fichero que ha leido el main. Los gestores deben actualizar la base de datos es decir el fichero al finalizar
 cada una de las opciones posibles.
  */
