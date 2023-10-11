@@ -3,9 +3,14 @@ import java.util.ArrayList;
 
 public class GestorCampamentos {
     private ArrayList<Campamento> campamentos;
-
+    private String NombreArchivo;
     private ArrayList<Monitor> monitores;
     private ArrayList<Actividad> actividades;
+
+    public GestorCampamentos(){}
+    public GestorCampamentos(String NombreArhivo){
+        this.NombreArchivo=NombreArhivo;
+    }
     private void cargarFichero(){
 
     }
@@ -64,9 +69,27 @@ public class GestorCampamentos {
         return null;
     }
 
-    public ArrayList<Campamento> getCampamentos() {
-        return campamentos;
+    public String getNombreArchivo() {return NombreArchivo;}
+
+    public ArrayList<Campamento> getCampamentos() {return campamentos;}
+
+    public ArrayList<Monitor> getMonitores() {return monitores;}
+
+    public ArrayList<Actividad> getActividades() {return actividades;}
+
+    public void setCampamentos(ArrayList<Campamento> campamentos) {
+        this.campamentos = campamentos;
     }
 
+    public void setMonitores(ArrayList<Monitor> monitores) {
+        this.monitores = monitores;
+    }
 
+    public void setActividades(ArrayList<Actividad> actividades) {
+        this.actividades = actividades;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        NombreArchivo = nombreArchivo;
+    }
 }
