@@ -99,6 +99,8 @@ public class GestorInscripciones {
         }
     }
     public void consultarCampamentos(){
+    //Consultan los que aún no han empezado y tienen plazas disponibles
+
 
     }
 }
