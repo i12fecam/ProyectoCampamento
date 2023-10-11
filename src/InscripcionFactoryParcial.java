@@ -1,4 +1,7 @@
-/*public class InscripcionFactoryParcial extends InscripcionFactory{//quintero
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+public class InscripcionFactoryParcial extends InscripcionFactory{//quintero
 
     private ListaCampamentos listacampamentos;
 
@@ -7,7 +10,7 @@
     }
 
     @Override
-    public InscripcionTardia crearInscripcionTardia(int idParticipante,int idCampamento, LocalDate FechaInscripcion,float precio)
+    public InscripcionTardia crearInscripcionTardia(int idParticipante,int idCampamento, LocalDate fechaInscripcion,float precio)
     {
         Campamento campamento =listacampamentos.buscarCampamento(idCampamento);
         LocalDate fechaLimiteTardia = campamento.getFechaInicio().minusDays(15); // Calcular la fecha límite (15 días antes)
@@ -24,14 +27,14 @@
     }
 
     @Override
-    public InscripcionTemprana crearInscricionTemprana(int idParticipante,int idCampamento, LocalDate FechaInscripcion,float precio)
+    public InscripcionTemprana crearInscricionTemprana(int idParticipante,int idCampamento, LocalDate fechaInscripcion,float precio)
     {
         Campamento campamento = listacampamentos.buscarCampamento(idCampamento);
         LocalDate fechaLimiteTemprana = campamento.getFechaInicio().minusDays(15); // Calcular la fecha límite (15 días antes)
 
         LocalDate fechaInicioCampamento = campamento.getFechaInicio();
 
-        if (fechaInicioCampamento.isBefore(fechaLimiteTemprana) && fechaInscripcion.isAfter(fechaInicioCampamento).minusHours(48)) {
+        if (fechaInicioCampamento.isBefore(fechaLimiteTemprana) && fechaInscripcion.minus(48, ChronoUnit.HOURS).isAfter(fechaInicioCampamento)) {
             // La inscripción se hizo con mas de 15 días de antelación.
             // La inscripción se hizo con al menos 48 horas de antelación de la fecha de inicio del Campamento
             return new InscripcionTemprana(idParticipante, idCampamento, fechaInscripcion, precio);
@@ -39,4 +42,4 @@
             throw new IllegalArgumentException("La inscripción temprana debe realizarse con más de 15 días de antelación y al menos 48 horas antes del inicio del Campamento");
         }
     }
-}*/
+}
