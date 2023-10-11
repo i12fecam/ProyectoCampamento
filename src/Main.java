@@ -1,8 +1,59 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 public class Main {
     private GestorAsistentes gestorAsistentes;
     private GestorCampamentos gestorCampamentos;
     private GestorInscripciones gestorInscripciones;
     public static  void main(String[] args){
+
+        Scanner scanner= new Scanner (System.in);
+        Properties prop = new Properties();
+        String filename= "Properties.txt";
+
+
+        System.out.println("Menu:");
+        System.out.println("1.Gestionar asistentes");
+        System.out.println("2.Gestionar campamentos");
+        System.out.println("3.Gestionar inscripciones");
+
+        int opcion;
+        opcion= scanner.nextLine();
+
+        switch (opcion){
+            case 1:
+                public void gestionarAsistentes();
+                break;
+            case 2:
+                public void gestionarCampamentos();
+                 break;
+            case 3:
+                public void gestionarInscripciones();
+                break;
+            default:
+                System.out.println("Opcion no valida");
+        }
+
+        public void gestionarAsistentes(){
+            try{
+                BufferedReader reader =new BufferedReader(new FileReader(new File (filename)));
+                prop.load(reader);
+                String Asis=prop.getProperty("Asis");
+                GestorAsistentes GestorAsistentes1 (Asis);
+            }catch (FileNotFoundException e){
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+
+
+        }
+
 
     }
 }
@@ -21,4 +72,6 @@ Deberiamos hace una funcion que se llame cancelar y varie segun el tipo de inscr
 como desees
 
 
+Properties se utiliza en el main, el main lee el fichero properties y a la hora de crear el gestor le pasa como cadena
+la ruta del fichero que ha leido el main.
  */
