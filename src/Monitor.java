@@ -13,7 +13,7 @@ public class Monitor extends Persona{
     /**
      * Empty (default) constructor
      * */
-    public monitor(){};
+    public Monitor(){};
 
 
     /**Constructor con todos sus parametros obligatorios

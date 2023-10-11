@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class GestorInscripciones {
@@ -9,8 +10,37 @@ public class GestorInscripciones {
     public GestorInscripciones() {
     }
 
-    public boolean crearInscripcion(){
-        return false;
+    public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
+        Campamento campamento = gestorCampamentos.getCampamentos().get(idCampamento);
+        Asistente asistente = gestorAsistentes.getAsistentes().get(idAsistente);
+        float precio;
+        boolean tardia;
+        //mirar si es tardia
+
+        //comprobar si necesita monitor especial
+        if(asistente.isAtencionEspecial() && !campamento.tieneMonitorEspecial()){
+            //añadir monitor especial al campamento
+        }
+        //calcular precio
+        if(horario == Horario.PARCIAL){
+            precio = 100;
+            ArrayList<Actividad> actividades = campamento.getActividades();
+            for (Actividad it:actividades){
+                if (it.getHorario() == Horario.PARCIAL){
+                    precio+=20;
+                }
+            }
+        }else{
+            precio = 300;
+        }
+        //se crea la inscripción
+        if(horario == Horario.PARCIAL){
+            InscripcionFactoryParcial fabrica = new InscripcionFactoryParcial();
+
+        }
+        else if(horario == Horario.COMPLETA){
+            InscripcionFactoryCompleta fabrica = new InscripcionFactoryCompleta();
+        }
     }
     public void consultarCampamentos(){
 

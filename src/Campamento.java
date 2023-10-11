@@ -15,8 +15,8 @@ public class Campamento{
     private NivelEducativo nivelEducativo;
 
     private int maxAsistentes;
-    ArrayList<Monitor> monitores = new ArrayList<Monitor>();
-    ArrayList<Actividad> actividades = new ArrayList<Actividad>();
+    private ArrayList<Monitor> monitores = new ArrayList<Monitor>();
+    private ArrayList<Actividad> actividades = new ArrayList<Actividad>();
 
     /**
      * Empty (default) constructor
@@ -33,6 +33,9 @@ public class Campamento{
      * @param maxAsistentes numero maximo de asistentes del campamento
      */
     public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes) {
+        if(fechaFinal.isAfter(fechaInicio)){
+            throw new RuntimeException("Las fechas no tienen sentido");
+        }
         this.idCampamento = idCampamento;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
@@ -210,5 +213,17 @@ public class Campamento{
         } else {
             throw new RuntimeException("El monitor ya está asociado o no es educador especial");
         }
+    }
+    public boolean equals (Campamento campamento) {
+        return campamento.idCampamento == this.idCampamento;
+
+    }
+    public boolean tieneMonitorEspecial(){
+        for(Monitor it:monitores){
+            if(it.isEducadorEspecial()){
+                return true;
+            }
+        }
+        return false;
     }
 }

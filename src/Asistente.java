@@ -16,7 +16,7 @@ public class Asistente extends Persona{
      */
     public Asistente(){
 
-    };
+    }
 
     /**
      *  Constructor para un objeto Asistente
@@ -65,6 +65,7 @@ public class Asistente extends Persona{
                 ", especial=" + isAtencionEspecial() +
                 '}';
     }
+
 }
 
 

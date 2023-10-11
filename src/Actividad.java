@@ -10,6 +10,7 @@ public class Actividad {
     /*Attributes*/
     private String nombre;
 
+    private int identificador;
     private NivelEducativo nivelEducativo;
 
     private Horario horario;
@@ -28,13 +29,15 @@ public class Actividad {
     /**
      *  Parameterized constructor
      * @param nombre Nombre de la actividad
+     * @param identificador identificador de la actividad
      * @param nivelEducativo Nivel educativo que tiene la actividad
      * @param horario Horario de la actividad
      * @param maxParticipantes Numero maximo de participantes que tiene la actividad
      * @param monitoresNecesarios Numero de monitores necesarios
      */
-    public Actividad(String nombre, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios) {
+    public Actividad(String nombre,int identificador, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios) {
         this.nombre = nombre;
+        this.identificador = identificador;
         this.nivelEducativo = nivelEducativo;
         this.horario = horario;
         this.maxParticipantes = maxParticipantes;
@@ -55,6 +58,14 @@ public class Actividad {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     *
+     * @return Identificador de la Actividad
+     */
+    public int getIdentificador() {
+        return identificador;
     }
 
     /**
@@ -114,7 +125,7 @@ public class Actividad {
     }
 
     /**
-     * Establece el numero de monitores necesarios
+     * Establece el número de monitores necesarios
      * @param monitoresNecesarios
      */
     public void setMonitoresNecesarios(int monitoresNecesarios) {
@@ -134,8 +145,8 @@ public class Actividad {
     public void setMonitores(ArrayList<Monitor> monitores) {this.monitores = monitores;}
 
     /**
-     * Imprime la informacion de la actividad
-     * @return Cadena con toda la informacion necesario de una actividad
+     * Imprime la información de la actividad
+     * @return Cadena con toda la información necesaria de una actividad
      */
     @Override
     public String toString() {
@@ -151,8 +162,8 @@ public class Actividad {
 
 
     /**
-     * Metodo para asociar un monitor a una actividad. Solo se asocian si no s ha sobrepasado el limite de monitores
-     * necesarios y si ademas dicho monitor no se encuentra previamente añadido en la lista de los monitores de la
+     * Método para asociar un monitor a una actividad. Solo se asocian si no s ha sobrepasado el limite de monitores
+     * necesarios y si además dicho monitor no se encuentra previamente añadido en la lista de los monitores de la
      * actividad
      * @param monitor Monitor que se desea asociar
      */
@@ -166,5 +177,9 @@ public class Actividad {
         } else {
             throw new RuntimeException("Este monitor ya esta añadido");
         }
+    }
+    public boolean equals (Actividad actividad) {
+        return actividad.identificador == this.identificador;
+
     }
 }
