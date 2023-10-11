@@ -85,11 +85,32 @@ public class Main {
             }
 
             System.out.println("Opciones para gestionar los campamentos");
-            System.out.println("1.")
+            System.out.println("1.Crear campamento");
+            System.out.println("2.Crear monitores");
+            System.out.println("3.Crear actividades");
+            System.out.println("4.Asociar monitores a actividades");
+            System.out.printl("5.Asociar monitores a un campamento");
+            System.out.println("6.Asociar monitores de atencion especial a un campamento");
+            System.out.println("0.Volver al menu principal");
 
             int opcion3=scanner.nextLine();
             switch (opcion3){
-
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("Opcion invalida.");
             }
         }
 
