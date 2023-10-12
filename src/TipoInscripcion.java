@@ -1,4 +1,6 @@
 public enum TipoInscripcion {
     TEMPRANA,
-    TARDIA
+    TARDIA,
+    COMPLETA,
+    PARCIAL
 }

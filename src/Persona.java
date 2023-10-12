@@ -10,12 +10,12 @@ import java.time.LocalDate;
 
 public class Persona {
     /*Attributes*/
-    private int identificador;
-    private String nombre;
-    private String apellido1;
-    private String apellido2;
+    protected int identificador;
+    protected String nombre;
+    protected String apellido1;
+    protected String apellido2;
 
-    private LocalDate fechaNacimiento;
+    protected LocalDate fechaNacimiento;
 
     /* Constructors */
 
