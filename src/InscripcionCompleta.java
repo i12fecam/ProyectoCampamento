@@ -1,16 +1,15 @@
 import java.time.LocalDate;
 
-public class InscripcionFactoryCompleta extends Inscripcion{//abi
+public class InscripcionCompleta extends Inscripcion{
 
-    @Override
-    public InscripcionTardia crearInscripcionTardia(int idParticipante,int idCampamento, LocalDate fechaInscripcion,float precio)
-    {
-        return new InscripcionTardia(idParticipante, idCampamento, fechaInscripcion, precio);
+    private int duracion;
+    public InscripcionCompleta(){}
+    public InscripcionCompleta(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio, int duracion) {
+        super(idParticipante, idCampamento, fechaInscripcion, precio,TipoInscripcion.COMPLETA);
+        this.duracion = duracion;
     }
 
-    @Override
-    public InscripcionTemprana crearInscricionTemprana(int idParticipante,int idCampamento, LocalDate fechaInscripcion,float precio)
-    {
-        return new InscripcionTemprana(idParticipante, idCampamento, fechaInscripcion, precio);
+    public int getDuracion() {
+        return duracion;
     }
 }

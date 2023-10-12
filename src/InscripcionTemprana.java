@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public class InscripcionTemprana extends InscripcionFactory{
+public abstract class InscripcionTemprana extends InscripcionFactory{
     /**
      * Parametrized constructor
      * @param idParticipante
@@ -25,7 +25,7 @@ public class InscripcionTemprana extends InscripcionFactory{
     /**
      * @return toda la informacion de inscripcion
      */
-    @Override
+
     public String toString() {
         return "InscripcionTemprana{" +
                 "idParticipante=" + idParticipante +
