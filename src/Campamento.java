@@ -32,7 +32,7 @@ public class Campamento{
      * @param nivelEducativo nivel educativo que tiene el campamento
      * @param maxAsistentes numero maximo de asistentes del campamento
      */
-    public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes,int numAsistentes) {
+    public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes,) {
         if(fechaFinal.isAfter(fechaInicio)){
             throw new RuntimeException("Las fechas no tienen sentido");
         }
@@ -41,7 +41,7 @@ public class Campamento{
         this.fechaFinal = fechaFinal;
         this.nivelEducativo = nivelEducativo;
         this.maxAsistentes = maxAsistentes;
-        this.numAsistentes = numAsistentes;
+        this.numAsistentes = 0;
     }
 
     /**
@@ -118,7 +118,7 @@ public class Campamento{
     }
 
     /**
-     * Establece el numero maximo de asistentes
+     * Establece el número maximo de asistentes
      * @param maxAsistentes
      */
     public void setMaxAsistentes(int maxAsistentes) {
@@ -243,24 +243,27 @@ public class Campamento{
         }
         return false;
     }
-}
+
+    /**
+     * Método que nos permite incrementar el numero de asistentes de un campamento
+     */
+    public void anadirAsistenteCampamento() {
+        if (comprobarAsistentes()) {
+            numAsistentes++;
+        }
+    }
 
     /**
      * Método para anadir comprobar si el numero de asistentes a un campamento es menor que el numero maximo de asistentes
      * @return true si numAsistentes<maxAsistentes, si no devuelve false
      */
-    public boolean comprobarAsistentes(){
-        if(numAsistentes<maxAsistentes){
+    public boolean comprobarAsistentes() {
+        if (numAsistentes < maxAsistentes) {
             return true;
         }
         return false;
     }
+}
 
-    /**
-     * Método que nos permite incrementar el numero de asistentes de un campamento
-     */
-    public void anadirAsistenteCampamento(){
-        if(comprobarAsistentes()){
-            numAsistentes++;
-        }
-    }
+
+
