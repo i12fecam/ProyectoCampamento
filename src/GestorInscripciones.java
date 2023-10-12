@@ -55,8 +55,7 @@ public class GestorInscripciones {
     private void cargarFichero(){
 
     }
-    public GestorInscripciones() {
-    }
+
 
     /**
      * @param gestorCampamentos
