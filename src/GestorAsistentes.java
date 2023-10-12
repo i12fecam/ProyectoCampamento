@@ -1,9 +1,15 @@
 import java.io.*;
-import java.util.Properties;
-import java.util.Scanner;
+//import java.util.Properties;
+//import java.util.Scanner;
 import java.util.ArrayList;
 import java.time.LocalDate;
-
+/**
+ * GestorAsistentes class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ * */
 
 public class GestorAsistentes {
     private ArrayList<Asistente> asistentes;
@@ -113,7 +119,7 @@ public class GestorAsistentes {
         }
     }
 
-    private void volcarFichero() {
+    /*private void volcarFichero() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("C:\\Users\\Quinte01\\IdeaProjects\\Local2\\src\\asistentes.txt"))) {
             // Itera sobre los asistentes y escribe cada uno en el archivo
             for (Asistente asistente : asistentes) {
@@ -123,7 +129,7 @@ public class GestorAsistentes {
             e.printStackTrace();
         }
     }
-
+*/
     public void listar() {
         for (Asistente asistente : asistentes) {
             System.out.println(asistente.toString());

@@ -1,8 +1,9 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
 /**
- * Monitor class
+ * GestorInscripciones class
  * @author Noelia Ruiz
  * @author Antonio Javier Quintero
  * @author Abigail Fernández
@@ -52,9 +53,9 @@ public class GestorInscripciones {
      */
     public ArrayList<Inscripcion> getInscripciones() {return inscripciones;}
 
-    private void cargarFichero(){
+    //private void cargarFichero(){
 
-    }
+    //}
 
 
     /**
@@ -65,7 +66,7 @@ public class GestorInscripciones {
      * @param fechaInscripcion
      * @param horario
      */
-    public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
+    /*public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
         Campamento campamento = gestorCampamentos.getCampamentos().get(idCampamento);
         Asistente asistente = gestorAsistentes.getAsistentes().get(idAsistente);
         float precio;
@@ -97,6 +98,7 @@ public class GestorInscripciones {
             InscripcionFactoryCompleta fabrica = new InscripcionFactoryCompleta();
         }
     }
+    */
     public ArrayList<Campamento> consultarCampamentosDisponibles(GestorCampamentos gestor) {
         ArrayList<Campamento> campamentosDisponibles = new ArrayList<>();
         LocalDate fechaActual = LocalDate.now(); // Obtén la fecha actual
@@ -109,4 +111,5 @@ public class GestorInscripciones {
 
         return campamentosDisponibles;
     }
+
 }
