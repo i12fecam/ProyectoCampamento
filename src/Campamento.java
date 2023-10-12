@@ -13,7 +13,7 @@ public class Campamento{
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
     private NivelEducativo nivelEducativo;
-
+    private int numAsistentes;
     private int maxAsistentes;
     private ArrayList<Monitor> monitores = new ArrayList<Monitor>();
     private ArrayList<Actividad> actividades = new ArrayList<Actividad>();
@@ -32,7 +32,7 @@ public class Campamento{
      * @param nivelEducativo nivel educativo que tiene el campamento
      * @param maxAsistentes numero maximo de asistentes del campamento
      */
-    public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes) {
+    public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes,int numAsistentes) {
         if(fechaFinal.isAfter(fechaInicio)){
             throw new RuntimeException("Las fechas no tienen sentido");
         }
@@ -41,6 +41,7 @@ public class Campamento{
         this.fechaFinal = fechaFinal;
         this.nivelEducativo = nivelEducativo;
         this.maxAsistentes = maxAsistentes;
+        this.numAsistentes = numAsistentes;
     }
 
     /**
@@ -143,15 +144,30 @@ public class Campamento{
     public ArrayList<Actividad> getActividades() {return actividades;}
 
     /**
-     * Establce la lista con las actividades del campamento
+     * Establece la lista con las actividades del campamento
      * @param actividades
      */
     public void setActividades(ArrayList<Actividad> actividades) {this.actividades = actividades;}
 
     /**
+     * @return numAsistentes
+     */
+    public int getNumAsistentes() {
+        return numAsistentes;
+    }
+
+    /**
+     * @param numAsistentes
+     */
+    public void setNumAsistentes(int numAsistentes) {
+        this.numAsistentes = numAsistentes;
+    }
+
+    /**
      * Imprime la informacion del campamento
      * @return Cadena con la informacion del campamento
      */
+
     @Override
     public String toString() {
         return "Campamento{" +
@@ -159,6 +175,7 @@ public class Campamento{
                 ", fechaInicio=" + fechaInicio +
                 ", fechaFinal=" + fechaFinal +
                 ", nivelEducativo=" + nivelEducativo +
+                ", numAsistentes=" + numAsistentes +
                 ", maxAsistentes=" + maxAsistentes +
                 ", monitores=" + monitores +
                 ", actividades=" + actividades +
@@ -227,3 +244,23 @@ public class Campamento{
         return false;
     }
 }
+
+    /**
+     * Método para anadir comprobar si el numero de asistentes a un campamento es menor que el numero maximo de asistentes
+     * @return true si numAsistentes<maxAsistentes, si no devuelve false
+     */
+    public boolean comprobarAsistentes(){
+        if(numAsistentes<maxAsistentes){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Método que nos permite incrementar el numero de asistentes de un campamento
+     */
+    public void anadirAsistenteCampamento(){
+        if(comprobarAsistentes()){
+            numAsistentes++;
+        }
+    }
