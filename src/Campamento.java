@@ -32,7 +32,7 @@ public class Campamento{
      * @param nivelEducativo nivel educativo que tiene el campamento
      * @param maxAsistentes numero maximo de asistentes del campamento
      */
-    public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes) {
+    public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes,int numAsistentes) {
         if(fechaFinal.isAfter(fechaInicio)){
             throw new RuntimeException("Las fechas no tienen sentido");
         }

@@ -97,11 +97,10 @@ public class GestorInscripciones {
             InscripcionFactoryCompleta fabrica = new InscripcionFactoryCompleta();
         }
     }
-    public ArrayList<Campamento> consultarCampamentosDisponibles() {
+    public ArrayList<Campamento> consultarCampamentosDisponibles(GestorCampamentos gestor) {
         ArrayList<Campamento> campamentosDisponibles = new ArrayList<>();
         LocalDate fechaActual = LocalDate.now(); // Obtén la fecha actual
-
-        for (Campamento it : campamentos) {
+        for (Campamento it : gestor.getCampamentos()) {
             if (fechaActual.isBefore(it.getFechaInicio()) && // Campamento no ha comenzado
                     it.getNumAsistentes() < it.getMaxAsistentes()) { // Plazas disponibles
                 campamentosDisponibles.add(it);
