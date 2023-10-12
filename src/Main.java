@@ -89,7 +89,7 @@ public class Main {
             System.out.println("2.Crear monitores");
             System.out.println("3.Crear actividades");
             System.out.println("4.Asociar monitores a actividades");
-            System.out.printl("5.Asociar monitores a un campamento");
+            System.out.println("5.Asociar monitores a un campamento");
             System.out.println("6.Asociar monitores de atencion especial a un campamento");
             System.out.println("0.Volver al menu principal");
 
@@ -114,6 +114,21 @@ public class Main {
             }
         }
 
+        public void gestionarInscripciones(){
+            try{
+                BufferedReader reader =new BufferedReader(new FileReader(new File (filename)));
+                prop.load(reader);
+                String Ins=prop.getProperty("Ins");
+                GestorAsistentes GestorAsistentes1 (Ins);
+            }catch (FileNotFoundException e){
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+
+
+        }
 
     }
 }
