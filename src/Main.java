@@ -17,20 +17,32 @@ public class Main {
     public void iniciar() {
         Scanner scanner = new Scanner(System.in);
         Properties prop = new Properties();
-        String filename = ".\\Properties.txt";
+        String filename;
+        //comprobar sistema operativo para poner la ruta bien
+        String operSys = System.getProperty("os.name").toLowerCase();
+        if (operSys.contains("win")){
+            filename = ".\\Properties.txt";
+        }else{
+            filename = "./Properties.txt";
+        }
+
         try {
             BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
             prop.load(reader);
         } catch (FileNotFoundException e) {
+            System.out.println("No se ha encontrado el archivo de configuración");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        gestorAsistentes = new GestorAsistentes(prop.getProperty("Asis"));
+        gestorCampamentos = new GestorCampamentos(prop.getProperty("Camp"));
+        gestorInscripciones = new GestorInscripciones(prop.getProperty("Ins"));
         System.out.println("Menu principal:");
         System.out.println("1. Gestionar asistentes");
         System.out.println("2. Gestionar campamentos");
         System.out.println("3. Gestionar inscripciones");
+
 
         String opcion = scanner.nextLine();
 
@@ -51,20 +63,7 @@ public class Main {
 
     public void gestionarAsistentes() {
         Scanner scanner = new Scanner(System.in);
-        Properties prop = new Properties();
-        String filename = ".\\Properties.txt";
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
-
-            prop.load(reader);
-            String Asis = prop.getProperty("Asis");
-            gestorAsistentes = new GestorAsistentes(Asis);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         while (true) {
             System.out.println("Opciones para gestionar a los asistentes:");
             System.out.println("1. Dar de alta");
@@ -104,7 +103,6 @@ public class Main {
                     // Lógica para modificar asistente
                     break;
                 case "3":
-                    gestorAsistentes.cargarAsistentesDesdeArchivo(); // Cargar asistentes desde el archivo
                     gestorAsistentes.listar();
                     break;
                 case "0":
@@ -116,19 +114,7 @@ public class Main {
 
     public void gestionarCampamentos() {
         Scanner scanner = new Scanner(System.in);
-        Properties prop = new Properties();
-        String filename = ".\\Properties.txt";
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
-            prop.load(reader);
-            String Camp = prop.getProperty("Camp");
-            gestorCampamentos = new GestorCampamentos(Camp);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         while (true) {
             System.out.println("Opciones para gestionar los campamentos");
             System.out.println("1. Crear campamento");
@@ -167,19 +153,10 @@ public class Main {
             }
         }
     }
-  /*  public void gestionarInscripciones() {    //da errores y no compila
-        try{
-            BufferedReader reader =new BufferedReader(new FileReader(new File (filename)));
-            prop.load(reader);
-            String Ins=prop.getProperty("Ins");
-            GestorAsistentes GestorAsistentes1 (Ins);
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+    public void gestionarInscripciones() {    //da errores y no compila
+        Scanner scanner = new Scanner(System.in);
 
-    }*/
+    }
 
 }
 
