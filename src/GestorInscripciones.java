@@ -102,7 +102,7 @@ public class GestorInscripciones {
         LocalDate fechaActual = LocalDate.now(); // Obtén la fecha actual
 
         for (Campamento it : campamentos) {
-            if (fechaActual.isBefore(campamento.getFechaInicio()) && // Campamento no ha comenzado
+            if (fechaActual.isBefore(it.getFechaInicio()) && // Campamento no ha comenzado
                     it.getNumAsistentes() < it.getMaxAsistentes()) { // Plazas disponibles
                 campamentosDisponibles.add(it);
             }
