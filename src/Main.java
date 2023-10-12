@@ -89,7 +89,7 @@ public class Main {
                     String apellido2 = scanner.nextLine();
                     System.out.print("Fecha de Nacimiento (YYYY-MM-DD): ");
                     String fechaNacimientoStr = scanner.nextLine();
-                    System.out.print("Atención Especial (true/false): ");
+                    System.out.print("Atencion Especial (true/false): ");
                     boolean atencionEspecial = scanner.nextBoolean();
 
                     // Crear una instancia de Asistente con la información recopilada
@@ -97,7 +97,7 @@ public class Main {
 
                     // Dar de alta al asistente
                     gestorAsistentes.darAlta(nuevoAsistente);
-                    System.out.println("Asistente dado de alta con éxito.");
+                    System.out.println("Asistente dado de alta con exito.");
                     break;
                 case "2":
                     // Lógica para modificar asistente
