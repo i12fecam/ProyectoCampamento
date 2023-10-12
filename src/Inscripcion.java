@@ -7,15 +7,17 @@ public abstract class Inscripcion {
     protected float precio;
     protected TipoInscripcion tipoInscripcion;
 
+    protected Horario horario;
     public Inscripcion() {
     }
 
-    public Inscripcion(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio, TipoInscripcion tipoInscripcion) {
+    public Inscripcion(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio, TipoInscripcion tipoInscripcion,Horario horario) {
         this.idParticipante = idParticipante;
         this.idCampamento = idCampamento;
         this.fechaInscripcion = fechaInscripcion;
         this.precio = precio;
         this.tipoInscripcion = tipoInscripcion;
+        this.horario = horario;
     }
 
     public int getIdParticipante() {
@@ -58,6 +60,14 @@ public abstract class Inscripcion {
         this.tipoInscripcion = tipoInscripcion;
     }
 
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Horario horario) {
+        this.horario = horario;
+    }
+
     @Override
     public String toString() {
         return "Inscripcion{" +
@@ -66,6 +76,7 @@ public abstract class Inscripcion {
                 ", fechaInscripcion=" + fechaInscripcion +
                 ", precio=" + precio +
                 ", tipoInscripcion=" + tipoInscripcion +
+                ", horario=" + horario +
                 '}';
     }
 }

@@ -2,18 +2,13 @@ import java.time.LocalDate;
 
 public class InscripcionParcial extends Inscripcion {
 
-
-    private int duracion;
-
-    public InscripcionParcial() {
+    public InscripcionParcial(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio, TipoInscripcion tipoInscripcion) {
+        this.idParticipante = idParticipante;
+        this.idCampamento = idCampamento;
+        this.fechaInscripcion = fechaInscripcion;
+        this.precio = precio;
+        this.tipoInscripcion = tipoInscripcion;
+        this.horario = Horario.PARCIAL;
     }
 
-    public InscripcionParcial(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio, int duracion) {
-        super(idParticipante, idCampamento, fechaInscripcion, precio, TipoInscripcion.PARCIAL);
-        this.duracion = duracion;
-    }
-
-    public int getDuracion() {
-        return duracion;
-    }
 }

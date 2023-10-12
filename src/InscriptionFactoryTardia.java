@@ -1,0 +1,12 @@
+import java.time.LocalDate;
+
+public class InscriptionFactoryTardia extends InscripcionFactory{
+
+    public InscripcionCompleta crearInscripcionCompleta(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio){
+         return  new InscripcionCompleta(idParticipante,idCampamento,fechaInscripcion,precio,TipoInscripcion.TARDIA);
+    }
+
+    public InscripcionParcial crearInscripcionParcial(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio){
+        return new InscripcionParcial(idParticipante,idCampamento,fechaInscripcion,precio,TipoInscripcion.TARDIA);
+    }
+}
