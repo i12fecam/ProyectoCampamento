@@ -97,9 +97,17 @@ public class GestorInscripciones {
             InscripcionFactoryCompleta fabrica = new InscripcionFactoryCompleta();
         }
     }
-    public void consultarCampamentos(){
-    //Consultan los que aún no han empezado y tienen plazas disponibles
+    public ArrayList<Campamento> consultarCampamentosDisponibles() {
+        ArrayList<Campamento> campamentosDisponibles = new ArrayList<>();
+        LocalDate fechaActual = LocalDate.now(); // Obtén la fecha actual
 
+        for (Campamento it : campamentos) {
+            if (fechaActual.isBefore(campamento.getFechaInicio()) && // Campamento no ha comenzado
+                    it.getNumAsistentes() < it.getMaxAsistentes()) { // Plazas disponibles
+                campamentosDisponibles.add(it);
+            }
+        }
 
+        return campamentosDisponibles;
     }
 }
