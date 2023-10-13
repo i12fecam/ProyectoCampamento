@@ -17,32 +17,24 @@ public class Main {
     public void iniciar() {
         Scanner scanner = new Scanner(System.in);
         Properties prop = new Properties();
-        String filename;
-        //comprobar sistema operativo para poner la ruta bien
-        String operSys = System.getProperty("os.name").toLowerCase();
-        if (operSys.contains("win")){
-            filename = ".\\Properties.txt";
-        }else{
-            filename = "./Properties.txt";
-        }
-
+        String filename = ".\\Properties.txt";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
             prop.load(reader);
+            String Asis = prop.getProperty("Asis");
+            gestorAsistentes = new GestorAsistentes(Asis);
+            String Camp = prop.getProperty("Camp");
+            gestorCampamentos = new GestorCampamentos(Camp);
         } catch (FileNotFoundException e) {
-            System.out.println("No se ha encontrado el archivo de configuración");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        gestorAsistentes = new GestorAsistentes(prop.getProperty("Asis"));
-        gestorCampamentos = new GestorCampamentos(prop.getProperty("Camp"));
-        gestorInscripciones = new GestorInscripciones(prop.getProperty("Ins"));
+
         System.out.println("Menu principal:");
         System.out.println("1. Gestionar asistentes");
         System.out.println("2. Gestionar campamentos");
         System.out.println("3. Gestionar inscripciones");
-
 
         String opcion = scanner.nextLine();
 
@@ -63,7 +55,6 @@ public class Main {
 
     public void gestionarAsistentes() {
         Scanner scanner = new Scanner(System.in);
-
         while (true) {
             System.out.println("Opciones para gestionar a los asistentes:");
             System.out.println("1. Dar de alta");
@@ -89,7 +80,7 @@ public class Main {
                     String apellido2 = scanner.nextLine();
                     System.out.print("Fecha de Nacimiento (YYYY-MM-DD): ");
                     String fechaNacimientoStr = scanner.nextLine();
-                    System.out.print("Atencion Especial (true/false): ");
+                    System.out.print("Atención Especial (true/false): ");
                     boolean atencionEspecial = scanner.nextBoolean();
 
                     // Crear una instancia de Asistente con la información recopilada
@@ -97,12 +88,13 @@ public class Main {
 
                     // Dar de alta al asistente
                     gestorAsistentes.darAlta(nuevoAsistente);
-                    System.out.println("Asistente dado de alta con exito.");
+                    System.out.println("Asistente dado de alta con éxito.");
                     break;
                 case "2":
                     // Lógica para modificar asistente
                     break;
                 case "3":
+                    gestorAsistentes.cargarAsistentesDesdeArchivo(); // Cargar asistentes desde el archivo
                     gestorAsistentes.listar();
                     break;
                 case "0":
@@ -110,11 +102,11 @@ public class Main {
                 default:
                     System.out.println("Opcion invalida.");
             }
-        }}
+        }
+    }
 
     public void gestionarCampamentos() {
         Scanner scanner = new Scanner(System.in);
-
         while (true) {
             System.out.println("Opciones para gestionar los campamentos");
             System.out.println("1. Crear campamento");
@@ -153,10 +145,19 @@ public class Main {
             }
         }
     }
-    public void gestionarInscripciones() {    //da errores y no compila
-        Scanner scanner = new Scanner(System.in);
+  /*  public void gestionarInscripciones() {    //da errores y no compila
+        try{
+            BufferedReader reader =new BufferedReader(new FileReader(new File (filename)));
+            prop.load(reader);
+            String Ins=prop.getProperty("Ins");
+            GestorAsistentes GestorAsistentes1 (Ins);
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
-    }
+    }*/
 
 }
 
