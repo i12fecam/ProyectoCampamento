@@ -37,7 +37,6 @@ public class Main {
         }
         gestorAsistentes = new GestorAsistentes(prop.getProperty("Asis"));
         gestorCampamentos = new GestorCampamentos(prop.getProperty("Camp"));
-        //gestorCampamentos = new GestorCampamentos();
         gestorInscripciones = new GestorInscripciones(prop.getProperty("Ins"));
 
         boolean bucle =true;
@@ -58,7 +57,7 @@ public class Main {
                     gestionarCampamentos();
                     break;
                 case "3":
-                    // gestionarInscripciones();
+                     gestionarInscripciones();
                     break;
                 case "4":
                     salir();
@@ -195,6 +194,43 @@ public class Main {
                     break;
                 case "3":
                     // Lógica para crear actividades
+                    try {
+                        System.out.println("Nombre de la actividad:");
+                        String nombre = scanner.nextLine();
+                        System.out.println("Nivel educativo (Infantil, Juvenil, Adolescente):");
+                        String nivelEducativoStr = scanner.nextLine();
+                        NivelEducativo nivelEducativo;
+                        if (nivelEducativoStr.equals("Infantil")) {
+                            nivelEducativo = NivelEducativo.INFANTIL;
+                        } else if (nivelEducativoStr.equals("Juvenil")) {
+                            nivelEducativo = NivelEducativo.JUVENIL;
+                        } else if (nivelEducativoStr.equals("Adolescente")) {
+                            nivelEducativo = NivelEducativo.ADOLESCENTE;
+                        } else {
+                            throw new RuntimeException("Error al capturar el nivel educativo");
+                        }
+                        System.out.println("Horario (Parcial,Completo):");
+                        String horarioStr = scanner.nextLine();
+                        Horario horario;
+                        if (horarioStr.equals("Parcial")) {
+                            horario = Horario.PARCIAL;
+                        } else if (horarioStr.equals("Completo")) {
+                            horario = Horario.COMPLETA;
+                        } else {
+                            throw new RuntimeException("Error al capturar el horario");
+                        }
+
+
+                        System.out.println("Número máximo de participantes");
+                        int maxParticipantes = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Número de monitores necesarios");
+                        int monitoresNecesarios = scanner.nextInt();
+
+                        gestorCampamentos.crearActividad(nombre, nivelEducativo, horario, maxParticipantes, monitoresNecesarios);
+                    }catch (Exception e){
+                        System.out.println("Se produjo un error creando la actividad");
+                    }
                     break;
                 case "4":
                     // Lógica para asociar monitores a actividades
@@ -224,7 +260,7 @@ public class Main {
             }
         }
     }
-    public void gestionarInscripciones() {    //da errores y no compila
+    public void gestionarInscripciones() {
         Scanner scanner = new Scanner(System.in);
 
     }
