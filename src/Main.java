@@ -44,7 +44,7 @@ public class Main {
             System.out.println("1. Gestionar asistentes");
             System.out.println("2. Gestionar campamentos");
             System.out.println("3. Gestionar inscripciones");
-
+            System.out.println("4. Gestionar salir");
 
             String opcion = scanner.nextLine();
 
@@ -57,6 +57,9 @@ public class Main {
                     break;
                 case "3":
                     // gestionarInscripciones();
+                    break;
+                case "4":
+                    salir();
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -158,6 +161,9 @@ public class Main {
     }
     public void gestionarInscripciones() {    //da errores y no compila
         Scanner scanner = new Scanner(System.in);
+
+    }
+    public void salir(){
 
     }
 

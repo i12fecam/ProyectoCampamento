@@ -24,6 +24,7 @@ public class GestorAsistentes {
     public GestorAsistentes(String NombreArchivo) {
         this.NombreArchivo = NombreArchivo;
         this.asistentes = new ArrayList<>();
+        this.cargarAsistentesDesdeArchivo();
     }
 
     public String getNombreArchivo() {return NombreArchivo;}
