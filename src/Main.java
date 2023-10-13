@@ -36,15 +36,17 @@ public class Main {
             e.printStackTrace();
         }
         gestorAsistentes = new GestorAsistentes(prop.getProperty("Asis"));
-        //gestorCampamentos = new GestorCampamentos(prop.getProperty("Camp"));
-        gestorCampamentos = new GestorCampamentos();
+        gestorCampamentos = new GestorCampamentos(prop.getProperty("Camp"));
+        //gestorCampamentos = new GestorCampamentos();
         gestorInscripciones = new GestorInscripciones(prop.getProperty("Ins"));
-        while (true) {
+
+        boolean bucle =true;
+        while (bucle) {
             System.out.println("Menu principal:");
             System.out.println("1. Gestionar asistentes");
             System.out.println("2. Gestionar campamentos");
             System.out.println("3. Gestionar inscripciones");
-            System.out.println("4. Gestionar salir");
+            System.out.println("4. Salir");
 
             String opcion = scanner.nextLine();
 
@@ -60,6 +62,7 @@ public class Main {
                     break;
                 case "4":
                     salir();
+                    bucle=false;
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -129,6 +132,7 @@ public class Main {
             System.out.println("4. Asociar monitores a actividades");
             System.out.println("5. Asociar monitores a un campamento");
             System.out.println("6. Asociar monitores de atención especial a un campamento");
+            System.out.println("7. Ver campamentos");
             System.out.println("0. Volver al menu principal");
 
             String opcion3 = scanner.nextLine();
@@ -136,6 +140,34 @@ public class Main {
             switch (opcion3) {
                 case "1":
                     // Lógica para crear campamento
+                    try {
+                        System.out.print("Fecha de inicio (YYYY-MM-DD):");
+                        String fechaIncioStr = scanner.nextLine();
+                        System.out.print("Fecha de finalización (YYYY-MM-DD):");
+                        String fechaFinalStr = scanner.nextLine();
+                        System.out.print("Nivel educativo (Infantil, Juvenil, Adolescente):");
+                        String nivelEducativoStr = scanner.nextLine();
+                        NivelEducativo nivelEducativo;
+                        if (nivelEducativoStr.equals("Infantil") ) {
+                            nivelEducativo = NivelEducativo.INFANTIL;
+                        } else if (nivelEducativoStr.equals("Juvenil")) {
+                            nivelEducativo = NivelEducativo.JUVENIL;
+                        } else if (nivelEducativoStr.equals("Adolescente")) {
+                            nivelEducativo = NivelEducativo.ADOLESCENTE;
+                        } else {
+                            throw new RuntimeException("Error al capturar el nivel educativo");
+                        }
+                        System.out.print("Número máximo de Asistentes:");
+                        int maxAsistentes = scanner.nextInt();
+                        scanner.nextLine();
+                        gestorCampamentos.crearCampamento(LocalDate.parse(fechaIncioStr), LocalDate.parse(fechaFinalStr), nivelEducativo, maxAsistentes);
+                        gestorCampamentos.guardarFichero();
+                        System.out.println("El campamento se ha creado correctamente");
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println("Hubo un problema creando el campamento");
+                    }
+
                     break;
                 case "2":
                     // Lógica para crear monitores
@@ -151,6 +183,10 @@ public class Main {
                     break;
                 case "6":
                     // Lógica para asociar monitores de atención especial a un campamento
+                    break;
+                case "7":
+                    //Logica de ver Campamentos
+                    gestorCampamentos.toStringCampamentos();
                     break;
                 case "0":
                     return;

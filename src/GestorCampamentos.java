@@ -18,6 +18,9 @@ public class GestorCampamentos implements Serializable {
      * empty(default) constructor
      **/
     public GestorCampamentos() {
+        campamentos = new ArrayList<>();
+        monitores = new ArrayList<>();
+        actividades = new ArrayList<>();
     }
 
     /**
@@ -30,26 +33,36 @@ public class GestorCampamentos implements Serializable {
         this.campamentos = new ArrayList<>();
         FileInputStream fileInputStream
                 = null;
-        try {
-            fileInputStream = new FileInputStream(NombreArchivo);
-            ObjectInputStream objectInputStream
-                    = new ObjectInputStream(fileInputStream);
-            GestorCampamentos gestor = (GestorCampamentos) objectInputStream.readObject();
-            objectInputStream.close();
-            this.campamentos= gestor.campamentos;
-            this.monitores = gestor.monitores;
-            this.actividades = gestor.actividades;
-        } catch (FileNotFoundException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(new File(NombreArchivo).length() != 0){
+
+            try {
+                fileInputStream = new FileInputStream(NombreArchivo);
+
+                ObjectInputStream objectInputStream
+                        = new ObjectInputStream(fileInputStream);
+                GestorCampamentos gestor = (GestorCampamentos) objectInputStream.readObject();
+                objectInputStream.close();
+                this.campamentos= gestor.campamentos;
+                this.monitores = gestor.monitores;
+                this.actividades = gestor.actividades;
+            } catch (FileNotFoundException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
+        else{
+            campamentos = new ArrayList<>();
+            monitores = new ArrayList<>();
+            actividades = new ArrayList<>();
+        }
+
 
     }
 
 
 
-    private void guardarFichero(){
+    public void guardarFichero(){
         try {
             FileOutputStream fileOutputStream
                     = new FileOutputStream(NombreArchivo);
@@ -64,19 +77,15 @@ public class GestorCampamentos implements Serializable {
         }
     }
 
-    private void cargarFichero(){
 
-
-    }
     /**
      * @param fechaInicio
      * @param fechaFinal
      * @param nivelEducativo
      * @param maxAsistentes
-     * @param numAsistentes
      */
 
-    public void crearCampamento( LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes,int numAsistentes){
+    public void crearCampamento( LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
         int idCampamento = campamentos.size();
         Campamento campamento = new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes,0);
 
@@ -153,6 +162,11 @@ public class GestorCampamentos implements Serializable {
         Monitor monitor = monitores.get(idMonitor);
         Campamento campamento = campamentos.get(idCampamento);
         campamento.asociarMonitorEspecial(monitor);
+    }
+    public void toStringCampamentos(){
+        for(Campamento it:campamentos){
+            System.out.println(it.toString());;
+        }
     }
 
     /**
