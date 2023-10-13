@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -7,7 +8,7 @@ import java.time.LocalDate;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public class Monitor extends Persona{
+public class Monitor extends Persona implements Serializable {
     /*Attributes*/
     private boolean educadorEspecial;
     /**

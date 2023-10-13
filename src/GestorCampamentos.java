@@ -1,3 +1,4 @@
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 /**
@@ -7,26 +8,66 @@ import java.util.ArrayList;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public class GestorCampamentos {
+public class GestorCampamentos implements Serializable {
     private ArrayList<Campamento> campamentos;
     private String NombreArchivo;
     private ArrayList<Monitor> monitores;
     private ArrayList<Actividad> actividades;
+
     /**
-    * empty(default) constructor
+     * empty(default) constructor
      **/
-    public GestorCampamentos(){}
+    public GestorCampamentos() {
+    }
 
     /**
      * parametrized constructor
-     * @param NombreArhivo
+     *
+     * @param NombreArchivo
      */
-    public GestorCampamentos(String NombreArhivo){
-        this.NombreArchivo=NombreArhivo;
+    public GestorCampamentos(String NombreArchivo) {
+        this.NombreArchivo = NombreArchivo;
         this.campamentos = new ArrayList<>();
-    }
-    //private void cargarFichero(){
+        FileInputStream fileInputStream
+                = null;
+        try {
+            fileInputStream = new FileInputStream(NombreArchivo);
+            ObjectInputStream objectInputStream
+                    = new ObjectInputStream(fileInputStream);
+            GestorCampamentos gestor = (GestorCampamentos) objectInputStream.readObject();
+            objectInputStream.close();
+            this.campamentos= gestor.campamentos;
+            this.monitores = gestor.monitores;
+            this.actividades = gestor.actividades;
+        } catch (FileNotFoundException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
+    }
+
+
+
+    private void guardarFichero(){
+        try {
+            FileOutputStream fileOutputStream
+                    = new FileOutputStream(NombreArchivo);
+            ObjectOutputStream objectOutputStream
+                    = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(this);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void cargarFichero(){
+
+
+    }
     /**
      * @param fechaInicio
      * @param fechaFinal
@@ -34,7 +75,7 @@ public class GestorCampamentos {
      * @param maxAsistentes
      * @param numAsistentes
      */
-    //}
+
     public void crearCampamento( LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes,int numAsistentes){
         int idCampamento = campamentos.size();
         Campamento campamento = new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes,0);
@@ -133,6 +174,9 @@ public class GestorCampamentos {
      */
     /*Getters and setters*/
     public String getNombreArchivo() {return NombreArchivo;}
+    public void setNombreArchivo(String nombreArchivo) {
+        NombreArchivo = nombreArchivo;
+    }
 
     /**
      * @return campamentos
@@ -170,10 +214,6 @@ public class GestorCampamentos {
         this.actividades = actividades;
     }
 
-    /**
-     * @param nombreArchivo
-     */
-    public void setNombreArchivo(String nombreArchivo) {
-        NombreArchivo = nombreArchivo;
-    }
+
+
 }

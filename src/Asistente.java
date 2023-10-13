@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 /**
  * Assistant  class
@@ -6,7 +7,7 @@ import java.time.LocalDate;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public class Asistente extends Persona{
+public class Asistente extends Persona implements Serializable {
 
 
     private boolean atencionEspecial;

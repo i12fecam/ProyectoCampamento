@@ -36,28 +36,31 @@ public class Main {
             e.printStackTrace();
         }
         gestorAsistentes = new GestorAsistentes(prop.getProperty("Asis"));
-        gestorCampamentos = new GestorCampamentos(prop.getProperty("Camp"));
+        //gestorCampamentos = new GestorCampamentos(prop.getProperty("Camp"));
+        gestorCampamentos = new GestorCampamentos();
         gestorInscripciones = new GestorInscripciones(prop.getProperty("Ins"));
-        System.out.println("Menu principal:");
-        System.out.println("1. Gestionar asistentes");
-        System.out.println("2. Gestionar campamentos");
-        System.out.println("3. Gestionar inscripciones");
+        while (true) {
+            System.out.println("Menu principal:");
+            System.out.println("1. Gestionar asistentes");
+            System.out.println("2. Gestionar campamentos");
+            System.out.println("3. Gestionar inscripciones");
 
 
-        String opcion = scanner.nextLine();
+            String opcion = scanner.nextLine();
 
-        switch (opcion) {
-            case "1":
-                gestionarAsistentes();
-                break;
-            case "2":
-                gestionarCampamentos();
-                break;
-            case "3":
-                // gestionarInscripciones();
-                break;
-            default:
-                System.out.println("Opcion no valida");
+            switch (opcion) {
+                case "1":
+                    gestionarAsistentes();
+                    break;
+                case "2":
+                    gestionarCampamentos();
+                    break;
+                case "3":
+                    // gestionarInscripciones();
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+            }
         }
     }
 

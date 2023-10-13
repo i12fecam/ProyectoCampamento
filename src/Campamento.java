@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public class Campamento{
+public class Campamento implements Serializable {
     /*Attributes*/
     private int idCampamento;
     private LocalDate fechaInicio;
