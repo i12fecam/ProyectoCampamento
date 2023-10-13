@@ -1,3 +1,5 @@
+import jdk.nashorn.internal.runtime.ECMAException;
+
 import java.io.*;
 import java.util.Properties;
 import java.util.Scanner;
@@ -234,12 +236,48 @@ public class Main {
                     break;
                 case "4":
                     // Lógica para asociar monitores a actividades
+                    try {
+                        System.out.println("Elija unos de los monitores por su id");
+                        gestorCampamentos.toStringMonitores();
+                        int idMonitor = scanner.nextInt();
+                        System.out.println("Elija unos de los actividades por su id");
+                        gestorCampamentos.toStringActividades();
+                        int idActividad = scanner.nextInt();
+                        scanner.nextLine();
+                        gestorCampamentos.asociarMonitorActividad(idMonitor, idActividad);
+                    }catch (Exception e){
+                        System.out.println("Se produjo un error asociando al monitor con la actividad");
+                    }
                     break;
                 case "5":
                     // Lógica para asociar monitores a un campamento
+                    try {
+                        System.out.println("Elija unos de los monitores por su id:");
+                        gestorCampamentos.toStringMonitores();
+                        int idMonitor = scanner.nextInt();
+                        System.out.println("Elija unos de los campamentos por su id:");
+                        gestorCampamentos.toStringCampamentos();
+                        int idCampamento = scanner.nextInt();
+                        scanner.nextLine();
+                        gestorCampamentos.asociarMonitorCampamento(idMonitor, idCampamento);
+                    }catch (Exception e){
+                        System.out.println("Se produjo un error asociando al monitor con el campamento");
+                    }
                     break;
                 case "6":
                     // Lógica para asociar monitores de atención especial a un campamento
+                    try {
+                        System.out.println("Elija unos de los monitores por su id(compruebe que sea de atención especial:");
+                        gestorCampamentos.toStringMonitores();
+                        int idMonitor = scanner.nextInt();
+                        System.out.println("Elija unos de los campamentos por su id:");
+                        gestorCampamentos.toStringCampamentos();
+                        int idCampamento = scanner.nextInt();
+                        scanner.nextLine();
+                        gestorCampamentos.asociarMonitorEspecialCampamento(idMonitor,idCampamento);
+                    }catch (Exception e){
+                        System.out.println("Se produjo un error asociando al monitor con el campamento");
+                    }
                     break;
                 case "7":
                     //Logica de ver Campamentos

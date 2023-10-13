@@ -246,7 +246,7 @@ public class Campamento implements Serializable {
     }
 
     /**
-     * Método que nos permite incrementar el numero de asistentes de un campamento
+     * Método que nos permite incrementar el número de asistentes de un campamento
      */
     public void anadirAsistenteCampamento() {
         if (comprobarAsistentes()) {
@@ -255,7 +255,7 @@ public class Campamento implements Serializable {
     }
 
     /**
-     * Método para anadir comprobar si el numero de asistentes a un campamento es menor que el numero maximo de asistentes
+     * Método para añadir comprobar si el número de asistentes a un campamento es menor que el número máximo de asistentes
      * @return true si numAsistentes<maxAsistentes, si no devuelve false
      */
     public boolean comprobarAsistentes() {
