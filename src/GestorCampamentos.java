@@ -168,7 +168,16 @@ public class GestorCampamentos implements Serializable {
             System.out.println(it.toString());;
         }
     }
-
+    public void toStringMonitores(){
+        for(Monitor it:monitores){
+            System.out.println(it.toString());;
+        }
+    }
+    public void toStringActividades(){
+        for(Actividad it:actividades){
+            System.out.println(it.toString());;
+        }
+    }
     /**
      * Método para buscar un campamento
      * @param idCampamento

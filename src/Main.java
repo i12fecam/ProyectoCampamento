@@ -133,6 +133,8 @@ public class Main {
             System.out.println("5. Asociar monitores a un campamento");
             System.out.println("6. Asociar monitores de atención especial a un campamento");
             System.out.println("7. Ver campamentos");
+            System.out.println("8. Ver monitores");
+            System.out.println("9. Ver actividades");
             System.out.println("0. Volver al menu principal");
 
             String opcion3 = scanner.nextLine();
@@ -171,6 +173,25 @@ public class Main {
                     break;
                 case "2":
                     // Lógica para crear monitores
+                    try {
+                        System.out.print("Nombre: ");
+                        String nombre = scanner.nextLine();
+                        System.out.print("Apellido 1: ");
+                        String apellido1 = scanner.nextLine();
+                        System.out.print("Apellido 2: ");
+                        String apellido2 = scanner.nextLine();
+                        System.out.print("Fecha de Nacimiento (YYYY-MM-DD): ");
+                        String fechaNacimientoStr = scanner.nextLine();
+                        System.out.print("Atencion Especial (true/false): ");
+                        boolean atencionEspecial = scanner.nextBoolean();
+                        scanner.nextLine();
+
+                        // Dar de alta al asistente
+                        gestorCampamentos.crearMonitor(nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
+                        System.out.println("Asistente dado de alta con exito.");
+                    }catch (Exception e){
+                        System.out.println("Se produjo creando el monitor");
+                    }
                     break;
                 case "3":
                     // Lógica para crear actividades
@@ -187,6 +208,14 @@ public class Main {
                 case "7":
                     //Logica de ver Campamentos
                     gestorCampamentos.toStringCampamentos();
+                    break;
+                case "8":
+                    //Logica de ver Monitores
+                    gestorCampamentos.toStringMonitores();
+                    break;
+                case "9":
+                    //Logica de ver Actividades
+                    gestorCampamentos.toStringActividades();
                     break;
                 case "0":
                     return;
