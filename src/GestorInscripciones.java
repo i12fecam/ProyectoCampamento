@@ -53,6 +53,7 @@ public class GestorInscripciones {
      */
     public ArrayList<Inscripcion> getInscripciones() {return inscripciones;}
 
+
     //private void cargarFichero(){
 
     //}

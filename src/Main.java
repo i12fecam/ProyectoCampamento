@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.Properties;
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class Main {
@@ -341,12 +342,17 @@ public class Main {
 
             switch (opcion4){
                 case "1":
+
                     break;
                 case "2":
                     break;
                 case "3":
                     break;
                 case "4":
+                    ArrayList<Campamento> disponibles = gestorInscripciones.consultarCampamentosDisponibles(gestorCampamentos);
+                    for(Campamento campamento : disponibles){
+                        gestorCampamentos.toStringCampamentos();
+                    }
                     break;
                 case "0":
                     return;
@@ -358,7 +364,7 @@ public class Main {
 
     }
     public void salir(){
-        System.exit();
+
 
     }
 
