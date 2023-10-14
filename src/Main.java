@@ -328,8 +328,37 @@ public class Main {
     public void gestionarInscripciones() {
         Scanner scanner = new Scanner(System.in);
 
+        while(true){
+
+            System.out.println("Opciones para gestionar las inscripciones:");
+            System.out.println("1.Establecer precio de una inscripcion");
+            System.out.println("2.Inscripcion temprana");
+            System.out.println("3.Inscripcion tardia");
+            System.out.println("4.Consultar campamentos no comenzados");
+            System.out.println("0.Volver al menu principal");
+
+            String opcion4= scanner.nextLine();
+
+            switch (opcion4){
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "0":
+                    return;
+                default:
+                    System.out.println("Opcion invalida");
+                
+            }
+        }
+
     }
     public void salir(){
+        System.exit();
 
     }
 
