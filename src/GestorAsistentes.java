@@ -54,6 +54,27 @@ public class GestorAsistentes {
         guardarEnArchivo(asistente);
         return true;
     }
+
+    public void ModificarAsistente(Asistente asistente) {
+        for (Asistente it : asistentes) {
+            if (it.getIdentificador() == asistente.getIdentificador()) {
+
+                // Modificar el asistente con los nuevos datos
+                it.setNombre(asistente.getNombre());
+                it.setApellido1(asistente.getApellido1());
+                it.setApellido2(asistente.getApellido2());
+                it.setFechaNacimiento(asistente.getFechaNacimiento());
+                it.setAtencionEspecial(asistente.isAtencionEspecial());
+                actualizarArchivo();
+                // Imprimir un mensaje de éxito
+                System.out.println("Asistente modificado con éxito.");
+
+                return; // Terminar el bucle una vez que se modifica el asistente
+            }
+        }
+        System.out.println("No se encontró ningún asistente con ese id.");
+    }
+
     private void guardarEnArchivo(Asistente asistente) {
         try {
             FileWriter fileWriter = new FileWriter(NombreArchivo, true);
@@ -69,26 +90,6 @@ public class GestorAsistentes {
             e.printStackTrace();
         }
     }
-
-    //modificarAsistentes , hacemos una funcion por cada atributo a modificar?
-    /*public void listar() {
-        String valor;
-        for (Asistente asistente : asistentes) {
-            if(asistente.isAtencionEspecial()){
-                valor="true";
-            }else{
-                valor="false";
-            }
-            System.out.println ("Asistente{" +
-                    "identificador=" + asistente.getIdentificador() +
-                    ", nombre='" + asistente.getNombre() + '\'' +
-                    ", apellido1='" + asistente.getApellido1() + '\'' +
-                    ", apellido2='" + asistente.getApellido2() + '\'' +
-                    ", Fecha de Nacimiento:'" + asistente.getFechaNacimiento() + '\'' +
-                    ",especial=" + valor +
-                    '}');
-        }
-    }*/
 
     public void cargarAsistentesDesdeArchivo() {
         asistentes = new ArrayList<>(); // Inicializa la lista de asistentes
@@ -120,17 +121,20 @@ public class GestorAsistentes {
         }
     }
 
-    /*private void volcarFichero() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("C:\\Users\\Quinte01\\IdeaProjects\\Local2\\src\\asistentes.txt"))) {
-            // Itera sobre los asistentes y escribe cada uno en el archivo
+    public void actualizarArchivo() {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(NombreArchivo));
             for (Asistente asistente : asistentes) {
-                writer.println(asistente.toCSV());
+                //trim() se usa para asegurarse que no se deja espacios ni al principio ni fin de la cadena
+                writer.write(asistente.toCSV().trim());
+                writer.newLine();
             }
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-*/
+
     public void listar() {
         for (Asistente asistente : asistentes) {
             System.out.println(asistente.toString());

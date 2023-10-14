@@ -110,7 +110,34 @@ public class Main {
                     System.out.println("Asistente dado de alta con exito.");
                     break;
                 case "2":
-                    // Lógica para modificar asistente
+                    gestorAsistentes.listar();
+                    System.out.println("Ingrese el identificador del asistente que desea modificar: ");
+                    int identificador = scanner.nextInt();
+                    scanner.nextLine(); // Limpiar el buffer
+
+                    System.out.println("Ingrese el nuevo nombre del asistente: ");
+                    String nom = scanner.nextLine();
+
+                    System.out.println("Ingrese el nuevo primer apellido del asistente: ");
+                    String apell1 = scanner.nextLine();
+
+                    System.out.println("Ingrese el nuevo segundo apellido del asistente: ");
+                    String apell2 = scanner.nextLine();
+
+                    System.out.println("Ingrese la nueva fecha de nacimiento del asistente (formato: YYYY-MM-DD): ");
+                    LocalDate fechaNac = LocalDate.parse(scanner.nextLine());
+
+                    System.out.println("Ingrese si el asistente requiere atención especial (true/false): ");
+                    boolean atencionEsp = Boolean.parseBoolean(scanner.nextLine());
+
+                    Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
+
+                    // Modificar el asistente
+                    gestorAsistentes.ModificarAsistente(asistente);
+
+                    // Volver a listar los asistentes para verificar los cambios
+                    gestorAsistentes.listar();
+
                     break;
                 case "3":
                     gestorAsistentes.listar();
