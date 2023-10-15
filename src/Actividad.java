@@ -146,7 +146,7 @@ public class Actividad implements Serializable {
     public String toString() {
         return "Actividad{" +
                 "Id=" + identificador +
-                "nombre='" + nombre + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", nivelEducativo=" + nivelEducativo +
                 ", horario=" + horario +
                 ", maxParticipantes=" + maxParticipantes +
