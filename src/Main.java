@@ -358,7 +358,9 @@ public class Main {
                     try {
                         System.out.println("Introduzca el identificador del asistente: ");
                         int id = scanner.nextInt();
+                        gestorAsistentes.listar();
                         System.out.println("Introduzca el identificador del campamento: ");
+                        gestorCampamentos.toStringCampamentos();
                         int idcampamento = scanner.nextInt();
                         scanner.nextLine();
                         System.out.println("Introduzca la fecha de inscripcion(YYYY-MM-DD): ");
