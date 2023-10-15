@@ -1,10 +1,8 @@
-import jdk.nashorn.internal.runtime.ECMAException;
-
 import java.io.*;
-import java.util.Properties;
-import java.util.Scanner;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Properties;
+import java.util.Scanner;
 
 
 public class Main {
@@ -26,7 +24,7 @@ public class Main {
         if (operSys.contains("win")){
             filename = "..\\Properties.txt";
         }else{
-            filename = "./Properties.txt";
+            filename = "../Properties.txt";
         }
 
         try {
