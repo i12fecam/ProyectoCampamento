@@ -176,8 +176,8 @@ public class Campamento implements Serializable {
                 ", nivelEducativo=" + nivelEducativo +
                 ", numAsistentes=" + numAsistentes +
                 ", maxAsistentes=" + maxAsistentes +
-                ", monitores=" + monitores +
-                ", actividades=" + actividades +
+                ", monitores=" + monitores.size() +
+                ", actividades=" + actividades.size() +
                 '}';
     }
 
@@ -207,9 +207,10 @@ public class Campamento implements Serializable {
         }
         if (monitorEncargadoActividad && !monitores.contains(monitor)) {
             monitores.add(monitor);
+            System.out.println("Monitor asociado con éxito");
         } else {
-            throw new RuntimeException("El monitor no está asociado a ninguna actividad del campamento, no se permite añadirlo");
-        }
+            System.out.println("El monitor no esta asociado a ninguna actividad del campamento o ya esta asociado");
+            throw new RuntimeException("Error al asociar Monitor");        }
     }
 
     /**
@@ -221,13 +222,14 @@ public class Campamento implements Serializable {
     public void asociarMonitorEspecial(Monitor monitorEspecial) {
         for (Actividad it : actividades) {
             if (it.getMonitores().contains(monitorEspecial)) {
-                throw new RuntimeException("El monitor especial no puede estar asociado a ninguna actividad, no se puede añadir");
+                throw new RuntimeException("El monitor especial no puede estar asociado a ninguna actividad");
             }
         }
         if (!monitores.contains(monitorEspecial) && monitorEspecial.isEducadorEspecial()) {
             monitores.add(monitorEspecial);
         } else {
-            throw new RuntimeException("El monitor ya está asociado o no es educador especial");
+            System.out.println("El monitor ya esta asociado o no es educador especial");
+            throw new RuntimeException("Error al asociar Monitor Especial");
         }
     }
     public boolean equals (Campamento campamento) {

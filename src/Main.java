@@ -159,9 +159,10 @@ public class Main {
             System.out.println("4. Asociar monitores a actividades");
             System.out.println("5. Asociar monitores a un campamento");
             System.out.println("6. Asociar monitores de atencion especial a un campamento");
-            System.out.println("7. Ver campamentos");
-            System.out.println("8. Ver monitores");
-            System.out.println("9. Ver actividades");
+            System.out.println("7. Asociar actividad a campamento");
+            System.out.println("8. Ver campamentos");
+            System.out.println("9. Ver monitores");
+            System.out.println("10. Ver actividades");
             System.out.println("0. Volver al menu principal");
 
             String opcion3 = scanner.nextLine();
@@ -293,7 +294,7 @@ public class Main {
                 case "6":
                     // Lógica para asociar monitores de atención especial a un campamento
                     try {
-                        System.out.println("Elija unos de los monitores por su id(compruebe que sea de atención especial:");
+                        System.out.println("Elija unos de los monitores por su id(compruebe que sea de atención especial):");
                         gestorCampamentos.toStringMonitores();
                         int idMonitor = scanner.nextInt();
                         System.out.println("Elija unos de los campamentos por su id:");
@@ -306,14 +307,29 @@ public class Main {
                     }
                     break;
                 case "7":
+                    //Logica de asociar actividad a campamento
+                    try {
+                        System.out.println("Elija unos de los actividades por su id:");
+                        gestorCampamentos.toStringActividades();
+                        int idActividad = scanner.nextInt();
+                        System.out.println("Elija unos de los campamentos por su id:");
+                        gestorCampamentos.toStringCampamentos();
+                        int idCampamento = scanner.nextInt();
+                        scanner.nextLine();
+                        gestorCampamentos.asociarActividadCampamento(idCampamento,idCampamento);
+                    }catch (Exception e){
+                        System.out.println("Se produjo un error asociando la actividad con el campamento");
+                    }
+                    break;
+                case "8":
                     //Logica de ver Campamentos
                     gestorCampamentos.toStringCampamentos();
                     break;
-                case "8":
+                case "9":
                     //Logica de ver Monitores
                     gestorCampamentos.toStringMonitores();
                     break;
-                case "9":
+                case "10":
                     //Logica de ver Actividades
                     gestorCampamentos.toStringActividades();
                     break;
