@@ -61,7 +61,14 @@ public class GestorCampamentos implements Serializable {
     }
 
 
-
+    /**
+     * Guarda el objeto actual en un archivo mediante la serialización.
+     *
+     * Este método guarda el objeto actual en un archivo utilizando la serialización de objetos
+     * de Java. El objeto es guardado en el archivo especificado por el atributo "NombreArchivo".
+     *
+     * @throws RuntimeException si ocurre un error durante la operación de escritura en el archivo.
+     */
     public void guardarFichero(){
         try {
             FileOutputStream fileOutputStream
@@ -79,6 +86,7 @@ public class GestorCampamentos implements Serializable {
 
 
     /**
+     * Metodo que crea un campamento
      * @param fechaInicio
      * @param fechaFinal
      * @param nivelEducativo
@@ -93,6 +101,7 @@ public class GestorCampamentos implements Serializable {
     }
 
     /**
+     * Metodo que crea un monitor
      * @param nombre
      * @param apellido1
      * @param apellido2
@@ -107,6 +116,7 @@ public class GestorCampamentos implements Serializable {
     }
 
     /**
+     * Metodo que crea una actividad
      * @param nombre
      * @param nivelEducativo
      * @param horario
@@ -121,6 +131,7 @@ public class GestorCampamentos implements Serializable {
     }
 
     /**
+     * Metodo que asocia un monitor a una actividad
      * @param idMonitor
      * @param idActividad
      */
@@ -133,6 +144,7 @@ public class GestorCampamentos implements Serializable {
     }
 
     /**
+     * Metodo que asocia una actividad a un campamento
      * @param idActividad
      * @param idCampamento
      */
@@ -144,6 +156,7 @@ public class GestorCampamentos implements Serializable {
     }
 
     /**
+     * Metodo que asocia un monitor a un campamento
      * @param idMonitor
      * @param idCampamento
      */
@@ -155,6 +168,7 @@ public class GestorCampamentos implements Serializable {
     }
 
     /**
+     * Metodo que asocia un monitor especial a un campamento
      * @param idMonitor
      * @param idCampamento
      */
@@ -163,16 +177,35 @@ public class GestorCampamentos implements Serializable {
         Campamento campamento = campamentos.get(idCampamento);
         campamento.asociarMonitorEspecial(monitor);
     }
+
+    /**
+     * Imprime en la consola una representación en cadena de los objetos Campamento almacenados en la lista "campamentos".
+     *
+     * Este método itera a través de la lista de objetos Campamento almacenados en el atributo "campamentos" e imprime
+     * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Campamento.
+     */
     public void toStringCampamentos(){
         for(Campamento it:campamentos){
             System.out.println(it.toString());;
         }
     }
+    /**
+     * Imprime en la consola una representación en cadena de los objetos Monitor almacenados en la lista "monitores".
+     *
+     * Este método itera a través de la lista de objetos Monitor almacenados en el atributo "monitores" e imprime
+     * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Monitor.
+     */
     public void toStringMonitores(){
         for(Monitor it:monitores){
             System.out.println(it.toString());;
         }
     }
+    /**
+     * Imprime en la consola una representación en cadena de los objetos Actividad almacenados en la lista "actividades".
+     *
+     * Este método itera a través de la lista de objetos Actividad almacenados en el atributo "actividades" e imprime
+     * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Actividad.
+     */
     public void toStringActividades(){
         for(Actividad it:actividades){
             System.out.println(it.toString());;
@@ -191,7 +224,7 @@ public class GestorCampamentos implements Serializable {
         }
         return null;
     }
-
+    /* Getters and setters*/
     /**
      * @return NombreArchivo
      */

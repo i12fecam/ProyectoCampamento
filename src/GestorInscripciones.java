@@ -27,6 +27,7 @@ public class GestorInscripciones {
     public GestorInscripciones( String NombreArchivo){
         this.NombreArchivo=NombreArchivo;
     }
+
     /*Getters and Setters*/
 
     /**
@@ -58,7 +59,7 @@ public class GestorInscripciones {
 
     //}
 
-
+/*
     /**
      * @param gestorCampamentos
      * @param gestorAsistentes
@@ -100,6 +101,13 @@ public class GestorInscripciones {
         }
     }
     */
+
+
+    /**
+     * Metodo que permite consultar los campamentos disponibles
+     * @param gestor
+     * @return lista de campamentos disponibles
+     */
     public ArrayList<Campamento> consultarCampamentosDisponibles(GestorCampamentos gestor) {
         ArrayList<Campamento> campamentosDisponibles = new ArrayList<>();
         LocalDate fechaActual = LocalDate.now(); // Obtén la fecha actual

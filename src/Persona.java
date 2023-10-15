@@ -39,11 +39,17 @@ public class Persona {
         this.apellido2 = apellido2;
         this.fechaNacimiento = fechaNacimiento;
     }
-
+    /* Getters and setters*/
+    /**
+     * @return fecha de nacimiento
+     */
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
-    /* Getters and setters*/
+
+    /**
+     * @param fechaNacimiento
+     */
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
