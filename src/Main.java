@@ -24,7 +24,7 @@ public class Main {
         //comprobar sistema operativo para poner la ruta bien
         String operSys = System.getProperty("os.name").toLowerCase();
         if (operSys.contains("win")){
-            filename = ".\\Properties.txt";
+            filename = "..\\Properties.txt";
         }else{
             filename = "./Properties.txt";
         }
