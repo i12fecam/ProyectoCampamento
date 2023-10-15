@@ -207,7 +207,7 @@ public class Campamento implements Serializable {
         }
         if (monitorEncargadoActividad && !monitores.contains(monitor)) {
             monitores.add(monitor);
-            System.out.println("Monitor asociado con éxito");
+            System.out.println("Monitor asociado con exito");
         } else {
             System.out.println("El monitor no esta asociado a ninguna actividad del campamento o ya esta asociado");
             throw new RuntimeException("Error al asociar Monitor");        }
