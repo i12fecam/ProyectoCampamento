@@ -100,7 +100,7 @@ public class GestorInscripciones implements Serializable{
      * @param horario
      */
     public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
-        Campamento campamento = gestorCampamentos.getCampamentos().get(idCampamento);
+         Campamento campamento = gestorCampamentos.getCampamentos().get(idCampamento);
         Asistente asistente = gestorAsistentes.getAsistentes().get(idAsistente);
         float precio;
         boolean tardia;

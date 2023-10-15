@@ -217,9 +217,9 @@ public class Main {
 
                         // Dar de alta al asistente
                         gestorCampamentos.crearMonitor(nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
-                        System.out.println("Asistente dado de alta con exito.");
+                        System.out.println("Monitor dado de alta con exito.");
                     }catch (Exception e){
-                        System.out.println("Se produjo creando el monitor");
+                        System.out.println("Se produjo un error creando el monitor");
                     }
                     break;
                 case "3":
@@ -332,23 +332,41 @@ public class Main {
         while(true){
 
             System.out.println("Opciones para gestionar las inscripciones:");
-            System.out.println("1.Establecer precio de una inscripcion");
-            System.out.println("2.Inscripcion temprana");
-            System.out.println("3.Inscripcion tardia");
-            System.out.println("4.Consultar campamentos no comenzados");
+            System.out.println("1.Crear inscripcion");
+            System.out.println("2.Cancelar inscripcion");
+            System.out.println("3.Consultar campamentos no comenzados");
             System.out.println("0.Volver al menu principal");
 
             String opcion4= scanner.nextLine();
 
             switch (opcion4){
                 case "1":
-
+                    System.out.println("Introduzca el identificador del asistente: ");
+                    int id = scanner.nextInt();
+                    System.out.println("Introduzca el identificador del campamento: ");
+                    int idcampamento = scanner.nextInt();
+                    System.out.println("Introduzca la fecha de inscripcion: ");
                     break;
                 case "2":
+                    try{
+                        System.out.println("Introduzca el identificador del asistente: ");
+                        int ident = scanner.nextInt();
+
+                        System.out.println("Introduzca el identificador del campamento: ");
+                        int idcamp = scanner.nextInt();
+
+                        if(gestorInscripciones.cancelarInscripcion(ident,idcamp)==true){
+                            System.out.println("Inscripcion cancelada con exito");
+                        }
+                        else{
+                            System.out.println("Error al cancelar la inscripcion");
+                        }
+                    }catch(Exception e){
+                        System.out.println("Error al cancelar la inscripcion");
+                }
+
                     break;
                 case "3":
-                    break;
-                case "4":
                     ArrayList<Campamento> disponibles = gestorInscripciones.consultarCampamentosDisponibles(gestorCampamentos);
                     for(Campamento campamento : disponibles){
                         gestorCampamentos.toStringCampamentos();
