@@ -128,7 +128,7 @@ public class Main {
                     System.out.println("Ingrese la nueva fecha de nacimiento del asistente (formato: YYYY-MM-DD): ");
                     LocalDate fechaNac = LocalDate.parse(scanner.nextLine());
 
-                    System.out.println("Ingrese si el asistente requiere atención especial (true/false): ");
+                    System.out.println("Ingrese si el asistente requiere atencion especial (true/false): ");
                     boolean atencionEsp = Boolean.parseBoolean(scanner.nextLine());
 
                     Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
@@ -160,7 +160,7 @@ public class Main {
             System.out.println("3. Crear actividades");
             System.out.println("4. Asociar monitores a actividades");
             System.out.println("5. Asociar monitores a un campamento");
-            System.out.println("6. Asociar monitores de atención especial a un campamento");
+            System.out.println("6. Asociar monitores de atencion especial a un campamento");
             System.out.println("7. Ver campamentos");
             System.out.println("8. Ver monitores");
             System.out.println("9. Ver actividades");
@@ -188,7 +188,7 @@ public class Main {
                         } else {
                             throw new RuntimeException("Error al capturar el nivel educativo");
                         }
-                        System.out.print("Número máximo de Asistentes:");
+                        System.out.print("Número maximo de Asistentes:");
                         int maxAsistentes = scanner.nextInt();
                         scanner.nextLine();
                         gestorCampamentos.crearCampamento(LocalDate.parse(fechaIncioStr), LocalDate.parse(fechaFinalStr), nivelEducativo, maxAsistentes);
