@@ -43,6 +43,8 @@ Una vez hayamos obtenido el Main.class, utilizamos este comando:
 
 Después de esto ya deberías poder utilizar nuestro programa.
 
+Esto sirve tanto para el sistema operativo Linux como para Windows.
+
 Si te han aparecido problemas a la hora de utilizar los comandos anteriores, en el punto 5 se da una solución.
 
 ### Problems
