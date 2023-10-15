@@ -356,11 +356,11 @@ public class Main {
             switch (opcion4){
                 case "1":
                     try {
+                        gestorAsistentes.listar();
                         System.out.println("Introduzca el identificador del asistente: ");
                         int id = scanner.nextInt();
-                        gestorAsistentes.listar();
-                        System.out.println("Introduzca el identificador del campamento: ");
                         gestorCampamentos.toStringCampamentos();
+                        System.out.println("Introduzca el identificador del campamento: ");
                         int idcampamento = scanner.nextInt();
                         scanner.nextLine();
                         System.out.println("Introduzca la fecha de inscripcion(YYYY-MM-DD): ");
