@@ -174,7 +174,7 @@ public class Main {
                     try {
                         System.out.print("Fecha de inicio (YYYY-MM-DD):");
                         String fechaIncioStr = scanner.nextLine();
-                        System.out.print("Fecha de finalización (YYYY-MM-DD):");
+                        System.out.print("Fecha de finalizacion (YYYY-MM-DD):");
                         String fechaFinalStr = scanner.nextLine();
                         System.out.print("Nivel educativo (Infantil, Juvenil, Adolescente):");
                         String nivelEducativoStr = scanner.nextLine();
@@ -188,7 +188,7 @@ public class Main {
                         } else {
                             throw new RuntimeException("Error al capturar el nivel educativo");
                         }
-                        System.out.print("Número maximo de Asistentes:");
+                        System.out.print("Numero maximo de Asistentes:");
                         int maxAsistentes = scanner.nextInt();
                         scanner.nextLine();
                         gestorCampamentos.crearCampamento(LocalDate.parse(fechaIncioStr), LocalDate.parse(fechaFinalStr), nivelEducativo, maxAsistentes);
@@ -251,7 +251,7 @@ public class Main {
                         }
 
 
-                        System.out.println("Numero máximo de participantes");
+                        System.out.println("Numero maximo de participantes");
                         int maxParticipantes = scanner.nextInt();
                         scanner.nextLine();
                         System.out.println("Numero de monitores necesarios");
