@@ -251,10 +251,10 @@ public class Main {
                         }
 
 
-                        System.out.println("Número máximo de participantes");
+                        System.out.println("Numero máximo de participantes");
                         int maxParticipantes = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.println("Número de monitores necesarios");
+                        System.out.println("Numero de monitores necesarios");
                         int monitoresNecesarios = scanner.nextInt();
 
                         gestorCampamentos.crearActividad(nombre, nivelEducativo, horario, maxParticipantes, monitoresNecesarios);
