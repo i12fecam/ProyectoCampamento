@@ -135,7 +135,7 @@ public class GestorAsistentes implements Serializable{
     /**
      * Metodo que permite guardar a un asistente en un archivo
      * @param asistente
-
+     */
     private void guardarEnArchivo(Asistente asistente) {
         try {
             FileWriter fileWriter = new FileWriter(NombreArchivo, true);
@@ -151,10 +151,10 @@ public class GestorAsistentes implements Serializable{
             e.printStackTrace();
         }
     }
-    */
+
     /**
      * Metodo que permite cargar un asistente desde un archivo
-
+    */
     public void cargarAsistentesDesdeArchivo() {
         asistentes = new ArrayList<>(); // Inicializa la lista de asistentes
 
@@ -184,11 +184,10 @@ public class GestorAsistentes implements Serializable{
             System.err.println("Error al leer el archivo: " + e.getMessage());
         }
     }
-     */
 
     /**
      * Metodo que permite actualizar un archivo
-
+    */
     public void actualizarArchivo() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(NombreArchivo));
@@ -202,7 +201,7 @@ public class GestorAsistentes implements Serializable{
             e.printStackTrace();
         }
     }
-     */
+
 
     /**
      * Método que nos permite listar a los asistentes

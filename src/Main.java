@@ -341,8 +341,7 @@ public class Main {
 
             switch (opcion4){
                 case "1":
-
-                    try{
+                    try {
                         System.out.println("Introduzca el identificador del asistente: ");
                         int id = scanner.nextInt();
                         System.out.println("Introduzca el identificador del campamento: ");
@@ -362,7 +361,7 @@ public class Main {
                         }
                         gestorInscripciones.crearInscripcion(gestorCampamentos, gestorAsistentes, id, idcampamento, LocalDate.parse(inscrip), horario);
                         System.out.println("Inscripcion creada con exito");
-                    }catch(Exception e){
+                    }catch (Exception e){
                         System.out.println("Error al crear la inscripcion");
                     }
                     break;
@@ -380,7 +379,7 @@ public class Main {
                             System.out.println("Inscripcion cancelada con exito");
                         }
                         else{
-                            System.out.println("Error al cancelar la inscripcion");
+                            System.out.println("Error al cancelar la inscripcion (compruebe si es temprana)");
                         }
                     }catch(Exception e){
                         System.out.println("Error al cancelar la inscripcion");

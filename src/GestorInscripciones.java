@@ -100,8 +100,17 @@ public class GestorInscripciones implements Serializable{
      * @param horario
      */
     public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
-         Campamento campamento = gestorCampamentos.getCampamentos().get(idCampamento);
-        Asistente asistente = gestorAsistentes.getAsistentes().get(idAsistente);
+        Asistente asistente= null;
+        Campamento campamento=null;
+        if (idCampamento >= 0 && idCampamento < gestorCampamentos.getCampamentos().size()) {
+
+             campamento = gestorCampamentos.getCampamentos().get(idCampamento);
+        }
+        if(idAsistente >= 0 && idAsistente < gestorAsistentes.getAsistentes().size()){
+
+          asistente = gestorAsistentes.getAsistentes().get(idAsistente);
+        }
+
         float precio;
         boolean tardia;
         //comprobar si el asistente ya esta inscrito en el campamento
@@ -122,9 +131,11 @@ public class GestorInscripciones implements Serializable{
         }
 
         //comprobar si necesita monitor especial
-        if(asistente.isAtencionEspecial() && !campamento.tieneMonitorEspecial()){
-            //añadir monitor especial al campamento
-            System.out.println("!!!!ATENCION: Después de esta operación asegurese de añadir un monitor especial al campamento");
+        if(asistente !=null && campamento !=null) {
+            if (asistente.isAtencionEspecial() && !campamento.tieneMonitorEspecial()) {
+                //añadir monitor especial al campamento
+                System.out.println("!!!!ATENCION: Después de esta operación asegurese de añadir un monitor especial al campamento");
+            }
         }
         //calcular precio
         if(horario == Horario.PARCIAL){

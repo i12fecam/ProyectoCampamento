@@ -238,9 +238,11 @@ public class Campamento implements Serializable {
 
     }
     public boolean tieneMonitorEspecial(){
-        for(Monitor it:monitores){
-            if(it.isEducadorEspecial()){
-                return true;
+        if(monitores!=null) {
+            for (Monitor it : monitores) {
+                if (it != null && it.isEducadorEspecial()) {
+                    return true;
+                }
             }
         }
         return false;
