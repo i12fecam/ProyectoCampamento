@@ -158,6 +158,8 @@ public class GestorInscripciones implements Serializable{
                 inscripciones.add(factoria.crearInscripcionParcial(idAsistente,idCampamento,fechaInscripcion,precio));
             }
         }
+
+        System.out.println("El precio de la inscripcion es de: " + precio);
     }
 
 

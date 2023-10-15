@@ -341,11 +341,30 @@ public class Main {
 
             switch (opcion4){
                 case "1":
-                    System.out.println("Introduzca el identificador del asistente: ");
-                    int id = scanner.nextInt();
-                    System.out.println("Introduzca el identificador del campamento: ");
-                    int idcampamento = scanner.nextInt();
-                    System.out.println("Introduzca la fecha de inscripcion: ");
+
+                    try{
+                        System.out.println("Introduzca el identificador del asistente: ");
+                        int id = scanner.nextInt();
+                        System.out.println("Introduzca el identificador del campamento: ");
+                        int idcampamento = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Introduzca la fecha de inscripcion(YYYY-MM-DD): ");
+                        String inscrip = scanner.nextLine();
+                        System.out.println("Introduzca el horario (Parcial, Completa): ");
+                        String horarioStr = scanner.nextLine();
+                        Horario horario;
+                        if (horarioStr.equals("Parcial")) {
+                            horario = Horario.PARCIAL;
+                        } else if (horarioStr.equals("Completa")) {
+                            horario = Horario.COMPLETA;
+                        } else {
+                            throw new RuntimeException("Error al capturar el horario");
+                        }
+                        gestorInscripciones.crearInscripcion(gestorCampamentos, gestorAsistentes, id, idcampamento, LocalDate.parse(inscrip), horario);
+                        System.out.println("Inscripcion creada con exito");
+                    }catch(Exception e){
+                        System.out.println("Error al crear la inscripcion");
+                    }
                     break;
                 case "2":
                     try{
