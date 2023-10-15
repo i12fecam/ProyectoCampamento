@@ -1,6 +1,4 @@
 import java.io.*;
-//import java.util.Properties;
-//import java.util.Scanner;
 import java.util.ArrayList;
 import java.time.LocalDate;
 /**
@@ -12,33 +10,60 @@ import java.time.LocalDate;
  * */
 
 public class GestorAsistentes {
+    /*Attributes*/
     private ArrayList<Asistente> asistentes;
     private String NombreArchivo;
 
 
+    /**
+     * Empty (default) constructor
+     */
     public GestorAsistentes() {
         asistentes = new ArrayList<Asistente>();
 
     }
 
+    /**
+     * Parametrized constructor
+     * @param NombreArchivo
+     */
     public GestorAsistentes(String NombreArchivo) {
         this.NombreArchivo = NombreArchivo;
         this.asistentes = new ArrayList<>();
         this.cargarAsistentesDesdeArchivo();
     }
-
+    /*Getters and setters*/
+    /**
+     * @return nombreArchivo
+     */
     public String getNombreArchivo() {return NombreArchivo;}
 
+    /**
+     * Establece NombreArchivo
+     * @param nombreArchivo
+     */
     public void setNombreArchivo(String nombreArchivo) {
         NombreArchivo = nombreArchivo;
     }
 
+    /**
+     * Establece asistentes
+     * @param asistentes
+     */
     public void setAsistentes(ArrayList<Asistente> asistentes) {
         this.asistentes = asistentes;
     }
 
+    /**
+     * @return asistentes
+     */
     public ArrayList<Asistente> getAsistentes() {return asistentes;}
 
+    /**
+     * Método que permite dar de alta a un asistente
+     * @param asistente
+     * @return true excepto si el asistente ya esta dado de alta o es nulo que retorna false
+     */
     public boolean darAlta(Asistente asistente) {
         if (asistente == null) {
             System.out.println("El asistente es nulo.");
@@ -55,6 +80,10 @@ public class GestorAsistentes {
         return true;
     }
 
+    /**
+     * Metodo que permite modificar un asistente
+     * @param asistente
+     */
     public void ModificarAsistente(Asistente asistente) {
         for (Asistente it : asistentes) {
             if (it.getIdentificador() == asistente.getIdentificador()) {
@@ -75,6 +104,10 @@ public class GestorAsistentes {
         System.out.println("No se encontró ningún asistente con ese id.");
     }
 
+    /**
+     * Metodo que permite guardar a un asistente en un archivo
+     * @param asistente
+     */
     private void guardarEnArchivo(Asistente asistente) {
         try {
             FileWriter fileWriter = new FileWriter(NombreArchivo, true);
@@ -91,6 +124,9 @@ public class GestorAsistentes {
         }
     }
 
+    /**
+     * Metodo que permite cargar un asistente desde un archivo
+     */
     public void cargarAsistentesDesdeArchivo() {
         asistentes = new ArrayList<>(); // Inicializa la lista de asistentes
 
@@ -121,6 +157,9 @@ public class GestorAsistentes {
         }
     }
 
+    /**
+     * Metodo que permite actualizar un archivo
+     */
     public void actualizarArchivo() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(NombreArchivo));
@@ -135,6 +174,9 @@ public class GestorAsistentes {
         }
     }
 
+    /**
+     * Método que nos permite listar a los asistentes
+     */
     public void listar() {
         for (Asistente asistente : asistentes) {
             System.out.println(asistente.toString());

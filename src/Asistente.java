@@ -9,18 +9,18 @@ import java.time.LocalDate;
  * */
 public class Asistente extends Persona implements Serializable {
 
-
+    /*Attributes*/
     private boolean atencionEspecial;
 
     /**
-     *  Constructor vacio para un objeto Asistente
+     * empty(default) constructor
      */
     public Asistente(){
 
     }
 
     /**
-     *  Constructor para un objeto Asistente
+     *  Parametrized constructor
      * @param identificador El identificador del asistente
      * @param nombre El nombre del asistente
      * @param apellido1 El primero apellido del asistente
@@ -33,6 +33,11 @@ public class Asistente extends Persona implements Serializable {
         this.atencionEspecial = atencionEspecial;
     }
 
+    /**
+     * Convierte los atributos de un objeto en una cadena de texto en formato CSV (Valores Separados por Comas).
+     *
+     * @return Una cadena de texto que contiene los valores de los atributos separados por espacios en blanco y seguidos por un salto de línea.
+     */
     public String toCSV() {
         String atencionEspecialStr = atencionEspecial ? "true" : "false";
         return identificador + " " + nombre + " " + apellido1 + " " + apellido2 + " " + fechaNacimiento + " " + atencionEspecialStr + "\n";
@@ -52,8 +57,6 @@ public class Asistente extends Persona implements Serializable {
     public void setAtencionEspecial(boolean atencionEspecial) {
         this.atencionEspecial = atencionEspecial;
     }
-
-
 
     /**
      * Es una representacion del objeto Asistente

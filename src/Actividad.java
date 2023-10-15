@@ -45,7 +45,6 @@ public class Actividad {
     }
     /*getters and setters*/
     /**
-     *
      * @return Nombre de la actividad
      */
     public String getNombre() {
@@ -61,7 +60,6 @@ public class Actividad {
     }
 
     /**
-     *
      * @return Identificador de la Actividad
      */
     public int getIdentificador() {
@@ -69,7 +67,6 @@ public class Actividad {
     }
 
     /**
-     *
      * @return Nivel educativo de la actividad
      */
     public NivelEducativo getNivelEducativo() {
@@ -85,7 +82,6 @@ public class Actividad {
     }
 
     /**
-     *
      * @return Horario de la actividad
      */
     public Horario getHorario() {
@@ -101,7 +97,6 @@ public class Actividad {
     }
 
     /**
-     *
      * @return Numero maximo de participantes de la actividad
      */
     public int getMaxParticipantes() {
@@ -117,7 +112,6 @@ public class Actividad {
     }
 
     /**
-     *
      * @return Numero de monitores necesarios
      */
     public int getMonitoresNecesarios() {
@@ -133,7 +127,6 @@ public class Actividad {
     }
 
     /**
-     *
      * @return Lista con los monitores asociados a la actividad
      */
     public ArrayList<Monitor> getMonitores() {return monitores;}
