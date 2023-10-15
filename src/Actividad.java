@@ -144,6 +144,7 @@ public class Actividad {
     @Override
     public String toString() {
         return "Actividad{" +
+                "Id=" + identificador +
                 "nombre='" + nombre + '\'' +
                 ", nivelEducativo=" + nivelEducativo +
                 ", horario=" + horario +
