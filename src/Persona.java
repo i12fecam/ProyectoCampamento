@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -8,7 +9,7 @@ import java.time.LocalDate;
  * @author Fátima Caballero
  * */
 
-public class Persona {
+public class Persona implements Serializable {
     /*Attributes*/
     protected int identificador;
     protected String nombre;

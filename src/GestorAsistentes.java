@@ -9,7 +9,7 @@ import java.time.LocalDate;
  * @author Fátima Caballero
  * */
 
-public class GestorAsistentes {
+public class GestorAsistentes implements Serializable{
     /*Attributes*/
     private ArrayList<Asistente> asistentes;
     private String NombreArchivo;
@@ -104,7 +104,7 @@ public class GestorAsistentes {
         }
 
         asistentes.add(asistente);
-        guardarFichero();
+        //guardarFichero();
         return true;
     }
 

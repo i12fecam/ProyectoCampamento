@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public class GestorInscripciones {
+public class GestorInscripciones implements Serializable{
     /*Attributes*/
     private ArrayList<Inscripcion> inscripciones;
     private String NombreArchivo;
