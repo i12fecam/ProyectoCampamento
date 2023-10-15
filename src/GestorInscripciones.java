@@ -14,12 +14,7 @@ public class GestorInscripciones {
     /*Attributes*/
     private ArrayList<Inscripcion> inscripciones;
     private String NombreArchivo;
-    /**
-     * Empty (default) constructor
-     * */
-    public GestorInscripciones(){
 
-    }
 
     /**
      * Parametrized constructor
