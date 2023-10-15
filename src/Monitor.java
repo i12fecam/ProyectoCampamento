@@ -14,7 +14,7 @@ public class Monitor extends Persona implements Serializable {
     /**
      * Empty (default) constructor
      * */
-    public Monitor(){};
+    public Monitor(){}
 
 
     /**Constructor con todos sus parametros obligatorios

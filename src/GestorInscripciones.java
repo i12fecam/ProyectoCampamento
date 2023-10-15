@@ -1,6 +1,5 @@
 import java.io.*;
 import java.time.LocalDate;
-import java.time.chrono.ChronoPeriod;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -120,7 +119,7 @@ public class GestorInscripciones implements Serializable{
             }
         }
         //mirar si es tardia
-        if(fechaInscripcion.isBefore(campamento.getFechaInicio().minus(15, ChronoUnit.DAYS))){
+        if(fechaInscripcion.isBefore(campamento.getFechaInicio().minusDays(15))){
             tardia =true;
         }
         else if(fechaInscripcion.isAfter(campamento.getFechaInicio().minus(15, ChronoUnit.DAYS)) && fechaInscripcion.isBefore(campamento.getFechaInicio().minus(2,ChronoUnit.DAYS))){

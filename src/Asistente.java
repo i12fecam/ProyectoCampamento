@@ -38,10 +38,7 @@ public class Asistente extends Persona implements Serializable {
      *
      * @return Una cadena de texto que contiene los valores de los atributos separados por espacios en blanco y seguidos por un salto de línea.
      */
-    public String toCSV() {
-        String atencionEspecialStr = atencionEspecial ? "true" : "false";
-        return identificador + " " + nombre + " " + apellido1 + " " + apellido2 + " " + fechaNacimiento + " " + atencionEspecialStr + "\n";
-    }
+
     /**
      *  Verifica si el Asistente requiere atencion especial
      * @return True si el asistente requiere atencion especial, false en caso de no necesitarla

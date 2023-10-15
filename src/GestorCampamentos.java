@@ -94,7 +94,7 @@ public class GestorCampamentos implements Serializable {
 
     public void crearCampamento( LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
         int idCampamento = campamentos.size();
-        Campamento campamento = new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes,0);
+        Campamento campamento = new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes);
 
         campamentos.add(campamento);
     }

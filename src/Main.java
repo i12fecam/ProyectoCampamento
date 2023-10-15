@@ -373,7 +373,7 @@ public class Main {
                         gestorCampamentos.toStringCampamentos();
                         int idcamp = scanner.nextInt();
 
-                        if(gestorInscripciones.cancelarInscripcion(ident,idcamp)==true){
+                        if(gestorInscripciones.cancelarInscripcion(ident, idcamp)){
                             System.out.println("Inscripcion cancelada con exito");
                         }
                         else{
