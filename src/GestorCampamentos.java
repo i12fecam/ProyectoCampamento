@@ -30,7 +30,6 @@ public class GestorCampamentos implements Serializable {
      */
     public GestorCampamentos(String NombreArchivo) {
         this.NombreArchivo = NombreArchivo;
-        this.campamentos = new ArrayList<>();
         FileInputStream fileInputStream
                 = null;
         if(new File(NombreArchivo).length() != 0){

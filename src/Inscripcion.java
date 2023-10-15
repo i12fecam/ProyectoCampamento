@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 /**
  * Inscripcion class
@@ -6,7 +7,7 @@ import java.time.LocalDate;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public abstract class Inscripcion {
+public abstract class Inscripcion  implements Serializable {
     /*Attributes*/
     protected int idParticipante;
     protected int idCampamento;
