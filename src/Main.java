@@ -256,7 +256,7 @@ public class Main {
                         scanner.nextLine();
                         System.out.println("Numero de monitores necesarios");
                         int monitoresNecesarios = scanner.nextInt();
-
+                        scanner.nextLine();
                         gestorCampamentos.crearActividad(nombre, nivelEducativo, horario, maxParticipantes, monitoresNecesarios);
                     }catch (Exception e){
                         System.out.println("Se produjo un error creando la actividad");
@@ -350,9 +350,11 @@ public class Main {
                 case "2":
                     try{
                         System.out.println("Introduzca el identificador del asistente: ");
+                        gestorAsistentes.listar();
                         int ident = scanner.nextInt();
 
                         System.out.println("Introduzca el identificador del campamento: ");
+                        gestorCampamentos.toStringCampamentos();
                         int idcamp = scanner.nextInt();
 
                         if(gestorInscripciones.cancelarInscripcion(ident,idcamp)==true){
