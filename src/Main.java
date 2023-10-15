@@ -405,7 +405,7 @@ public class Main {
                 case "3":
                     ArrayList<Campamento> disponibles = gestorInscripciones.consultarCampamentosDisponibles(gestorCampamentos);
                     for(Campamento campamento : disponibles){
-                        gestorCampamentos.toStringCampamentos();
+                        campamento.toString();
                     }
                     break;
                 case "0":
