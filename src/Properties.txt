@@ -1,3 +1,0 @@
-Ins=Inscripciones.txt
-Camp=Campamentos.txt
-Asis=Asistentes.txt

@@ -102,7 +102,7 @@ public class Main {
                     String fechaNacimientoStr = scanner.nextLine();
                     System.out.print("Atencion Especial (true/false): ");
                     boolean atencionEspecial = scanner.nextBoolean();
-
+                    scanner.nextLine();
                     // Crear una instancia de Asistente con la información recopilada
                     Asistente nuevoAsistente = new Asistente(id, nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
 
