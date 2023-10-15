@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * Activity class
@@ -6,7 +7,7 @@ import java.util.ArrayList;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public class Actividad {
+public class Actividad implements Serializable {
     /*Attributes*/
     private String nombre;
 
