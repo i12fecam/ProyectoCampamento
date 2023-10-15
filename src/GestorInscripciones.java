@@ -104,6 +104,12 @@ public class GestorInscripciones {
         Asistente asistente = gestorAsistentes.getAsistentes().get(idAsistente);
         float precio;
         boolean tardia;
+        //comprobar si el asistente ya esta inscrito en el campamento
+        for(Inscripcion it:inscripciones){
+            if(it.idCampamento == idCampamento && it.idParticipante == idAsistente){
+                throw new RuntimeException("Ya esta el particpante en el campamento");
+            }
+        }
         //mirar si es tardia
         if(fechaInscripcion.isBefore(campamento.getFechaInicio().minus(15, ChronoUnit.DAYS))){
             tardia =true;
@@ -114,9 +120,11 @@ public class GestorInscripciones {
         else{
             throw new RuntimeException("La fecha de inscripcion es demasiado tardia");
         }
+
         //comprobar si necesita monitor especial
         if(asistente.isAtencionEspecial() && !campamento.tieneMonitorEspecial()){
             //añadir monitor especial al campamento
+            System.out.println("!!!!ATENCION: Después de esta operación asegurese de añadir un monitor especial al campamento");
         }
         //calcular precio
         if(horario == Horario.PARCIAL){
@@ -153,7 +161,15 @@ public class GestorInscripciones {
     }
 
 
-
+    public boolean cancelarInscripcion(int idParticipante, int idCampamento){
+        for(Inscripcion it:inscripciones){
+            if(it.getIdCampamento()== idCampamento && it.getIdParticipante() == idParticipante && it.getTipoInscripcion() == TipoInscripcion.TEMPRANA){
+                inscripciones.remove(it);
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * Metodo que permite consultar los campamentos disponibles
      * @param gestor

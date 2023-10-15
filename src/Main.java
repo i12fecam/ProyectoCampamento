@@ -364,7 +364,9 @@ public class Main {
 
     }
     public void salir(){
-
+    gestorCampamentos.guardarFichero();
+    gestorAsistentes.guardarFichero();
+    gestorInscripciones.guardarFichero();
 
     }
 
