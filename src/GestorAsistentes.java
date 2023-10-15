@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.time.LocalDate;
 /**
  * GestorAsistentes class
  * @author Noelia Ruiz

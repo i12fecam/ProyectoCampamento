@@ -16,14 +16,11 @@ public class Campamento implements Serializable {
     private NivelEducativo nivelEducativo;
     private int numAsistentes;
     private int maxAsistentes;
-    private ArrayList<Monitor> monitores = new ArrayList<Monitor>();
-    private ArrayList<Actividad> actividades = new ArrayList<Actividad>();
+    private ArrayList<Monitor> monitores = new ArrayList<>();
+    private ArrayList<Actividad> actividades = new ArrayList<>();
 
-    /**
-     * Empty (default) constructor
-     * */
-    public Campamento() {
-    }
+
+
 
     /**
      * Parameterized constructor
@@ -33,7 +30,7 @@ public class Campamento implements Serializable {
      * @param nivelEducativo nivel educativo que tiene el campamento
      * @param maxAsistentes numero maximo de asistentes del campamento
      */
-    public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes,int numAsistentes) {
+    public Campamento(int idCampamento, LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes) {
         if(fechaFinal.isBefore(fechaInicio)){
             throw new RuntimeException("Las fechas no tienen sentido");
         }
@@ -262,10 +259,7 @@ public class Campamento implements Serializable {
      * @return true si numAsistentes<maxAsistentes, si no devuelve false
      */
     public boolean comprobarAsistentes() {
-        if (numAsistentes < maxAsistentes) {
-            return true;
-        }
-        return false;
+        return numAsistentes < maxAsistentes;
     }
 }
 
