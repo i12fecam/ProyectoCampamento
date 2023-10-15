@@ -176,8 +176,8 @@ public class Campamento implements Serializable {
                 ", nivelEducativo=" + nivelEducativo +
                 ", numAsistentes=" + numAsistentes +
                 ", maxAsistentes=" + maxAsistentes +
-                ", monitores=" + monitores +
-                ", actividades=" + actividades +
+                ", monitores=" + monitores.size() +
+                ", actividades=" + actividades.size() +
                 '}';
     }
 
