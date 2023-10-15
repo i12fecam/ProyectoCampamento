@@ -1,5 +1,7 @@
 import java.io.*;
 import java.time.LocalDate;
+import java.time.chrono.ChronoPeriod;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 
@@ -88,7 +90,7 @@ public class GestorInscripciones {
 
 
 
-/*
+
     /**
      * @param gestorCampamentos
      * @param gestorAsistentes
@@ -97,13 +99,21 @@ public class GestorInscripciones {
      * @param fechaInscripcion
      * @param horario
      */
-    /*public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
+    public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
         Campamento campamento = gestorCampamentos.getCampamentos().get(idCampamento);
         Asistente asistente = gestorAsistentes.getAsistentes().get(idAsistente);
         float precio;
         boolean tardia;
         //mirar si es tardia
-
+        if(fechaInscripcion.isBefore(campamento.getFechaInicio().minus(15, ChronoUnit.DAYS))){
+            tardia =true;
+        }
+        else if(fechaInscripcion.isAfter(campamento.getFechaInicio().minus(15, ChronoUnit.DAYS)) && fechaInscripcion.isBefore(campamento.getFechaInicio().minus(2,ChronoUnit.DAYS))){
+            tardia =false;
+        }
+        else{
+            throw new RuntimeException("La fecha de inscripcion es demasiado tardia");
+        }
         //comprobar si necesita monitor especial
         if(asistente.isAtencionEspecial() && !campamento.tieneMonitorEspecial()){
             //añadir monitor especial al campamento
@@ -121,15 +131,27 @@ public class GestorInscripciones {
             precio = 300;
         }
         //se crea la inscripción
-        if(horario == Horario.PARCIAL){
-            InscripcionFactoryParcial fabrica = new InscripcionFactoryParcial();
+        if(tardia){
+            InscriptionFactoryTardia factoria = new InscriptionFactoryTardia();
+            if(horario == Horario.COMPLETA){
+                inscripciones.add(factoria.crearInscripcionCompleta(idAsistente,idCampamento,fechaInscripcion,precio));
+            }
+            else{
+                inscripciones.add(factoria.crearInscripcionParcial(idAsistente,idCampamento,fechaInscripcion,precio));
+            }
 
         }
-        else if(horario == Horario.COMPLETA){
-            InscripcionFactoryCompleta fabrica = new InscripcionFactoryCompleta();
+        else{
+            InscriptionFactoryTemprana factoria = new InscriptionFactoryTemprana();
+            if(horario == Horario.COMPLETA){
+                inscripciones.add(factoria.crearInscripcionCompleta(idAsistente,idCampamento,fechaInscripcion,precio));
+            }
+            else{
+                inscripciones.add(factoria.crearInscripcionParcial(idAsistente,idCampamento,fechaInscripcion,precio));
+            }
         }
     }
-    */
+
 
 
     /**
