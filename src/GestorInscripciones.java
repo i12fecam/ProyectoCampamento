@@ -179,6 +179,7 @@ public class GestorInscripciones implements Serializable{
                 inscripciones.remove(it);
                 return true;
             }
+
         }
         return false;
     }
