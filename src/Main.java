@@ -36,9 +36,9 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        gestorAsistentes = new GestorAsistentes(prop.getProperty("Asis"));
-        gestorCampamentos = new GestorCampamentos(prop.getProperty("Camp"));
-        gestorInscripciones = new GestorInscripciones(prop.getProperty("Ins"));
+        gestorAsistentes = new GestorAsistentes();
+        gestorCampamentos = new GestorCampamentos();
+        gestorInscripciones = new GestorInscripciones();
 
         boolean bucle =true;
         while (bucle) {
@@ -191,7 +191,6 @@ public class Main {
                         int maxAsistentes = scanner.nextInt();
                         scanner.nextLine();
                         gestorCampamentos.crearCampamento(LocalDate.parse(fechaIncioStr), LocalDate.parse(fechaFinalStr), nivelEducativo, maxAsistentes);
-                        gestorCampamentos.guardarFichero();
                         System.out.println("El campamento se ha creado correctamente");
                     }catch (Exception e) {
                         e.printStackTrace();
@@ -418,9 +417,7 @@ public class Main {
 
     }
     public void salir(){
-    gestorCampamentos.guardarFichero();
-    gestorAsistentes.guardarFichero();
-    gestorInscripciones.guardarFichero();
+
 
     }
 

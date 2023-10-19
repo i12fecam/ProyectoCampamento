@@ -10,7 +10,6 @@ import java.util.ArrayList;
  * */
 public class GestorCampamentos implements Serializable {
     private ArrayList<Campamento> campamentos;
-    private String NombreArchivo;
     private ArrayList<Monitor> monitores;
     private ArrayList<Actividad> actividades;
 
@@ -29,59 +28,14 @@ public class GestorCampamentos implements Serializable {
      * @param NombreArchivo
      */
     public GestorCampamentos(String NombreArchivo) {
-        this.NombreArchivo = NombreArchivo;
-        FileInputStream fileInputStream
-                = null;
-        if(new File(NombreArchivo).length() != 0){
 
-            try {
-                fileInputStream = new FileInputStream(NombreArchivo);
-
-                ObjectInputStream objectInputStream
-                        = new ObjectInputStream(fileInputStream);
-                GestorCampamentos gestor = (GestorCampamentos) objectInputStream.readObject();
-                objectInputStream.close();
-                this.campamentos= gestor.campamentos;
-                this.monitores = gestor.monitores;
-                this.actividades = gestor.actividades;
-            } catch (FileNotFoundException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        else{
             campamentos = new ArrayList<>();
             monitores = new ArrayList<>();
             actividades = new ArrayList<>();
-        }
-
-
     }
 
 
-    /**
-     * Guarda el objeto actual en un archivo mediante la serialización.
-     *
-     * Este método guarda el objeto actual en un archivo utilizando la serialización de objetos
-     * de Java. El objeto es guardado en el archivo especificado por el atributo "NombreArchivo".
-     *
-     * @throws RuntimeException si ocurre un error durante la operación de escritura en el archivo.
-     */
-    public void guardarFichero(){
-        try {
-            FileOutputStream fileOutputStream
-                    = new FileOutputStream(NombreArchivo);
-            ObjectOutputStream objectOutputStream
-                    = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(this);
-            objectOutputStream.flush();
-            objectOutputStream.close();
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
     /**
@@ -224,14 +178,7 @@ public class GestorCampamentos implements Serializable {
         return null;
     }
     /* Getters and setters*/
-    /**
-     * @return NombreArchivo
-     */
-    /*Getters and setters*/
-    public String getNombreArchivo() {return NombreArchivo;}
-    public void setNombreArchivo(String nombreArchivo) {
-        NombreArchivo = nombreArchivo;
-    }
+
 
     /**
      * @return campamentos

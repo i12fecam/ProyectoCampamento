@@ -11,67 +11,21 @@ import java.util.ArrayList;
 public class GestorAsistentes implements Serializable{
     /*Attributes*/
     private ArrayList<Asistente> asistentes;
-    private String NombreArchivo;
 
 
 
 
-    /**
-     * Parametrized constructor
-     * @param NombreArchivo
-     */
-    public GestorAsistentes(String NombreArchivo) {
-        this.NombreArchivo = NombreArchivo;
-        FileInputStream fileInputStream
-                = null;
-        if(new File(NombreArchivo).length() != 0){
 
-            try {
-                fileInputStream = new FileInputStream(NombreArchivo);
 
-                ObjectInputStream objectInputStream
-                        = new ObjectInputStream(fileInputStream);
-                GestorAsistentes gestor = (GestorAsistentes) objectInputStream.readObject();
-                objectInputStream.close();
-                this.asistentes = gestor.asistentes;
-            } catch (FileNotFoundException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        else{
+    public GestorAsistentes() {
+
             asistentes= new ArrayList<>();
 
-        }
-    }
-    public void guardarFichero(){
-        try {
-            FileOutputStream fileOutputStream
-                    = new FileOutputStream(NombreArchivo);
-            ObjectOutputStream objectOutputStream
-                    = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(this);
-            objectOutputStream.flush();
-            objectOutputStream.close();
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
-    /*Getters and setters*/
-    /**
-     * @return nombreArchivo
-     */
-    public String getNombreArchivo() {return NombreArchivo;}
 
-    /**
-     * Establece NombreArchivo
-     * @param nombreArchivo
-     */
-    public void setNombreArchivo(String nombreArchivo) {
-        NombreArchivo = nombreArchivo;
-    }
+
+
 
     /**
      * Establece asistentes
@@ -121,7 +75,7 @@ public class GestorAsistentes implements Serializable{
                 it.setApellido2(asistente.getApellido2());
                 it.setFechaNacimiento(asistente.getFechaNacimiento());
                 it.setAtencionEspecial(asistente.isAtencionEspecial());
-                guardarFichero();
+
                 // Imprimir un mensaje de éxito
                 System.out.println("Asistente modificado con éxito.");
 

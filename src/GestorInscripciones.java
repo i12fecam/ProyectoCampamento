@@ -14,60 +14,19 @@ import java.util.ArrayList;
 public class GestorInscripciones implements Serializable{
     /*Attributes*/
     private ArrayList<Inscripcion> inscripciones;
-    private String NombreArchivo;
 
 
-    /**
-     * Parametrized constructor
-     * @param NombreArchivo
-     */
-    public GestorInscripciones( String NombreArchivo){
 
-        this.NombreArchivo = NombreArchivo;
+
+    public GestorInscripciones(){
         this.inscripciones = new ArrayList<>();
-        FileInputStream fileInputStream
-                = null;
-        if(new File(NombreArchivo).length() != 0){
-
-            try {
-                fileInputStream = new FileInputStream(NombreArchivo);
-
-                ObjectInputStream objectInputStream
-                        = new ObjectInputStream(fileInputStream);
-                GestorInscripciones gestor = (GestorInscripciones) objectInputStream.readObject();
-                objectInputStream.close();
-                this.inscripciones = gestor.inscripciones;
-            } catch (FileNotFoundException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
 
     }
-    public void guardarFichero(){
-        try {
-            FileOutputStream fileOutputStream
-                    = new FileOutputStream(NombreArchivo);
-            ObjectOutputStream objectOutputStream
-                    = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(this);
-            objectOutputStream.flush();
-            objectOutputStream.close();
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     /*Getters and Setters*/
 
-    /**
-     * @param nombreArchivo
-     */
-    public void setNombreArchivo(String nombreArchivo) {
-        NombreArchivo = nombreArchivo;
-    }
+
 
     /**
      * @param inscripciones
@@ -76,10 +35,7 @@ public class GestorInscripciones implements Serializable{
         this.inscripciones = inscripciones;
     }
 
-    /**
-     * @return NombreArchivo
-     */
-    public String getNombreArchivo() {return NombreArchivo;}
+
 
     /**
      * @return inscripciones
