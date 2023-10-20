@@ -1,3 +1,7 @@
+package Data.DTO;
+
+import Data.NivelEducativo;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;

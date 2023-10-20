@@ -1,3 +1,8 @@
+package Data.DTO;
+
+import Data.Horario;
+import Data.TipoInscripcion;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 /**
@@ -31,7 +36,7 @@ public abstract class Inscripcion  implements Serializable {
      * @param tipoInscripcion
      * @param horario
      */
-    public Inscripcion(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio, TipoInscripcion tipoInscripcion,Horario horario) {
+    public Inscripcion(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio, TipoInscripcion tipoInscripcion, Horario horario) {
         this.idParticipante = idParticipante;
         this.idCampamento = idCampamento;
         this.fechaInscripcion = fechaInscripcion;

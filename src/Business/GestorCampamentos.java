@@ -1,3 +1,8 @@
+package Business;
+
+import Data.Horario;
+import Data.NivelEducativo;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,33 +14,14 @@ import java.util.ArrayList;
  * @author Fátima Caballero
  * */
 public class GestorCampamentos implements Serializable {
-    private ArrayList<Campamento> campamentos;
-    private ArrayList<Monitor> monitores;
-    private ArrayList<Actividad> actividades;
+
 
     /**
      * empty(default) constructor
      **/
     public GestorCampamentos() {
-        campamentos = new ArrayList<>();
-        monitores = new ArrayList<>();
-        actividades = new ArrayList<>();
+
     }
-
-    /**
-     * parametrized constructor
-     *
-     * @param NombreArchivo
-     */
-    public GestorCampamentos(String NombreArchivo) {
-
-            campamentos = new ArrayList<>();
-            monitores = new ArrayList<>();
-            actividades = new ArrayList<>();
-    }
-
-
-
 
 
     /**
@@ -46,11 +32,15 @@ public class GestorCampamentos implements Serializable {
      * @param maxAsistentes
      */
 
-    public void crearCampamento( LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
+    public void crearCampamento(LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
+        /*
         int idCampamento = campamentos.size();
+
         Campamento campamento = new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes);
 
         campamentos.add(campamento);
+
+         */
     }
 
     /**
@@ -62,10 +52,13 @@ public class GestorCampamentos implements Serializable {
      * @param educadorEspecial
      */
     public void crearMonitor( String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean educadorEspecial){
+        /*
         int identificador = monitores.size();
+
         Monitor monitor = new Monitor(identificador,nombre,apellido1,apellido2,fechaNacimiento,educadorEspecial);
 
         monitores.add(monitor);
+        */
     }
 
     /**
@@ -77,10 +70,13 @@ public class GestorCampamentos implements Serializable {
      * @param monitoresNecesarios
      */
     public void crearActividad(String nombre, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios){
+        /*
         int identificador = actividades.size();
         Actividad actividad = new Actividad(nombre,identificador,nivelEducativo,horario,maxParticipantes,monitoresNecesarios);
 
         actividades.add(actividad);
+
+         */
     }
 
     /**
@@ -90,10 +86,11 @@ public class GestorCampamentos implements Serializable {
      */
     public void asociarMonitorActividad(int idMonitor,int idActividad)
     {
+        /*
         Actividad actividad = actividades.get(idActividad);
         Monitor monitor = monitores.get(idMonitor);
         actividad.asociarMonitor(monitor);
-
+        */
     }
 
     /**
@@ -102,10 +99,11 @@ public class GestorCampamentos implements Serializable {
      * @param idCampamento
      */
     public void asociarActividadCampamento(int idActividad,int idCampamento){
+        /*
         Actividad actividad = actividades.get(idActividad);
         Campamento campamento = campamentos.get(idCampamento);
         campamento.asociarActividad(actividad);
-
+        */
     }
 
     /**
@@ -114,10 +112,11 @@ public class GestorCampamentos implements Serializable {
      * @param idCampamento
      */
     public void asociarMonitorCampamento(int idMonitor, int idCampamento){
+        /*
         Monitor monitor = monitores.get(idMonitor);
         Campamento campamento = campamentos.get(idCampamento);
         campamento.asociarMonitor(monitor);
-
+        */
     }
 
     /**
@@ -126,9 +125,12 @@ public class GestorCampamentos implements Serializable {
      * @param idCampamento
      */
     public void asociarMonitorEspecialCampamento(int idMonitor, int idCampamento){
+        /*
         Monitor monitor = monitores.get(idMonitor);
         Campamento campamento = campamentos.get(idCampamento);
         campamento.asociarMonitorEspecial(monitor);
+
+         */
     }
 
     /**
@@ -138,9 +140,12 @@ public class GestorCampamentos implements Serializable {
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Campamento.
      */
     public void toStringCampamentos(){
+        /*
         for(Campamento it:campamentos){
             System.out.println(it.toString());;
         }
+
+         */
     }
     /**
      * Imprime en la consola una representación en cadena de los objetos Monitor almacenados en la lista "monitores".
@@ -149,9 +154,12 @@ public class GestorCampamentos implements Serializable {
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Monitor.
      */
     public void toStringMonitores(){
+        /*
         for(Monitor it:monitores){
             System.out.println(it.toString());;
         }
+
+         */
     }
     /**
      * Imprime en la consola una representación en cadena de los objetos Actividad almacenados en la lista "actividades".
@@ -160,61 +168,16 @@ public class GestorCampamentos implements Serializable {
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Actividad.
      */
     public void toStringActividades(){
+        /*
         for(Actividad it:actividades){
             System.out.println(it.toString());;
         }
-    }
-    /**
-     * Método para buscar un campamento
-     * @param idCampamento
-     * @return campamento si lo encuentra, y si no retorna null
-     */
-    public Campamento buscarCampamento(int idCampamento) {
-        for (Campamento campamento : campamentos) {
-            if (campamento.getIdCampamento() == idCampamento) {
-                return campamento;
-            }
-        }
-        return null;
-    }
-    /* Getters and setters*/
 
-
-    /**
-     * @return campamentos
-     */
-    public ArrayList<Campamento> getCampamentos() {return campamentos;}
-
-    /**
-     * @return monitores
-     */
-    public ArrayList<Monitor> getMonitores() {return monitores;}
-
-    /**
-     * @return actividades
-     */
-    public ArrayList<Actividad> getActividades() {return actividades;}
-
-    /**
-     * @param campamentos
-     */
-    public void setCampamentos(ArrayList<Campamento> campamentos) {
-        this.campamentos = campamentos;
+         */
     }
 
-    /**
-     * @param monitores
-     */
-    public void setMonitores(ArrayList<Monitor> monitores) {
-        this.monitores = monitores;
-    }
 
-    /**
-     * @param actividades
-     */
-    public void setActividades(ArrayList<Actividad> actividades) {
-        this.actividades = actividades;
-    }
+
 
 
 }

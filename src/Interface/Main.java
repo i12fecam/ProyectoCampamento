@@ -1,9 +1,12 @@
+package Interface;
+
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
-
+import Business.*;
+import Data.Horario;
+import Data.NivelEducativo;
 
 public class Main {
     private GestorAsistentes gestorAsistentes;
@@ -24,7 +27,7 @@ public class Main {
         if (operSys.contains("win")){
             filename = "..\\Properties.txt";
         }else{
-            filename = "../Properties.txt";
+            filename = "Interface/Properties.txt";
         }
 
         try {
@@ -102,10 +105,10 @@ public class Main {
                     boolean atencionEspecial = scanner.nextBoolean();
                     scanner.nextLine();
                     // Crear una instancia de Asistente con la información recopilada
-                    Asistente nuevoAsistente = new Asistente(id, nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
+                    //Asistente nuevoAsistente = new Asistente(id, nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
 
                     // Dar de alta al asistente
-                    gestorAsistentes.darAlta(nuevoAsistente);
+                    //gestorAsistentes.darAlta(nuevoAsistente);
                     System.out.println("Asistente dado de alta con exito.");
                     break;
                 case "2":
@@ -129,10 +132,10 @@ public class Main {
                     System.out.println("Ingrese si el asistente requiere atencion especial (true/false): ");
                     boolean atencionEsp = Boolean.parseBoolean(scanner.nextLine());
 
-                    Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
+                    //Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
 
                     // Modificar el asistente
-                    gestorAsistentes.ModificarAsistente(asistente);
+                    //gestorAsistentes.ModificarAsistente(asistente);
 
                     // Volver a listar los asistentes para verificar los cambios
                     gestorAsistentes.listar();
@@ -190,7 +193,7 @@ public class Main {
                         System.out.print("Numero maximo de Asistentes:");
                         int maxAsistentes = scanner.nextInt();
                         scanner.nextLine();
-                        gestorCampamentos.crearCampamento(LocalDate.parse(fechaIncioStr), LocalDate.parse(fechaFinalStr), nivelEducativo, maxAsistentes);
+                        //gestorCampamentos.crearCampamento(LocalDate.parse(fechaIncioStr), LocalDate.parse(fechaFinalStr), nivelEducativo, maxAsistentes);
                         System.out.println("El campamento se ha creado correctamente");
                     }catch (Exception e) {
                         e.printStackTrace();
@@ -255,7 +258,7 @@ public class Main {
                         System.out.println("Numero de monitores necesarios");
                         int monitoresNecesarios = scanner.nextInt();
                         scanner.nextLine();
-                        gestorCampamentos.crearActividad(nombre, nivelEducativo, horario, maxParticipantes, monitoresNecesarios);
+                        //gestorCampamentos.crearActividad(nombre, nivelEducativo, horario, maxParticipantes, monitoresNecesarios);
                     }catch (Exception e){
                         System.out.println("Se produjo un error creando la actividad");
                     }
@@ -374,7 +377,7 @@ public class Main {
                         } else {
                             throw new RuntimeException("Error al capturar el horario");
                         }
-                        gestorInscripciones.crearInscripcion(gestorCampamentos, gestorAsistentes, id, idcampamento, LocalDate.parse(inscrip), horario);
+                        //gestorInscripciones.crearInscripcion(gestorCampamentos, gestorAsistentes, id, idcampamento, LocalDate.parse(inscrip), horario);
                         System.out.println("Inscripcion creada con exito");
                     }catch (Exception e){
                         System.out.println("Error al crear la inscripcion");
@@ -402,10 +405,13 @@ public class Main {
 
                     break;
                 case "3":
+                    // esto hay que encapsurlalo en una funcion
+                    /*
                     ArrayList<Campamento> disponibles = gestorInscripciones.consultarCampamentosDisponibles(gestorCampamentos);
                     for(Campamento campamento : disponibles){
                         System.out.println(campamento.toString());
                     }
+                    */
                     break;
                 case "0":
                     return;

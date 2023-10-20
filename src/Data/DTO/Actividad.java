@@ -1,3 +1,8 @@
+package Data.DTO;
+
+import Data.Horario;
+import Data.NivelEducativo;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 /**
@@ -36,7 +41,7 @@ public class Actividad implements Serializable {
      * @param maxParticipantes Numero maximo de participantes que tiene la actividad
      * @param monitoresNecesarios Numero de monitores necesarios
      */
-    public Actividad(String nombre,int identificador, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios) {
+    public Actividad(String nombre, int identificador, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios) {
         this.nombre = nombre;
         this.identificador = identificador;
         this.nivelEducativo = nivelEducativo;

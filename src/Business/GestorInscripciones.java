@@ -1,3 +1,8 @@
+package Business;
+
+import Data.DTO.Campamento;
+import Data.Horario;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -13,34 +18,18 @@ import java.util.ArrayList;
  * */
 public class GestorInscripciones implements Serializable{
     /*Attributes*/
-    private ArrayList<Inscripcion> inscripciones;
+
 
 
 
 
     public GestorInscripciones(){
-        this.inscripciones = new ArrayList<>();
+
 
     }
 
 
-    /*Getters and Setters*/
 
-
-
-    /**
-     * @param inscripciones
-     */
-    public void setInscripciones(ArrayList<Inscripcion> inscripciones) {
-        this.inscripciones = inscripciones;
-    }
-
-
-
-    /**
-     * @return inscripciones
-     */
-    public ArrayList<Inscripcion> getInscripciones() {return inscripciones;}
 
 
 
@@ -54,8 +43,8 @@ public class GestorInscripciones implements Serializable{
      * @param fechaInscripcion
      * @param horario
      */
-    public void crearInscripcion(GestorCampamentos gestorCampamentos,GestorAsistentes gestorAsistentes,int idAsistente, int idCampamento, LocalDate fechaInscripcion,Horario horario){
-        Asistente asistente= null;
+    public void crearInscripcion(GestorCampamentos gestorCampamentos, GestorAsistentes gestorAsistentes, int idAsistente, int idCampamento, LocalDate fechaInscripcion, Horario horario){
+        /*Asistente asistente= null;
         Campamento campamento=null;
         if (idCampamento >= 0 && idCampamento < gestorCampamentos.getCampamentos().size()) {
 
@@ -126,10 +115,14 @@ public class GestorInscripciones implements Serializable{
         }
 
         System.out.println("El precio de la inscripcion es de: " + precio);
+
+         */
     }
 
 
     public boolean cancelarInscripcion(int idParticipante, int idCampamento){
+        /*
+        }
         for(Inscripcion it:inscripciones){
             if(it.getIdCampamento()== idCampamento && it.getIdParticipante() == idParticipante && it.getTipoInscripcion() == TipoInscripcion.TEMPRANA){
                 inscripciones.remove(it);
@@ -137,13 +130,17 @@ public class GestorInscripciones implements Serializable{
             }
         }
         return false;
+
+         */
+        return false;
     }
     /**
      * Metodo que permite consultar los campamentos disponibles
      * @param gestor
      * @return lista de campamentos disponibles
      */
-    public ArrayList<Campamento> consultarCampamentosDisponibles(GestorCampamentos gestor) {
+    public ArrayList<Campamento> consultarCampamentosDisponibles() {
+        /*
         ArrayList<Campamento> campamentosDisponibles = new ArrayList<>();
         LocalDate fechaActual = LocalDate.now(); // Obtén la fecha actual
         for (Campamento it : gestor.getCampamentos()) {
@@ -154,6 +151,9 @@ public class GestorInscripciones implements Serializable{
         }
 
         return campamentosDisponibles;
+
+         */
+        return null;
     }
 
 }

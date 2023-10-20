@@ -1,3 +1,5 @@
+package Data;
+
 /**
  * Este enumerado representa los posibles valores para el horario de una actividad o trabajo.
  * Puede ser "PARCIAL" o "COMPLETA".

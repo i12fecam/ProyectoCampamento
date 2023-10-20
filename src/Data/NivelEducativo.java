@@ -1,3 +1,5 @@
+package Data;
+
 /**
  * Este enumerado representa los niveles educativos para categorizar a los participantes.
  * Puede ser "INFANTIL", "JUVENIL" o "ADOLESCENTE".
