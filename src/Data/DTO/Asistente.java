@@ -1,3 +1,7 @@
+package Data.DTO;
+
+import Data.Persona;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 /**

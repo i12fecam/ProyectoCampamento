@@ -1,3 +1,5 @@
+import Data.TipoInscripcion;
+
 import java.time.LocalDate;
 /**
  * InscripcionFactoryTemprana class
@@ -18,7 +20,7 @@ public class InscriptionFactoryTemprana extends InscripcionFactory{
      * y con el tipo de inscripción establecido como "TEMPRANA".
      */
     public InscripcionCompleta crearInscripcionCompleta(int idParticipante, int idCampamento, LocalDate fechaInscripcion, float precio){
-        return  new InscripcionCompleta(idParticipante,idCampamento,fechaInscripcion,precio,TipoInscripcion.TEMPRANA);
+        return  new InscripcionCompleta(idParticipante,idCampamento,fechaInscripcion,precio, TipoInscripcion.TEMPRANA);
     }
     /**
      * Crea una inscripción parcial con los parámetros especificados y un tipo de inscripción "TEMPRANA".

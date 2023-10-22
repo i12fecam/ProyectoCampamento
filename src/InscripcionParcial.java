@@ -1,3 +1,7 @@
+import Data.DTO.Inscripcion;
+import Data.Horario;
+import Data.TipoInscripcion;
+
 import java.time.LocalDate;
 /**
  * InscripcionParcial class

@@ -1,3 +1,5 @@
+package Data;
+
 /**
  * Este enumerado representa los tipos de inscripción para categorizar inscripciones.
  * Puede ser "TEMPRANA" o "TARDIA".

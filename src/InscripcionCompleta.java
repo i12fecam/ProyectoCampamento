@@ -1,3 +1,7 @@
+import Data.DTO.Inscripcion;
+import Data.Horario;
+import Data.TipoInscripcion;
+
 import java.time.LocalDate;
 /**
  * InscripcionCompleta class
@@ -7,7 +11,7 @@ import java.time.LocalDate;
  * @author Fátima Caballero
  * */
 
-public class InscripcionCompleta extends Inscripcion{
+public class InscripcionCompleta extends Inscripcion {
 
     /**
      * Parametrized constructor
