@@ -1,14 +1,19 @@
 package Interface;
 
 import java.io.*;
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.Properties;
 import java.util.Scanner;
 import Business.*;
+import Data.DAO.Common.ConexionBD;
 import Data.Horario;
 import Data.NivelEducativo;
 
 public class Main {
+
+    ConexionBD conexionBD = new ConexionBD();
+    Connection con = conexionBD.getConnection();
     private GestorAsistentes gestorAsistentes;
     private GestorCampamentos gestorCampamentos;
     private GestorInscripciones gestorInscripciones;

@@ -16,11 +16,11 @@ public class ConexionBD {
 
     // Important: This configuration is hard-coded here for illustrative purposes only
 
-    protected String url = "jdbc:mysql://oraclepr.uco.es:3306/i72raqua";
+    protected String url = "jdbc:mysql://oraclepr.uco.es:3306/i12fecam";
 
-    protected String user = "i72raqua";
+    protected String user = "i12fecam";
 
-    protected String password = "pw2021";
+    protected String password = "campamento";
 
     public Connection getConnection(){
 
