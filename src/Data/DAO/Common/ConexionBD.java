@@ -1,9 +1,11 @@
 package Data.DAO.Common;
 
+
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import com.mysql.jdbc.Driver;
 /**
  * A class to manage the MySQL connection (general methods and configuration).
  * @author Aurora Ramirez
