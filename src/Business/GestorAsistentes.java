@@ -41,7 +41,7 @@ public class GestorAsistentes implements Serializable{
             System.out.println("El asistente es nulo.");
             return false;
         }
-        AsistenteDAO.aña()
+
 
         //guardarFichero();
         return true;
@@ -63,5 +63,9 @@ public class GestorAsistentes implements Serializable{
      */
     public void listar() {
 
+    }
+
+    public Asistente getAsistente(int id){
+        return null;
     }
 }

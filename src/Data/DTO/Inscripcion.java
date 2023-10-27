@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author Abigail Fernández
  * @author Fátima Caballero
  * */
-public abstract class Inscripcion  implements Serializable {
+public class Inscripcion  implements Serializable {
     /*Attributes*/
     protected int idParticipante;
     protected int idCampamento;
@@ -144,4 +144,6 @@ public abstract class Inscripcion  implements Serializable {
                 ", horario=" + horario +
                 '}';
     }
+
+
 }

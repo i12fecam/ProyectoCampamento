@@ -7,13 +7,14 @@ import java.util.Properties;
 import java.util.Scanner;
 import Business.*;
 import Data.DAO.Common.ConexionBD;
+import Data.DTO.Asistente;
+import Data.DTO.Campamento;
 import Data.Horario;
 import Data.NivelEducativo;
 
 public class Main {
 
-    ConexionBD conexionBD = new ConexionBD();
-    Connection con = conexionBD.getConnection();
+
     private GestorAsistentes gestorAsistentes;
     private GestorCampamentos gestorCampamentos;
     private GestorInscripciones gestorInscripciones;
@@ -365,10 +366,10 @@ public class Main {
                     try {
                         gestorAsistentes.listar();
                         System.out.println("Introduzca el identificador del asistente: ");
-                        int id = scanner.nextInt();
+                        int idAsistente = scanner.nextInt();
                         gestorCampamentos.toStringCampamentos();
                         System.out.println("Introduzca el identificador del campamento: ");
-                        int idcampamento = scanner.nextInt();
+                        int idCampamento = scanner.nextInt();
                         scanner.nextLine();
                         System.out.println("Introduzca la fecha de inscripcion(YYYY-MM-DD): ");
                         String inscrip = scanner.nextLine();
@@ -382,7 +383,9 @@ public class Main {
                         } else {
                             throw new RuntimeException("Error al capturar el horario");
                         }
-                        //gestorInscripciones.crearInscripcion(gestorCampamentos, gestorAsistentes, id, idcampamento, LocalDate.parse(inscrip), horario);
+                        Asistente asistente = gestorAsistentes.getAsistente(idAsistente);
+                        Campamento campamento = gestorCampamentos.getCampamento(idCampamento);
+                        gestorInscripciones.crearInscripcion( asistente, campamento, LocalDate.parse(inscrip), horario);
                         System.out.println("Inscripcion creada con exito");
                     }catch (Exception e){
                         System.out.println("Error al crear la inscripcion");

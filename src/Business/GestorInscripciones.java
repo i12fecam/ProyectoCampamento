@@ -1,7 +1,12 @@
 package Business;
 
+import Data.DAO.CampamentoDAO;
+import Data.DAO.InscripcionDAO;
+import Data.DTO.Asistente;
 import Data.DTO.Campamento;
+import Data.DTO.Inscripcion;
 import Data.Horario;
+import Data.TipoInscripcion;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -36,39 +41,30 @@ public class GestorInscripciones implements Serializable{
 
 
     /**
-     * @param gestorCampamentos
-     * @param gestorAsistentes
-     * @param idAsistente
-     * @param idCampamento
+     * @param asistente
+     * @param campamento
      * @param fechaInscripcion
      * @param horario
      */
-    public void crearInscripcion(GestorCampamentos gestorCampamentos, GestorAsistentes gestorAsistentes, int idAsistente, int idCampamento, LocalDate fechaInscripcion, Horario horario){
-        /*Asistente asistente= null;
-        Campamento campamento=null;
-        if (idCampamento >= 0 && idCampamento < gestorCampamentos.getCampamentos().size()) {
+    public void crearInscripcion(Asistente asistente, Campamento campamento, LocalDate fechaInscripcion, Horario horario){
 
-             campamento = gestorCampamentos.getCampamentos().get(idCampamento);
-        }
-        if(idAsistente >= 0 && idAsistente < gestorAsistentes.getAsistentes().size()){
-
-          asistente = gestorAsistentes.getAsistentes().get(idAsistente);
-        }
+        InscripcionDAO ins = new InscripcionDAO();
+        CampamentoDAO camp = new CampamentoDAO();
 
         float precio;
         boolean tardia;
         //comprobar si el asistente ya esta inscrito en el campamento
-        for(Inscripcion it:inscripciones){
-            if(it.idCampamento == idCampamento && it.idParticipante == idAsistente){
-                throw new RuntimeException("Ya esta el particpante en el campamento");
-            }
+        if(ins.esFechaInscripcionInvalida()){
+            throw new RuntimeException("Fecha Inscripcion invalida");
         }
         //mirar si es tardia
+        TipoInscripcion tipoInscripcion;
         if(fechaInscripcion.isBefore(campamento.getFechaInicio().minusDays(15))){
-            tardia =true;
+            tipoInscripcion = TipoInscripcion.TARDIA;
         }
         else if(fechaInscripcion.isAfter(campamento.getFechaInicio().minus(15, ChronoUnit.DAYS)) && fechaInscripcion.isBefore(campamento.getFechaInicio().minus(2,ChronoUnit.DAYS))){
-            tardia =false;
+
+            tipoInscripcion = TipoInscripcion.TEMPRANA;
         }
         else{
             throw new RuntimeException("La fecha de inscripcion es demasiado tardia");
@@ -84,16 +80,13 @@ public class GestorInscripciones implements Serializable{
         //calcular precio
         if(horario == Horario.PARCIAL){
             precio = 100;
-            ArrayList<Actividad> actividades = campamento.getActividades();
-            for (Actividad it:actividades){
-                if (it.getHorario() == Horario.PARCIAL){
-                    precio+=20;
-                }
-            }
+            precio = precio + camp.getNumActividades(campamento,Horario.PARCIAL)*20;
         }else{
             precio = 300;
         }
         //se crea la inscripción
+        ins.nuevaInscripcion(new Inscripcion(asistente.getIdentificador(),campamento.getIdCampamento(),fechaInscripcion,precio,tipoInscripcion,horario));
+        /*
         if(tardia){
             InscriptionFactoryTardia factoria = new InscriptionFactoryTardia();
             if(horario == Horario.COMPLETA){
@@ -113,10 +106,10 @@ public class GestorInscripciones implements Serializable{
                 inscripciones.add(factoria.crearInscripcionParcial(idAsistente,idCampamento,fechaInscripcion,precio));
             }
         }
-
+        */
         System.out.println("El precio de la inscripcion es de: " + precio);
 
-         */
+
     }
 
 
@@ -136,7 +129,6 @@ public class GestorInscripciones implements Serializable{
     }
     /**
      * Metodo que permite consultar los campamentos disponibles
-     * @param gestor
      * @return lista de campamentos disponibles
      */
     public ArrayList<Campamento> consultarCampamentosDisponibles() {
