@@ -54,9 +54,13 @@ public class GestorInscripciones implements Serializable{
         float precio;
         boolean tardia;
         //comprobar si el asistente ya esta inscrito en el campamento
+        /*
         if(ins.esFechaInscripcionInvalida()){
+
             throw new RuntimeException("Fecha Inscripcion invalida");
         }
+        */
+
         //mirar si es tardia
         TipoInscripcion tipoInscripcion;
         if(fechaInscripcion.isBefore(campamento.getFechaInicio().minusDays(15))){

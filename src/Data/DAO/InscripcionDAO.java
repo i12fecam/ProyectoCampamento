@@ -7,10 +7,7 @@ import Data.DTO.Inscripcion;
 import Data.Horario;
 import Data.TipoInscripcion;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Vector;
 
 public class InscripcionDAO {
@@ -55,8 +52,25 @@ public class InscripcionDAO {
 
     }
 
-    public boolean esFechaInscripcionInvalida(){
-        return false;
+    public boolean esFechaInscripcionInvalida(Inscripcion inscripcion){ //ahora creo que esta funcion no es tan necesario porque estoy comprobando por la primary key
+        try{
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("fecha_inscripcion_valida"));
+            ps.setInt(1,inscripcion.getIdParticipante());
+            ps.setInt(2,inscripcion.getIdCampamento());
+            ResultSet res = ps.executeQuery();
+            int count = 0;
+            while(res.next()){
+                count++;
+            }
+            if(count > 0){
+                return false;
+            }
+            else{
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     void cancelarInscripcion(){

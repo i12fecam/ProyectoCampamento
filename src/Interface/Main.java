@@ -25,26 +25,9 @@ public class Main {
     }
 
     public void iniciar() {
-        Scanner scanner = new Scanner(System.in);
-        Properties prop = new Properties();
-        String filename;
-        //comprobar sistema operativo para poner la ruta bien
-        String operSys = System.getProperty("os.name").toLowerCase();
-        if (operSys.contains("win")){
-            filename = "..\\Properties.txt";
-        }else{
-            filename = "Interface/Properties.txt";
-        }
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
-            prop.load(reader);
-        } catch (FileNotFoundException e) {
-            System.out.println("No se ha encontrado el archivo de configuración");
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Scanner scanner = new Scanner(System.in);
+
         gestorAsistentes = new GestorAsistentes();
         gestorCampamentos = new GestorCampamentos();
         gestorInscripciones = new GestorInscripciones();
@@ -96,55 +79,62 @@ public class Main {
                     System.out.println("Dar de alta a un asistente:");
 
                     // Recopilar la información del asistente desde el usuario
-                    System.out.print("ID: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine(); // Limpiar el salto de línea
-                    System.out.print("Nombre: ");
-                    String nombre = scanner.nextLine();
-                    System.out.print("Apellido 1: ");
-                    String apellido1 = scanner.nextLine();
-                    System.out.print("Apellido 2: ");
-                    String apellido2 = scanner.nextLine();
-                    System.out.print("Fecha de Nacimiento (YYYY-MM-DD): ");
-                    String fechaNacimientoStr = scanner.nextLine();
-                    System.out.print("Atencion Especial (true/false): ");
-                    boolean atencionEspecial = scanner.nextBoolean();
-                    scanner.nextLine();
-                    // Crear una instancia de Asistente con la información recopilada
-                    //Asistente nuevoAsistente = new Asistente(id, nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
+                    try {
+                        System.out.print("ID: ");
+                        int id = scanner.nextInt();
+                        scanner.nextLine(); // Limpiar el salto de línea
+                        System.out.print("Nombre: ");
+                        String nombre = scanner.nextLine();
+                        System.out.print("Apellido 1: ");
+                        String apellido1 = scanner.nextLine();
+                        System.out.print("Apellido 2: ");
+                        String apellido2 = scanner.nextLine();
+                        System.out.print("Fecha de Nacimiento (YYYY-MM-DD): ");
+                        String fechaNacimientoStr = scanner.nextLine();
+                        System.out.print("Atencion Especial (true/false): ");
+                        boolean atencionEspecial = scanner.nextBoolean();
+                        scanner.nextLine();
+                        // Crear una instancia de Asistente con la información recopilada
+                        //Asistente nuevoAsistente = new Asistente(id, nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
 
-                    // Dar de alta al asistente
-                    //gestorAsistentes.darAlta(nuevoAsistente);
+                        // Dar de alta al asistente
+                        //gestorAsistentes.darAlta(nuevoAsistente);
+                    }catch (Exception e){
+                        System.out.println("Error al dar de alta el assiste: " + e.getMessage());
+                    }
                     System.out.println("Asistente dado de alta con exito.");
                     break;
                 case "2":
-                    gestorAsistentes.listar();
-                    System.out.println("Ingrese el identificador del asistente que desea modificar: ");
-                    int identificador = scanner.nextInt();
-                    scanner.nextLine(); // Limpiar el buffer
+                    try {
+                        gestorAsistentes.listar();
+                        System.out.println("Ingrese el identificador del asistente que desea modificar: ");
+                        int identificador = scanner.nextInt();
+                        scanner.nextLine(); // Limpiar el buffer
 
-                    System.out.println("Ingrese el nuevo nombre del asistente: ");
-                    String nom = scanner.nextLine();
+                        System.out.println("Ingrese el nuevo nombre del asistente: ");
+                        String nom = scanner.nextLine();
 
-                    System.out.println("Ingrese el nuevo primer apellido del asistente: ");
-                    String apell1 = scanner.nextLine();
+                        System.out.println("Ingrese el nuevo primer apellido del asistente: ");
+                        String apell1 = scanner.nextLine();
 
-                    System.out.println("Ingrese el nuevo segundo apellido del asistente: ");
-                    String apell2 = scanner.nextLine();
+                        System.out.println("Ingrese el nuevo segundo apellido del asistente: ");
+                        String apell2 = scanner.nextLine();
 
-                    System.out.println("Ingrese la nueva fecha de nacimiento del asistente (formato: YYYY-MM-DD): ");
-                    LocalDate fechaNac = LocalDate.parse(scanner.nextLine());
+                        System.out.println("Ingrese la nueva fecha de nacimiento del asistente (formato: YYYY-MM-DD): ");
+                        LocalDate fechaNac = LocalDate.parse(scanner.nextLine());
 
-                    System.out.println("Ingrese si el asistente requiere atencion especial (true/false): ");
-                    boolean atencionEsp = Boolean.parseBoolean(scanner.nextLine());
+                        System.out.println("Ingrese si el asistente requiere atencion especial (true/false): ");
+                        boolean atencionEsp = Boolean.parseBoolean(scanner.nextLine());
 
-                    //Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
+                        //Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
 
-                    // Modificar el asistente
-                    //gestorAsistentes.ModificarAsistente(asistente);
-
+                        // Modificar el asistente
+                        //gestorAsistentes.ModificarAsistente(asistente);
+                    }catch (Exception e){
+                        System.out.println("Error al modificar el asistente: " + e.getMessage());
+                    }
                     // Volver a listar los asistentes para verificar los cambios
-                    gestorAsistentes.listar();
+                    //gestorAsistentes.listar();
 
                     break;
                 case "3":
@@ -203,7 +193,7 @@ public class Main {
                         System.out.println("El campamento se ha creado correctamente");
                     }catch (Exception e) {
                         e.printStackTrace();
-                        System.out.println("Hubo un problema creando el campamento");
+                        System.out.println("Hubo un problema creando el campamento: " + e.getMessage());
                     }
 
                     break;
@@ -226,7 +216,7 @@ public class Main {
                         gestorCampamentos.crearMonitor(nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
                         System.out.println("Monitor dado de alta con exito.");
                     }catch (Exception e){
-                        System.out.println("Se produjo un error creando el monitor");
+                        System.out.println("Se produjo un error creando el monitor: "+ e.getMessage());
                     }
                     break;
                 case "3":
@@ -266,7 +256,7 @@ public class Main {
                         scanner.nextLine();
                         //gestorCampamentos.crearActividad(nombre, nivelEducativo, horario, maxParticipantes, monitoresNecesarios);
                     }catch (Exception e){
-                        System.out.println("Se produjo un error creando la actividad");
+                        System.out.println("Se produjo un error creando la actividad: " + e.getMessage());
                     }
                     break;
                 case "4":
@@ -281,7 +271,7 @@ public class Main {
                         scanner.nextLine();
                         gestorCampamentos.asociarMonitorActividad(idMonitor, idActividad);
                     }catch (Exception e){
-                        System.out.println("Se produjo un error asociando al monitor con la actividad");
+                        System.out.println("Se produjo un error asociando al monitor con la actividad: " + e.getMessage());
                     }
                     break;
                 case "5":
@@ -296,7 +286,7 @@ public class Main {
                         scanner.nextLine();
                         gestorCampamentos.asociarMonitorCampamento(idMonitor, idCampamento);
                     }catch (Exception e){
-                        System.out.println("Se produjo un error asociando al monitor con el campamento");
+                        System.out.println("Se produjo un error asociando al monitor con el campamento: " + e.getMessage() );
                     }
                     break;
                 case "6":
@@ -311,7 +301,7 @@ public class Main {
                         scanner.nextLine();
                         gestorCampamentos.asociarMonitorEspecialCampamento(idMonitor,idCampamento);
                     }catch (Exception e){
-                        System.out.println("Se produjo un error asociando al monitor con el campamento");
+                        System.out.println("Se produjo un error asociando al monitor con el campamento" + e.getMessage() );
                     }
                     break;
                 case "7":
@@ -326,7 +316,7 @@ public class Main {
                         scanner.nextLine();
                         gestorCampamentos.asociarActividadCampamento(idCampamento,idCampamento);
                     }catch (Exception e){
-                        System.out.println("Se produjo un error asociando la actividad con el campamento");
+                        System.out.println("Se produjo un error asociando la actividad con el campamento: " + e.getMessage());
                     }
                     break;
                 case "8":
@@ -388,7 +378,7 @@ public class Main {
                         gestorInscripciones.crearInscripcion( asistente, campamento, LocalDate.parse(inscrip), horario);
                         System.out.println("Inscripcion creada con exito");
                     }catch (Exception e){
-                        System.out.println("Error al crear la inscripcion");
+                        System.out.println("Error al crear la inscripcion: " + e.getMessage());
                     }
                     break;
                 case "2":
@@ -408,7 +398,8 @@ public class Main {
                             System.out.println("Error al cancelar la inscripcion (compruebe si es temprana)");
                         }
                     }catch(Exception e){
-                        System.out.println("Error al cancelar la inscripcion");
+                        System.out.println("Error al cancelar la inscripcion: "+ e.getMessage());
+
                 }
 
                     break;
