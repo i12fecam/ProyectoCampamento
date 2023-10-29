@@ -64,4 +64,8 @@ public class GestorAsistentes implements Serializable{
     public void listar() {
 
     }
+
+    public Asistente getAsistente(int id){
+        return null;
+    }
 }

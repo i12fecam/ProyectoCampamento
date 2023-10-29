@@ -1,3 +1,0 @@
-Ins=../data/Inscripciones.txt
-Camp=../data/Campamentos.txt
-Asis=../data/Asistentes.txt

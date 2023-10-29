@@ -12,23 +12,24 @@ import com.mysql.jdbc.Driver;
  * @author Jose Raul Romero
  * */
 
-public class ConexionBD {
+public class
+ConexionBD {
 
     protected Connection connection = null;
 
     // Important: This configuration is hard-coded here for illustrative purposes only
 
-    protected String url = "jdbc:mysql://oraclepr.uco.es:3306/i12fecam";
+    //protected String url = "jdbc:mysql://oraclepr.uco.es:3306/i12fecam";
 
-    protected String user = "i12fecam";
+    //protected String user = "i12fecam";
 
-    protected String password = "campamento";
+    //protected String password = "campamento";
 
-    public Connection getConnection(){
+    public Connection getConnection(String url, String user, String password){
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            this.connection = (Connection) DriverManager.getConnection(url, user, password);
+            this.connection = DriverManager.getConnection(url, user, password);
             System.out.println("Database connection successfully opened!");
         }
         catch (SQLException e) {

@@ -10,8 +10,9 @@ public class AsistenteDAO {
 
     public void crear(Asistente asistente){
         ConexionBD conexionBD = new ConexionBD();
-        Connection con = conexionBD.getConnection();
+        //Connection con = conexionBD.getConnection();
 
 
     }
+
 }

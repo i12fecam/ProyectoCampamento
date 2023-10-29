@@ -1,5 +1,6 @@
 package Business;
 
+import Data.DTO.Campamento;
 import Data.Horario;
 import Data.NivelEducativo;
 
@@ -176,6 +177,9 @@ public class GestorCampamentos implements Serializable {
          */
     }
 
+    public Campamento getCampamento(int id){
+        return null;
+    }
 
 
 
