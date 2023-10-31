@@ -1,7 +1,7 @@
 package Business;
 
 import Data.DTO.Asistente;
-
+import Data.DAO.AsistenteDAO;
 import java.io.*;
 import java.util.ArrayList;
 /**
@@ -17,12 +17,12 @@ public class GestorAsistentes implements Serializable{
 
 
 
-
+    private AsistenteDAO asistenteDAO;
 
 
 
     public GestorAsistentes() {
-
+        this.asistenteDAO = new AsistenteDAO();
     }
 
 
@@ -42,7 +42,7 @@ public class GestorAsistentes implements Serializable{
             return false;
         }
 
-
+        asistenteDAO.crear(asistente);
         //guardarFichero();
         return true;
     }
@@ -62,7 +62,16 @@ public class GestorAsistentes implements Serializable{
      * Método que nos permite listar a los asistentes
      */
     public void listar() {
+        ArrayList<Asistente> listaAsistentes = asistenteDAO.listar();
 
+        for (Asistente asistente : listaAsistentes) {
+            System.out.println("ID: " + asistente.getIdentificador());
+            System.out.println("Nombre: " + asistente.getNombre());
+            System.out.println("Fecha de nacimiento: " + asistente.getFechaNacimiento());
+            System.out.println("Atención especial: " + (asistente.isAtencionEspecial() ? "Sí" : "No"));
+            System.out.println("Apellidos: " + asistente.getApellido1() + " " + asistente.getApellido2());
+            System.out.println("--------------------------------------");
+        }
     }
 
     public Asistente getAsistente(int id){

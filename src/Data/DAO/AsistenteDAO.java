@@ -3,6 +3,7 @@ package Data.DAO;
 import Data.DAO.Common.ConexionBD;
 import Data.DAO.Common.ProyectProperties;
 import Data.DTO.Asistente;
+import java.util.ArrayList;
 
 import java.sql.Connection;
 
@@ -18,13 +19,14 @@ public class AsistenteDAO {
 
     private Connection con;
 
-    public AsistenteDAO(){
+    public AsistenteDAO() {
         prop = new ProyectProperties();
         bd = new ConexionBD();
 
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
     }
-    public void crear(Asistente asistente){
+
+    public void crear(Asistente asistente) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_record_Asistentes"));
 
@@ -40,11 +42,34 @@ public class AsistenteDAO {
             } else {
                 System.out.println("Fallo al agregar el asistente");
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
 
     }
 
+
+    public ArrayList<Asistente> listar() {
+        ArrayList<Asistente> listaAsistentes = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_all_records_Asistentes"));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Asistente asistente = new Asistente();
+                asistente.setIdentificador(rs.getInt("id_asistente"));
+                asistente.setNombre(rs.getString("nombre"));
+                asistente.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+                asistente.setAtencionEspecial(rs.getInt("especial") == 1);
+                //REVISAR//
+                asistente.setApellido1(rs.getString("apellidos"));
+                //
+                listaAsistentes.add(asistente);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaAsistentes;
+    }
 }
