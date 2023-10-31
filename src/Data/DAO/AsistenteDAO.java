@@ -5,7 +5,6 @@ import Data.DAO.Common.ProyectProperties;
 import Data.DTO.Asistente;
 
 import java.sql.Connection;
-import java.time.LocalDate;
 
 import java.sql.*;
 
@@ -33,7 +32,7 @@ public class AsistenteDAO {
             ps.setString(2, asistente.getNombre());
             ps.setDate(3, Date.valueOf(asistente.getFechaNacimiento()));
             ps.setInt(4, asistente.isAtencionEspecial() ? 1 : 0);
-            ps.setString(5, asistente.getApellido1() + " " + asistente.getApellido2()); // ajusta para obtener el valor correcto
+            ps.setString(5, asistente.getApellido1() + " " + asistente.getApellido2());
 
             int status = ps.executeUpdate();
             if (status > 0) {
