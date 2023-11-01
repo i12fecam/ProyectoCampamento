@@ -30,7 +30,6 @@ public class AsistenteDAO {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_record_Asistentes"));
 
-           // ps.setInt(1, asistente.getIdentificador());
             ps.setString(1, asistente.getNombre());
             ps.setDate(2, Date.valueOf(asistente.getFechaNacimiento()));
             ps.setInt(3, asistente.isAtencionEspecial() ? 1 : 0);

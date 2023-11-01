@@ -81,9 +81,6 @@ public class Main {
 
                     // Recopilar la información del asistente desde el usuario
                     try {
-                        System.out.print("ID: ");
-                        int id = scanner.nextInt();
-                        scanner.nextLine(); // Limpiar el salto de línea
                         System.out.print("Nombre: ");
                         String nombre = scanner.nextLine();
                         System.out.print("Apellido 1: ");
@@ -96,7 +93,8 @@ public class Main {
                         boolean atencionEspecial = scanner.nextBoolean();
                         scanner.nextLine();
                         // Crear una instancia de Asistente con la información recopilada
-                        Asistente nuevoAsistente = new Asistente(id,nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
+                        // El Id se pone por defecto a 0 y la base de datos se encargará de dar su valor real
+                        Asistente nuevoAsistente = new Asistente(0,nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
 
                         // Dar de alta al asistente
                         gestorAsistentes.darAlta(nuevoAsistente);
