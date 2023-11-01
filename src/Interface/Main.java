@@ -7,6 +7,7 @@ import java.util.Properties;
 import java.util.Scanner;
 import Business.*;
 import Data.DAO.Common.ConexionBD;
+import Data.DAO.Common.ProyectProperties;
 import Data.DTO.Asistente;
 import Data.DTO.Campamento;
 import Data.Horario;
@@ -95,10 +96,10 @@ public class Main {
                         boolean atencionEspecial = scanner.nextBoolean();
                         scanner.nextLine();
                         // Crear una instancia de Asistente con la información recopilada
-                        //Asistente nuevoAsistente = new Asistente(id, nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
+                        Asistente nuevoAsistente = new Asistente(id,nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
 
                         // Dar de alta al asistente
-                        //gestorAsistentes.darAlta(nuevoAsistente);
+                        gestorAsistentes.darAlta(nuevoAsistente);
                     }catch (Exception e){
                         System.out.println("Error al dar de alta el assiste: " + e.getMessage());
                     }
