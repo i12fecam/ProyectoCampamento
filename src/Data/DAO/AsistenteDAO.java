@@ -48,11 +48,34 @@ public class AsistenteDAO {
 
     }
 
+    public void modificar(Asistente asistente) {
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Asistente"));
+
+            ps.setString(1, asistente.getNombre());
+            ps.setDate(2, Date.valueOf(asistente.getFechaNacimiento()));
+            ps.setInt(3, asistente.isAtencionEspecial() ? 1 : 0);
+            ps.setString(4, asistente.getApellido1() + " " + asistente.getApellido2());
+
+            int status = ps.executeUpdate();
+            if (status > 0) {
+                System.out.println("Asistente agregado con éxito");
+            } else {
+                System.out.println("Fallo al agregar el asistente");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
 
     public ArrayList<Asistente> listar() {
         ArrayList<Asistente> listaAsistentes = new ArrayList<>();
         try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_all_records_Asistentes"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_all_Asistentes"));
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
