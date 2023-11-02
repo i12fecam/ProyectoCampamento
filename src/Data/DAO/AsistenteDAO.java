@@ -28,7 +28,7 @@ public class AsistenteDAO {
 
     public void crear(Asistente asistente) {
         try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_record_Asistentes"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Asistentes"));
 
             ps.setString(1, asistente.getNombre());
             ps.setDate(2, Date.valueOf(asistente.getFechaNacimiento()));
@@ -50,18 +50,19 @@ public class AsistenteDAO {
 
     public void modificar(Asistente asistente) {
         try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Asistente"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("update_Asistente"));
 
             ps.setString(1, asistente.getNombre());
             ps.setDate(2, Date.valueOf(asistente.getFechaNacimiento()));
             ps.setInt(3, asistente.isAtencionEspecial() ? 1 : 0);
             ps.setString(4, asistente.getApellido1() + " " + asistente.getApellido2());
+            ps.setInt(5, asistente.getIdentificador());
 
             int status = ps.executeUpdate();
             if (status > 0) {
-                System.out.println("Asistente agregado con éxito");
+                System.out.println("Asistente modificado con éxito");
             } else {
-                System.out.println("Fallo al agregar el asistente");
+                System.out.println("Fallo al modificar el asistente");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -69,8 +70,6 @@ public class AsistenteDAO {
 
 
     }
-
-
 
     public ArrayList<Asistente> listar() {
         ArrayList<Asistente> listaAsistentes = new ArrayList<>();

@@ -125,10 +125,10 @@ public class Main {
                         System.out.println("Ingrese si el asistente requiere atencion especial (true/false): ");
                         boolean atencionEsp = Boolean.parseBoolean(scanner.nextLine());
 
-                        //Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
+                        Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
 
                         // Modificar el asistente
-                        //gestorAsistentes.ModificarAsistente(asistente);
+                        gestorAsistentes.ModificarAsistente(asistente);
                     }catch (Exception e){
                         System.out.println("Error al modificar el asistente: " + e.getMessage());
                     }

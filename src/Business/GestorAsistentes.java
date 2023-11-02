@@ -41,9 +41,7 @@ public class GestorAsistentes implements Serializable{
             System.out.println("El asistente es nulo.");
             return false;
         }
-
         asistenteDAO.crear(asistente);
-        //guardarFichero();
         return true;
     }
 
@@ -53,7 +51,12 @@ public class GestorAsistentes implements Serializable{
      */
     public void ModificarAsistente(Asistente asistente) {
 
-        System.out.println("No se encontró ningún asistente con ese id.");
+        if (asistente == null) {
+            System.out.println("El asistente es nulo.");
+
+        }else {
+            asistenteDAO.modificar(asistente);
+        }
     }
 
 
