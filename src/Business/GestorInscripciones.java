@@ -117,18 +117,15 @@ public class GestorInscripciones implements Serializable{
     }
 
 
-    public boolean cancelarInscripcion(int idParticipante, int idCampamento){
-        /*
-        }
-        for(Inscripcion it:inscripciones){
-            if(it.getIdCampamento()== idCampamento && it.getIdParticipante() == idParticipante && it.getTipoInscripcion() == TipoInscripcion.TEMPRANA){
-                inscripciones.remove(it);
-                return true;
-            }
-        }
-        return false;
+    public boolean cancelarInscripcion(int id_asistente,int id_campamento){
 
-         */
+        InscripcionDAO ins = new InscripcionDAO();
+        Inscripcion inscripcion = ins.getInscripcion(id_asistente,id_campamento);
+        if(inscripcion.getTipoInscripcion() == TipoInscripcion.TEMPRANA){
+            ins.cancelarInscripcion(inscripcion);
+            return true;
+        }
+
         return false;
     }
     /**
