@@ -45,7 +45,7 @@ public class InscripcionDAO {
             ps.setInt(5,1);//completar
             ps.setInt(6,1);
             int status = ps.executeUpdate();
-        }catch (SQLException e)
+        }catch (SQLException e){
             throw new RuntimeException(e);
         }
 

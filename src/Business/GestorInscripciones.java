@@ -142,11 +142,12 @@ public class GestorInscripciones implements Serializable{
                 campamentosDisponibles.add(it);
             }
         }
-
+        Inn
         return campamentosDisponibles;
 
          */
-        return null;
+        CampamentoDAO camp = new CampamentoDAO();
+        return camp.getCampamentosInscribibles();
     }
 
 }

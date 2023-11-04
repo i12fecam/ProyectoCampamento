@@ -45,6 +45,10 @@ public class Campamento implements Serializable {
         this.maxAsistentes = maxAsistentes;
         this.numAsistentes = 0;
     }
+
+    public Campamento() {
+
+    }
     /*Getters and setters*/
 
     /**
