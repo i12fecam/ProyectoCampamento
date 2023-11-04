@@ -1,13 +1,9 @@
 package Interface;
 
-import java.io.*;
-import java.sql.Connection;
+
 import java.time.LocalDate;
-import java.util.Properties;
 import java.util.Scanner;
 import Business.*;
-import Data.DAO.Common.ConexionBD;
-import Data.DAO.Common.ProyectProperties;
 import Data.DTO.Asistente;
 import Data.DTO.Campamento;
 import Data.Horario;
@@ -155,8 +151,8 @@ public class Main {
             System.out.println("2. Crear monitores");
             System.out.println("3. Crear actividades");
             System.out.println("4. Asociar monitores a actividades");
-            System.out.println("5. Asociar monitores a un campamento");
-            System.out.println("6. Asociar monitores de atencion especial a un campamento");
+            System.out.println("5. Asociar monitor responsable a un campamento");
+            System.out.println("6. Asociar monitor de atención especial a un campamento");
             System.out.println("7. Asociar actividad a campamento");
             System.out.println("8. Ver campamentos");
             System.out.println("9. Ver monitores");
@@ -274,7 +270,7 @@ public class Main {
                     }
                     break;
                 case "5":
-                    // Lógica para asociar monitores a un campamento
+                    // Lógica para asociar monitor responsable a un campamento
                     try {
                         System.out.println("Elija unos de los monitores por su id:");
                         gestorCampamentos.toStringMonitores();
@@ -283,7 +279,7 @@ public class Main {
                         gestorCampamentos.toStringCampamentos();
                         int idCampamento = scanner.nextInt();
                         scanner.nextLine();
-                        gestorCampamentos.asociarMonitorCampamento(idMonitor, idCampamento);
+                        gestorCampamentos.asociarMonitorResponsableCampamento(idMonitor, idCampamento);
                     }catch (Exception e){
                         System.out.println("Se produjo un error asociando al monitor con el campamento: " + e.getMessage() );
                     }

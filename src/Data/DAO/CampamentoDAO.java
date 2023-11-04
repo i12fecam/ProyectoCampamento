@@ -96,7 +96,7 @@ public class CampamentoDAO {
     }
 
 
-    public void asociarMonitorActividad(int idMonitor, int idActividad) {
+    public void asociarMonitorResponsableActividad(int idMonitor, int idActividad) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor_actividad"));
             ps.setInt(1, idMonitor);

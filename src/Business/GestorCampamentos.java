@@ -112,7 +112,7 @@ public class GestorCampamentos implements Serializable {
      * @param idMonitor
      * @param idCampamento
      */
-    public void asociarMonitorCampamento(int idMonitor, int idCampamento){
+    public void asociarMonitorResponsableCampamento(int idMonitor, int idCampamento){
         /*
         Monitor monitor = monitores.get(idMonitor);
         Campamento campamento = campamentos.get(idCampamento);

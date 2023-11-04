@@ -29,16 +29,7 @@ public class GestorInscripciones implements Serializable{
 
 
     public GestorInscripciones(){
-
-
     }
-
-
-
-
-
-
-
 
     /**
      * @param asistente
@@ -52,7 +43,6 @@ public class GestorInscripciones implements Serializable{
         CampamentoDAO camp = new CampamentoDAO();
 
         float precio;
-        boolean tardia;
         //comprobar si el asistente ya esta inscrito en el campamento
         /*
         if(ins.esFechaInscripcionInvalida()){
@@ -60,6 +50,10 @@ public class GestorInscripciones implements Serializable{
             throw new RuntimeException("Fecha Inscripcion invalida");
         }
         */
+
+        //comprobar si el campamento sigue teniendo espacio
+        //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
         //mirar si es tardia
         TipoInscripcion tipoInscripcion;
@@ -133,19 +127,7 @@ public class GestorInscripciones implements Serializable{
      * @return lista de campamentos disponibles
      */
     public ArrayList<Campamento> consultarCampamentosDisponibles() {
-        /*
-        ArrayList<Campamento> campamentosDisponibles = new ArrayList<>();
-        LocalDate fechaActual = LocalDate.now(); // Obtén la fecha actual
-        for (Campamento it : gestor.getCampamentos()) {
-            if (fechaActual.isBefore(it.getFechaInicio()) && // Campamento no ha comenzado
-                    it.getNumAsistentes() < it.getMaxAsistentes()) { // Plazas disponibles
-                campamentosDisponibles.add(it);
-            }
-        }
-        Inn
-        return campamentosDisponibles;
 
-         */
         CampamentoDAO camp = new CampamentoDAO();
         return camp.getCampamentosInscribibles();
     }

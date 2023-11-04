@@ -71,8 +71,13 @@ public class InscripcionDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        //TODO : Cambiar para que devuelva bool--------------
     }
 
+    /**
+     *
+     * @param inscripcion
+     */
     public void cancelarInscripcion(Inscripcion inscripcion){
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("cancelar_incripcion"));
@@ -82,9 +87,15 @@ public class InscripcionDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+    //TODO : Cambiar para que devuelva bool--------------
     }
 
+    /***
+     *
+     * @param id_asistente
+     * @param id_campamento
+     * @return Inscripcion descrita por id asistente e id campamento
+     */
     public Inscripcion getInscripcion(int id_asistente,int id_campamento){
         try{
             PreparedStatement ps = con.prepareStatement(prop.getSentente("get_incripcion"));
@@ -118,7 +129,5 @@ public class InscripcionDAO {
         }
     }
 
-    Vector<Campamento> InscripcionesDisponibles(){
-        return null;
-    }
+
 }
