@@ -38,12 +38,87 @@ public class CampamentoDAO {
                 ps.setString(3,3);
             }
 
-
+            ps.setInt(4, campamento.asociarMonitor(Monitor monitor));
+            ps.setInt(5, campamento.asociarMonitorEspecial(Monitor monitorespecial));
+            int status = ps.executeUpdate();
 
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+
+    public void crearActividad(Actividad actividad){
+        try {
+            PreparedStatement ps= con.preparedStatement(prop.getSentente("insert_actividad"));
+            ps.setString(1, actividad.getNombre());
+
+            if(actividad.getNivelEducativo()==NivelEducativo.INFANTIL){
+                ps.setInt(2,1);
+            }
+            else if(actividad.getNivelEducativo()==NivelEducativo.JUVENIL){
+                ps.setInt(2,2);
+            }
+            else{
+                ps.setInt(2,3);
+            }
+
+            if(actividad.getHorario()==Horario.PARCIAL){
+                ps.setInt(3,1);
+            }
+            else{
+                ps.setInt(3,2);
+            }
+
+            ps.setInt(4,actividad.getMaxParticipantes());
+            ps.setInt(5,actividad.getMonitoresNecesarios());
+            ps.setInt(6,actividad.getIdentificador());
+            int status = ps.executeUpdate();
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void crearMonitor(Monitor monitor){
+
+        try{
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor"));
+            ps.setString(1, monitor.getNombre());
+            ps.setString(2, monitor.getApellido1() + " " + monitor.getApellido2());
+            ps.setDate(3, Date.valueOf(monitor.getFechaNacimiento()));
+            ps.setInt(4, monitor.isAtencionEspecial() ? 1 : 0);
+            int status = ps.executeUpdate();
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+    }
+
+
+        public void asociarMonitorActividad(int idMonitor, int idActividad) {
+            try {
+                PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor_actividad"));
+                ps.setInt(1, idMonitor);
+                ps.setInt(2, idActividad);
+                int status = ps.executeUpdate();
+
+                if (status > 0) {
+                    System.out.println("Monitor asociado a la actividad con éxito");
+                } else {
+                    System.out.println("Fallo al asociar el monitor a la actividad");
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+
+
+
+
+
+
     /**
      *
      * @param campamento campamento del cual se mira las actividades
