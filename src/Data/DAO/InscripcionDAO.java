@@ -2,13 +2,11 @@ package Data.DAO;
 
 import Data.DAO.Common.ConexionBD;
 import Data.DAO.Common.ProyectProperties;
-import Data.DTO.Campamento;
 import Data.DTO.Inscripcion;
 import Data.Horario;
 import Data.TipoInscripcion;
 
 import java.sql.*;
-import java.util.Vector;
 
 public class InscripcionDAO {
 
@@ -23,6 +21,11 @@ public class InscripcionDAO {
         bd = new ConexionBD();
 
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
+    }
+
+    @Override
+    protected void finalize(){
+        bd.closeConnection();
     }
     public void nuevaInscripcion(Inscripcion inscripcion) {
 
@@ -87,7 +90,6 @@ public class InscripcionDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    //TODO : Cambiar para que devuelva bool--------------
     }
 
     /***

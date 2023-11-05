@@ -2,6 +2,7 @@ package Interface;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 import Business.*;
 import Data.DTO.Asistente;
@@ -399,13 +400,11 @@ public class Main {
 
                     break;
                 case "3":
-                    // esto hay que encapsurlalo en una funcion
-                    /*
-                    ArrayList<Campamento> disponibles = gestorInscripciones.consultarCampamentosDisponibles(gestorCampamentos);
+
+                    ArrayList<Campamento> disponibles = gestorInscripciones.consultarCampamentosDisponibles();
                     for(Campamento campamento : disponibles){
                         System.out.println(campamento.toString());
                     }
-                    */
                     break;
                 case "0":
                     return;

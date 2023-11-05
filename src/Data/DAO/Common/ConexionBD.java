@@ -17,13 +17,6 @@ ConexionBD {
 
     protected Connection connection = null;
 
-    // Important: This configuration is hard-coded here for illustrative purposes only
-
-    //protected String url = "jdbc:mysql://oraclepr.uco.es:3306/i12fecam";
-
-    //protected String user = "i12fecam";
-
-    //protected String password = "campamento";
 
     public Connection getConnection(String url, String user, String password){
 
