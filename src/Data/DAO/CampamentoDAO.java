@@ -24,23 +24,23 @@ public class CampamentoDAO {
 
     public void crearCampamento (Campamento campamento){
         try{
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_campamento"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Campamentos"));
             ps.setDate(1,Date.valueOf(campamento.getFechaInicio()));
             ps.setDate(2, Date.valueOf(campamento.getFechaFinal()));
 
             if(campamento.getNivelEducativo()== NivelEducativo.INFANTIL){
-                ps.setString(3,1);
+                ps.setString(3,"infantil");
             }
             else if(campamento.getNivelEducativo()==NivelEducativo.JUVENIL){
-                ps.setString(3,2);
+                ps.setString(3,"juvenil");
             }
             else{
-                ps.setString(3,3);
+                ps.setString(3,"adolescente");
             }
 
-            ps.setInt(4, campamento.asociarMonitor(Monitor monitor));//no se hace asi, creo que mejor dejar vacio esto al crear camapamento
-            ps.setInt(5, campamento.asociarMonitorEspecial(Monitor monitorespecial));
-            int status = ps.executeUpdate();
+            ps.setInt(4,campamento.getMaxAsistentes());
+
+            ps.executeUpdate();
 
         }catch (SQLException e) {
             throw new RuntimeException(e);
@@ -50,30 +50,30 @@ public class CampamentoDAO {
 
     public void crearActividad(Actividad actividad){
         try {
-            PreparedStatement ps= con.prepareStatement(prop.getSentente("insert_actividad"));
+            PreparedStatement ps= con.prepareStatement(prop.getSentente("insert_Actividades"));
             ps.setString(1, actividad.getNombre());
 
             if(actividad.getNivelEducativo()==NivelEducativo.INFANTIL){
-                ps.setInt(2,1);
+                ps.setString(2,"infatil");
             }
             else if(actividad.getNivelEducativo()==NivelEducativo.JUVENIL){
-                ps.setInt(2,2);
+                ps.setString(2,"juvenil");
             }
             else{
-                ps.setInt(2,3);
+                ps.setString(2,"adolescente");
             }
 
             if(actividad.getHorario()==Horario.PARCIAL){
-                ps.setInt(3,1);
+                ps.setString(3,"parcial");
             }
             else{
-                ps.setInt(3,2);
+                ps.setString(3,"completa");
             }
 
             ps.setInt(4,actividad.getMaxParticipantes());
             ps.setInt(5,actividad.getMonitoresNecesarios());
             ps.setInt(6,actividad.getIdentificador());
-            int status = ps.executeUpdate();
+            ps.executeUpdate();
 
         }catch (SQLException e) {
             throw new RuntimeException(e);
@@ -83,12 +83,12 @@ public class CampamentoDAO {
     public void crearMonitor(Monitor monitor){
 
         try{
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Monitores"));
             ps.setString(1, monitor.getNombre());
             ps.setString(2, monitor.getApellido1() + " " + monitor.getApellido2());
             ps.setDate(3, Date.valueOf(monitor.getFechaNacimiento()));
             ps.setInt(4, monitor.isEducadorEspecial() ? 1 : 0);
-            int status = ps.executeUpdate();
+            ps.executeUpdate();
 
         }catch (SQLException e){
             throw new RuntimeException(e);
