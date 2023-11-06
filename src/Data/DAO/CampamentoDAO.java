@@ -98,27 +98,52 @@ public class CampamentoDAO {
 
     public void asociarMonitorResponsableActividad(int idMonitor, int idActividad) {
         try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor_actividad"));
-            ps.setInt(1, idMonitor);
-            ps.setInt(2, idActividad);
-            int status = ps.executeUpdate();
-
-            if (status > 0) {
-                System.out.println("Monitor asociado a la actividad con éxito");
-            } else {
-                System.out.println("Fallo al asociar el monitor a la actividad");
+            int maxMonitores = ObtenerMonitoresMax(idActividad);
+            int monitores = contarMonitores(idActividad);
+            if(monitores < maxMonitores) {
+                PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor-actividad"));
+                ps.setInt(1, idMonitor);
+                ps.setInt(2, idActividad);
+                int status = ps.executeUpdate();
+                if (status > 0) {
+                    System.out.println("Monitor asociado a la actividad con éxito");
+                } else {
+                    System.out.println("Fallo al asociar el monitor a la actividad");
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    private int ObtenerMonitoresMax(int idActividad) {
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("max_monitores"));
+            ps.setInt(1, idActividad);
+            ResultSet res = ps.executeQuery();
+            if(res.next()){
+                return res.getInt("max_monitores");
+            }
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
 
-
-
-
-
+    private int contarMonitores(int idActividad){
+        try{
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("contar_monitores"));
+            ps.setInt(1,idActividad);
+            ResultSet res = ps.executeQuery();
+            if(res.next()){
+                return res.getInt(1);
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
 
     /**
      *
