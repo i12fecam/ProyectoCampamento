@@ -1,5 +1,7 @@
 package Business;
 
+import Data.DAO.CampamentoDAO;
+import Data.DTO.Actividad;
 import Data.DTO.Campamento;
 import Data.Horario;
 import Data.NivelEducativo;
@@ -105,6 +107,9 @@ public class GestorCampamentos implements Serializable {
         Campamento campamento = campamentos.get(idCampamento);
         campamento.asociarActividad(actividad);
         */
+        CampamentoDAO camp=new CampamentoDAO();
+        Actividad act=camp.devolverActividad(idActividad);
+
     }
 
     /**
