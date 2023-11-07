@@ -73,6 +73,13 @@ public class Actividad implements Serializable {
     }
 
     /**
+     * @param identificador
+     */
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
+
+    /**
      * @return Nivel educativo de la actividad
      */
     public NivelEducativo getNivelEducativo() {

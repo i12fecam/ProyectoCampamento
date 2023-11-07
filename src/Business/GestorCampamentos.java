@@ -109,6 +109,10 @@ public class GestorCampamentos implements Serializable {
         */
         CampamentoDAO camp=new CampamentoDAO();
         Actividad act=camp.devolverActividad(idActividad);
+        Campamento campament=camp.devolverCampamento(idCampamento);
+        if(act.getNivelEducativo()==campament.getNivelEducativo()){
+            camp.asociar_actividad(idActividad,idCampamento);
+        }
 
     }
 

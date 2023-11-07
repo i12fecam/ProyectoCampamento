@@ -212,7 +212,37 @@ public class CampamentoDAO {
             }
             act.setNombre(rs.getString("nombre"));
             act.setMonitoresNecesarios(rs.getInt("monitores_necesarios"));
+            act.setMaxParticipantes(rs.getInt("max_participantes"));
+            act.setIdentificador(rs.getInt("id_actividad"));
             return act;
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Campamento devolverCampamento(int idCampamento){
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_campamento_id"));
+            ps.setInt(1,idCampamento);
+            ResultSet rs = ps.executeQuery();
+            Campamento camp=new Campamento();
+            String n = rs.getString("nivel_educativo");
+            if( n.equals("infantil")){
+                camp.setNivelEducativo(NivelEducativo.INFANTIL);
+            }
+            else{
+                if(n.equals("juvenil")){
+                    camp.setNivelEducativo(NivelEducativo.JUVENIL);
+                }
+                else if(n.equals("adolescente")){
+                    camp.setNivelEducativo(NivelEducativo.ADOLESCENTE);
+                }
+            }
+            camp.setMaxAsistentes(rs.getInt("max_asistentes"));
+            camp.setIdCampamento(rs.getInt("id_campamento"));
+            camp.setFechaFinal(rs.getDate("fecha_final").toLocalDate());
+            camp.setFechaInicio(rs.getDate("fecha_inicio").toLocalDate());
+            return camp;
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
