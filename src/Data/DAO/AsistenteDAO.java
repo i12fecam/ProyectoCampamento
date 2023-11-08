@@ -33,11 +33,11 @@ public class AsistenteDAO {
             ps.setString(1, asistente.getNombre());
             ps.setDate(2, Date.valueOf(asistente.getFechaNacimiento()));
             ps.setInt(3, asistente.isAtencionEspecial() ? 1 : 0);
-            ps.setString(4, asistente.getApellido1() + " " + asistente.getApellido2());
+            ps.setString(4, asistente.getApellidos());
 
             int status = ps.executeUpdate();
             if (status > 0) {
-                System.out.println("Asistente agregado con éxito");
+                System.out.println("Asistente agregado con exito");
             } else {
                 System.out.println("Fallo al agregar el asistente");
             }
@@ -55,7 +55,7 @@ public class AsistenteDAO {
             ps.setString(1, asistente.getNombre());
             ps.setDate(2, Date.valueOf(asistente.getFechaNacimiento()));
             ps.setInt(3, asistente.isAtencionEspecial() ? 1 : 0);
-            ps.setString(4, asistente.getApellido1() + " " + asistente.getApellido2());
+            ps.setString(4, asistente.getApellidos());
             ps.setInt(5, asistente.getIdentificador());
 
             int status = ps.executeUpdate();
@@ -84,7 +84,7 @@ public class AsistenteDAO {
                 asistente.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 asistente.setAtencionEspecial(rs.getInt("especial") == 1);
                 //REVISAR//
-                asistente.setApellido1(rs.getString("apellidos"));
+                asistente.setApellidos(rs.getString("apellidos"));
                 //
                 listaAsistentes.add(asistente);
             }

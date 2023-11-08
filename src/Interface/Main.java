@@ -80,10 +80,8 @@ public class Main {
                     try {
                         System.out.print("Nombre: ");
                         String nombre = scanner.nextLine();
-                        System.out.print("Apellido 1: ");
-                        String apellido1 = scanner.nextLine();
-                        System.out.print("Apellido 2: ");
-                        String apellido2 = scanner.nextLine();
+                        System.out.print("Apellidos: ");
+                        String apellidos = scanner.nextLine();
                         System.out.print("Fecha de Nacimiento (YYYY-MM-DD): ");
                         String fechaNacimientoStr = scanner.nextLine();
                         System.out.print("Atencion Especial (true/false): ");
@@ -91,12 +89,12 @@ public class Main {
                         scanner.nextLine();
                         // Crear una instancia de Asistente con la información recopilada
                         // El Id se pone por defecto a 0 y la base de datos se encargará de dar su valor real
-                        Asistente nuevoAsistente = new Asistente(0,nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
+                        Asistente nuevoAsistente = new Asistente(0,nombre, apellidos, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
 
                         // Dar de alta al asistente
                         gestorAsistentes.darAlta(nuevoAsistente);
                     }catch (Exception e){
-                        System.out.println("Error al dar de alta el assiste: " + e.getMessage());
+                        System.out.println("Error al dar de alta el asistente: " + e.getMessage());
                     }
                     System.out.println("Asistente dado de alta con exito.");
                     break;
@@ -110,11 +108,8 @@ public class Main {
                         System.out.println("Ingrese el nuevo nombre del asistente: ");
                         String nom = scanner.nextLine();
 
-                        System.out.println("Ingrese el nuevo primer apellido del asistente: ");
-                        String apell1 = scanner.nextLine();
-
-                        System.out.println("Ingrese el nuevo segundo apellido del asistente: ");
-                        String apell2 = scanner.nextLine();
+                        System.out.println("Ingrese los apellidos del asistente: ");
+                        String apellidos = scanner.nextLine();
 
                         System.out.println("Ingrese la nueva fecha de nacimiento del asistente (formato: YYYY-MM-DD): ");
                         LocalDate fechaNac = LocalDate.parse(scanner.nextLine());
@@ -122,7 +117,7 @@ public class Main {
                         System.out.println("Ingrese si el asistente requiere atencion especial (true/false): ");
                         boolean atencionEsp = Boolean.parseBoolean(scanner.nextLine());
 
-                        Asistente asistente = new Asistente(identificador, nom, apell1, apell2, fechaNac, atencionEsp);
+                        Asistente asistente = new Asistente(identificador, nom, apellidos, fechaNac, atencionEsp);
 
                         // Modificar el asistente
                         gestorAsistentes.ModificarAsistente(asistente);
@@ -130,7 +125,7 @@ public class Main {
                         System.out.println("Error al modificar el asistente: " + e.getMessage());
                     }
                     // Volver a listar los asistentes para verificar los cambios
-                    //gestorAsistentes.listar();
+                    gestorAsistentes.listar();
 
                     break;
                 case "3":
@@ -185,7 +180,7 @@ public class Main {
                         System.out.print("Numero maximo de Asistentes:");
                         int maxAsistentes = scanner.nextInt();
                         scanner.nextLine();
-                        //gestorCampamentos.crearCampamento(LocalDate.parse(fechaIncioStr), LocalDate.parse(fechaFinalStr), nivelEducativo, maxAsistentes);
+                        gestorCampamentos.crearCampamento(LocalDate.parse(fechaIncioStr), LocalDate.parse(fechaFinalStr), nivelEducativo, maxAsistentes);
                         System.out.println("El campamento se ha creado correctamente");
                     }catch (Exception e) {
                         e.printStackTrace();

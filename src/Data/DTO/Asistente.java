@@ -27,13 +27,12 @@ public class Asistente extends Persona implements Serializable {
      *  Parametrized constructor
      * @param identificador El identificador del asistente
      * @param nombre El nombre del asistente
-     * @param apellido1 El primero apellido del asistente
-     * @param apellido2 El segundo apellido del asistente
+     * @param apellidos Apellidos del asistente
      * @param atencionEspecial Indica si el asistente requiere atencion especial
      * @param fechaNacimiento La fecha de nacimiento del asistente
      */
-    public Asistente(int identificador, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean atencionEspecial) {
-        super(identificador, nombre, apellido1, apellido2, fechaNacimiento);
+    public Asistente(int identificador, String nombre, String apellidos, LocalDate fechaNacimiento, boolean atencionEspecial) {
+        super(identificador, nombre, apellidos, fechaNacimiento);
         this.atencionEspecial = atencionEspecial;
     }
 
@@ -67,8 +66,7 @@ public class Asistente extends Persona implements Serializable {
         return "Asistente{" +
                 "identificador=" + getIdentificador() +
                 ", nombre='" + getNombre() + '\'' +
-                ", apellido1='" + getApellido1() + '\'' +
-                ", apellido2='" + getApellido2() + '\'' +
+                ", apellidos='" + getApellidos() + '\'' +
                 ", Fecha de Nacimiento:'" + getFechaNacimiento() + '\'' +
                 ", especial=" + isAtencionEspecial() +
                 '}';
