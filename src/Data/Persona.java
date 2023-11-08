@@ -15,8 +15,7 @@ public class Persona implements Serializable {
     /*Attributes*/
     protected int identificador;
     protected String nombre;
-    protected String apellido1;
-    protected String apellido2;
+    protected String apellidos;
 
     protected LocalDate fechaNacimiento;
 
@@ -32,14 +31,13 @@ public class Persona implements Serializable {
      * Parameterized constructor
      * @param identificador
      * @param nombre
-     * @param apellido1
-     * @param apellido2
+     * @param apellidos
+     * @param fechaNacimiento
      */
-    public Persona(int identificador, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento) {
+    public Persona(int identificador, String nombre, String apellidos, LocalDate fechaNacimiento) {
         this.identificador = identificador;
         this.nombre = nombre;
-        this.apellido1 = apellido1;
-        this.apellido2 = apellido2;
+        this.apellidos=apellidos;
         this.fechaNacimiento = fechaNacimiento;
     }
     /* Getters and setters*/
@@ -86,38 +84,25 @@ public class Persona implements Serializable {
     }
 
     /**
-     * @return apellido1
+     * @return apellidos
      */
-    public String getApellido1() {
-        return apellido1;
+    public String getApellidos() {
+        return apellidos;
     }
 
     /**
-     * @param apellido1
+     * @param apellidos
      */
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
-    /**
-     * @return apellido2
-     */
-    public String getApellido2() {
-        return apellido2;
-    }
 
     /**
-     * @param apellido2
-     */
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
-    }
-
-    /**
-     * @return nombre + apellido1 + apellido2
+     * @return nombre + apellidos
      */
     public String getNombreCompleto() {
-        return nombre + apellido1 + apellido2;
+        return nombre + apellidos;
     }
 
     /**
@@ -130,8 +115,7 @@ public class Persona implements Serializable {
         return "Persona{" +
                 "identificador=" + identificador +
                 ", nombre='" + nombre + '\'' +
-                ", apellido1='" + apellido1 + '\'' +
-                ", apellido2='" + apellido2 + '\'' +
+                ", apellidos='" + apellidos + '\''+
                 ", fechaNacimiento=" + fechaNacimiento +
                 '}';
     }

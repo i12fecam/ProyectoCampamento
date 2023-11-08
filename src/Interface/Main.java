@@ -198,10 +198,8 @@ public class Main {
                     try {
                         System.out.print("Nombre: ");
                         String nombre = scanner.nextLine();
-                        System.out.print("Apellido 1: ");
-                        String apellido1 = scanner.nextLine();
-                        System.out.print("Apellido 2: ");
-                        String apellido2 = scanner.nextLine();
+                        System.out.print("Apellidos: ");
+                        String apellidos = scanner.nextLine();
                         System.out.print("Fecha de Nacimiento (YYYY-MM-DD): ");
                         String fechaNacimientoStr = scanner.nextLine();
                         System.out.print("Atencion Especial (true/false): ");
@@ -209,7 +207,7 @@ public class Main {
                         scanner.nextLine();
 
                         // Dar de alta al asistente
-                        gestorCampamentos.crearMonitor(nombre, apellido1, apellido2, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
+                        gestorCampamentos.crearMonitor(nombre, apellidos, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
                         System.out.println("Monitor dado de alta con exito.");
                     }catch (Exception e){
                         System.out.println("Se produjo un error creando el monitor: "+ e.getMessage());

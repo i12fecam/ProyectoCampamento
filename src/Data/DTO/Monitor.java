@@ -24,13 +24,12 @@ public class Monitor extends Persona implements Serializable {
     /**Constructor con todos sus parametros obligatorios
      * @param identificador El identificador del monitor.
      * @param nombre El nombre del monitor.
-     * @param apellido1 El primer apellido del monitor.
-     * @param apellido2 El segundo apellido del monitor.
+     * @param apellidos
      * @param educadorEspecial Indica si el monitor es educador especial.
      * @param fechaNacimiento La fecha de nacimiento del monitor.
     */
-    public Monitor(int identificador, String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean educadorEspecial) {
-        super(identificador, nombre, apellido1, apellido2, fechaNacimiento);
+    public Monitor(int identificador, String nombre, String apellidos, LocalDate fechaNacimiento, boolean educadorEspecial) {
+        super(identificador, nombre, apellidos, fechaNacimiento);
         this.educadorEspecial = educadorEspecial;
     }
 
@@ -59,8 +58,7 @@ public class Monitor extends Persona implements Serializable {
         return "Monitor{" +
                 "identificador=" + getIdentificador() +
                 ", nombre='" + getNombre() + '\'' +
-                ", apellido1='" + getApellido1() + '\'' +
-                ", apellido2='" + getApellido2() + '\'' +
+                ", apellido1='" + getApellidos() + '\'' +
                 ", especial=" + isEducadorEspecial() +
                 '}';
     }

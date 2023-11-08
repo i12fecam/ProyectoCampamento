@@ -51,12 +51,11 @@ public class GestorCampamentos implements Serializable {
     /**
      * Metodo que crea un monitor
      * @param nombre
-     * @param apellido1
-     * @param apellido2
+     * @param apellidos
      * @param fechaNacimiento
      * @param educadorEspecial
      */
-    public void crearMonitor( String nombre, String apellido1, String apellido2, LocalDate fechaNacimiento, boolean educadorEspecial){
+    public void crearMonitor( String nombre, String apellidos, LocalDate fechaNacimiento, boolean educadorEspecial){
         /*
         int identificador = monitores.size();
 
@@ -166,21 +165,8 @@ public class GestorCampamentos implements Serializable {
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Campamento.
      */
     public void toStringCampamentos(){
-        /*
-        for(Campamento it:campamentos){
-            System.out.println(it.toString());;
-        }
-
-         */
-    }
-    /**
-     * Imprime en la consola una representación en cadena de los objetos Monitor almacenados en la lista "monitores".
-     * Este método itera a través de la lista de objetos Monitor almacenados en el atributo "monitores" e imprime
-     * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Monitor.
-     */
-    public void listarCampamentos(){
         CampamentoDAO camp = new CampamentoDAO();
-       ArrayList<Campamento> listaCampamentos = camp.listar();
+        ArrayList<Campamento> listaCampamentos = camp.listar();
         for (Campamento campamento : listaCampamentos) {
             System.out.println("ID: " + campamento.getIdCampamento());
             System.out.println("Fecha-inicio: " + campamento.getFechaInicio());
@@ -189,6 +175,22 @@ public class GestorCampamentos implements Serializable {
             System.out.println("Maximo de asistentes " + campamento.getMaxAsistentes());
             System.out.println("--------------------------------------");
         }
+    }
+    /**
+     * Imprime en la consola una representación en cadena de los objetos Monitor almacenados en la lista "monitores".
+     * Este método itera a través de la lista de objetos Monitor almacenados en el atributo "monitores" e imprime
+     * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Monitor.
+     */
+    public void toStringMonitores(){
+        CampamentoDAO camp=new CampamentoDAO();
+        ArrayList<Monitor> listaMonitores=camp.listarMonitores();
+      for(Monitor monitor : listaMonitores){
+          System.out.println("ID: " + monitor.getIdentificador());
+          System.out.println("Nombre: " + monitor.getNombre());
+          System.out.println("Apellidos: "+ monitor.getApellidos());
+          System.out.println("Especial: " + monitor.isEducadorEspecial());
+          System.out.println("Fecha nacimiento: " + monitor.getFechaNacimiento());
+    }
     }
     /**
      * Imprime en la consola una representación en cadena de los objetos Actividad almacenados en la lista "actividades".

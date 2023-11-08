@@ -81,7 +81,7 @@ public class CampamentoDAO {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Monitores"));
             ps.setString(1, monitor.getNombre());
-            ps.setString(2, monitor.getApellido1() + " " + monitor.getApellido2());
+            ps.setString(2, monitor.getApellidos());
             ps.setDate(3, Date.valueOf(monitor.getFechaNacimiento()));
             ps.setInt(4, monitor.isEducadorEspecial() ? 1 : 0);
             ps.executeUpdate();
@@ -122,7 +122,7 @@ public class CampamentoDAO {
     public void monitorResponsable(int idMonitor,int idCampamento){
         try{
             PreparedStatement ps = con. prepareStatement(prop.getSentente("update_monitorResponsable"));
-            ps.setInt(5,idMonitor);
+            ps.setInt(1,idMonitor);
             int status = ps.executeUpdate();
             if (status > 0){
                 System.out.println("Monitor responsable al campamento asociado con exito");
@@ -138,7 +138,7 @@ public class CampamentoDAO {
     public void monitorEspecial (int idMonitor, int idCampamento){
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("update_monitorEspecial"));
-            ps.setInt(6,idMonitor);
+            ps.setInt(1,idMonitor);
             int status = ps.executeUpdate();
             if ( status > 0){
                 System.out.println("Monitor especial del campamento asociado con exito");
@@ -255,7 +255,7 @@ public class CampamentoDAO {
             mon.setIdentificador(rs.getInt("id_monitor"));
             mon.setEducadorEspecial(rs.getBoolean("especial"));
             mon.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
-            mon.setApellido1(rs.getString("apellidos"));//Cambiar
+            mon.setApellidos(rs.getString("apellidos"));//Cambiar
 
             return mon;
         }catch (SQLException e) {
@@ -330,6 +330,24 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
         return listaActividades;
+    }
+    public ArrayList<Monitor> listarMonitores(){
+        ArrayList<Monitor> listaMonitores = new ArrayList<>();
+        try{
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_all_Monitores"));
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Monitor monitor =  new Monitor();
+                monitor.setNombre(rs.getString("nombre"));
+                monitor.setApellidos(rs.getString("apellidos"));
+                monitor.setIdentificador(rs.getInt("id_monitor"));
+                monitor.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+                monitor.setEducadorEspecial(rs.getBoolean("especial"));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return listaMonitores;
     }
 }
 
