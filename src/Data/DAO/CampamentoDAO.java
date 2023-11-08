@@ -247,4 +247,21 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
     }
+    public Monitor devolverMonitor(int idMonitor){
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_campamento_id"));
+            ps.setInt(1,idMonitor);
+            ResultSet rs = ps.executeQuery();
+            Monitor mon=new Monitor();
+            mon.setNombre(rs.getString("nombre"));
+            mon.setIdentificador(rs.getInt("id_monitor"));
+            mon.setEducadorEspecial(rs.getBoolean("especial"));
+            mon.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+            mon.setApellido1(rs.getString("apellidos"));//Cambiar
+
+            return mon;
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
