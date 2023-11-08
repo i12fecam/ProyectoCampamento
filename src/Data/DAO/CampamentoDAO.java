@@ -94,51 +94,18 @@ public class CampamentoDAO {
 
     public void asociarMonitorResponsableActividad(int idMonitor, int idActividad) {
         try {
-            int maxMonitores = ObtenerMonitoresMax(idActividad);
-            int monitores = contarMonitores(idActividad);
-            if (monitores < maxMonitores) {
-                PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor-actividad"));
-                ps.setInt(1, idMonitor);
-                ps.setInt(2, idActividad);
-                int status = ps.executeUpdate();
-                if (status > 0) {
-                    System.out.println("Monitor asociado a la actividad con éxito");
-                } else {
-                    System.out.println("Fallo al asociar el monitor a la actividad");
-                }
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor-actividad"));
+            ps.setInt(1, idMonitor);
+            ps.setInt(2, idActividad);
+            int status = ps.executeUpdate();
+            if (status > 0) {
+                System.out.println("Monitor asociado a la actividad con exito");
+            } else {
+                System.out.println("Fallo al asociar el monitor a la actividad");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private int ObtenerMonitoresMax(int idActividad) {
-        try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("max_monitores"));
-            ps.setInt(1, idActividad);
-            ResultSet res = ps.executeQuery();
-            if (res.next()) {
-                return res.getInt("max_monitores");
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return 0;
-    }
-
-    private int contarMonitores(int idActividad) {
-        try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("contar_monitores"));
-            ps.setInt(1, idActividad);
-            ResultSet res = ps.executeQuery();
-            if (res.next()) {
-                return res.getInt(1);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return 0;
     }
 
     public void asociar_actividad(int id_actividad, int id_campamento) {
@@ -146,8 +113,39 @@ public class CampamentoDAO {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_actividad_campamento"));
             ps.setInt(1, id_campamento);
             ps.setInt(2, id_actividad);
-            int status = ps.executeUpdate();
+             ps.executeUpdate();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void monitorResponsable(int idMonitor,int idCampamento){
+        try{
+            PreparedStatement ps = con. prepareStatement(prop.getSentente("update_monitorResponsable"));
+            ps.setInt(5,idMonitor);
+            int status = ps.executeUpdate();
+            if (status > 0){
+                System.out.println("Monitor responsable al campamento asociado con exito");
+            }else{
+                System.out.println("Fallo al asociar el monitor responsable del campamento");
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void monitorEspecial (int idMonitor, int idCampamento){
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("update_monitorEspecial"));
+            ps.setInt(6,idMonitor);
+            int status = ps.executeUpdate();
+            if ( status > 0){
+                System.out.println("Monitor especial del campamento asociado con exito");
+            }else{
+                System.out.println("Fallo al asociar el monitor especial del campamento");
+            }
+        }catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
@@ -264,4 +262,74 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public ArrayList<Campamento> listar() {
+        ArrayList<Campamento> listaCampamentos = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_all_Campamentos"));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Campamento campamento = new Campamento();
+                campamento.setIdCampamento(rs.getInt("id_campamento"));
+                campamento.setFechaInicio(rs.getDate("fecha_inicio").toLocalDate());
+                campamento.setFechaFinal(rs.getDate("fecha_final").toLocalDate());
+                String n = rs.getString("nivel_educativo");
+                if( n.equals("infantil")){
+                    campamento.setNivelEducativo(NivelEducativo.INFANTIL);
+                }
+                else{
+                    if(n.equals("juvenil")){
+                        campamento.setNivelEducativo(NivelEducativo.JUVENIL);
+                    }
+                    else if(n.equals("adolescente")){
+                        campamento.setNivelEducativo(NivelEducativo.ADOLESCENTE);
+                    }
+                }
+                campamento.setMaxAsistentes(rs.getInt("max_asistentes"));
+                //falta monitor responsable y monitor especial
+                listaCampamentos.add(campamento);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaCampamentos;
+    }
+    public ArrayList<Actividad> listarActividad(){
+        ArrayList<Actividad> listaActividades = new ArrayList<>();
+        try{
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_all_Actividades"));
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Actividad actividad =  new Actividad();
+                actividad.setNombre(rs.getString("nombre"));
+                String n = rs.getString("nivel_educativo");
+                if( n.equals("infantil")){
+                    actividad.setNivelEducativo(NivelEducativo.INFANTIL);
+                }
+                else{
+                    if(n.equals("juvenil")){
+                        actividad.setNivelEducativo(NivelEducativo.JUVENIL);
+                    }
+                    else if(n.equals("adolescente")){
+                        actividad.setNivelEducativo(NivelEducativo.ADOLESCENTE);
+                    }
+                }
+                String h = rs.getString("horario");
+                if( h.equals("parcial")){
+                    actividad.setHorario(Horario.PARCIAL);
+                }
+                else{
+                    actividad.setHorario(Horario.COMPLETA);
+                }
+                actividad.setMaxParticipantes(rs.getInt("max_participantes"));
+                actividad.setMonitoresNecesarios(rs.getInt("monitores_necesarios"));
+                actividad.setIdentificador(rs.getInt("id_actividad"));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return listaActividades;
+    }
 }
+

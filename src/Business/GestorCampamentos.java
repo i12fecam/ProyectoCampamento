@@ -2,6 +2,7 @@ package Business;
 
 import Data.DAO.CampamentoDAO;
 import Data.DTO.Actividad;
+import Data.DTO.Asistente;
 import Data.DTO.Campamento;
 import Data.DTO.Monitor;
 import Data.Horario;
@@ -30,10 +31,10 @@ public class GestorCampamentos implements Serializable {
 
     /**
      * Metodo que crea un campamento
-     * @param fechaInicio
-     * @param fechaFinal
-     * @param nivelEducativo
-     * @param maxAsistentes
+     * @param fechaInicio d
+     * @param fechaFinal c
+     * @param nivelEducativo c
+     * @param maxAsistentes c
      */
 
     public void crearCampamento(LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
@@ -95,6 +96,12 @@ public class GestorCampamentos implements Serializable {
         Monitor monitor = monitores.get(idMonitor);
         actividad.asociarMonitor(monitor);
         */
+        CampamentoDAO camp = new CampamentoDAO();
+        Actividad act = camp.devolverActividad(idActividad);
+        Monitor mon = camp.devolverMonitor(idMonitor);
+        if(mon.getIdentificador()<act.getMonitoresNecesarios()){
+            camp.asociarMonitorResponsableActividad(idMonitor,idActividad);
+        }
     }
 
     /**
@@ -132,6 +139,7 @@ public class GestorCampamentos implements Serializable {
         Monitor mon=camp.devolverMonitor(idMonitor);
         Campamento campament=camp.devolverCampamento(idCampamento);
         campament.asociarMonitor(mon);
+        camp.monitorResponsable(idMonitor, idCampamento);
     }
 
     /**
@@ -148,15 +156,12 @@ public class GestorCampamentos implements Serializable {
         CampamentoDAO camp=new CampamentoDAO();
         Monitor mon=camp.devolverMonitor(idMonitor);
         Campamento campament=camp.devolverCampamento(idCampamento);
-        if(mon.isEducadorEspecial()){
-            campament.asociarMonitorEspecial(mon);
-        }
-
+        campament.asociarMonitorEspecial(mon);
+        camp.monitorEspecial(idMonitor,idCampamento);
     }
 
     /**
      * Imprime en la consola una representación en cadena de los objetos Campamento almacenados en la lista "campamentos".
-     *
      * Este método itera a través de la lista de objetos Campamento almacenados en el atributo "campamentos" e imprime
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Campamento.
      */
@@ -170,30 +175,38 @@ public class GestorCampamentos implements Serializable {
     }
     /**
      * Imprime en la consola una representación en cadena de los objetos Monitor almacenados en la lista "monitores".
-     *
      * Este método itera a través de la lista de objetos Monitor almacenados en el atributo "monitores" e imprime
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Monitor.
      */
-    public void toStringMonitores(){
-        /*
-        for(Monitor it:monitores){
-            System.out.println(it.toString());;
+    public void listarCampamentos(){
+        CampamentoDAO camp = new CampamentoDAO();
+       ArrayList<Campamento> listaCampamentos = camp.listar();
+        for (Campamento campamento : listaCampamentos) {
+            System.out.println("ID: " + campamento.getIdCampamento());
+            System.out.println("Fecha-inicio: " + campamento.getFechaInicio());
+            System.out.println("Fecha-final: " + campamento.getFechaFinal());
+            System.out.println("Nivel educativo: " + campamento.getNivelEducativo());
+            System.out.println("Maximo de asistentes " + campamento.getMaxAsistentes());
+            System.out.println("--------------------------------------");
         }
-
-         */
     }
     /**
      * Imprime en la consola una representación en cadena de los objetos Actividad almacenados en la lista "actividades".
-     *
      * Este método itera a través de la lista de objetos Actividad almacenados en el atributo "actividades" e imprime
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Actividad.
      */
-    public void toStringActividades(){
-        /*
-        for(Actividad it:actividades){
-            System.out.println(it.toString());;
+    public void toStringActividades() {
+        CampamentoDAO camp = new CampamentoDAO();
+        ArrayList<Actividad> listaActividad = camp.listarActividad();
+        for( Actividad actividad : listaActividad){
+            System.out.println("ID: " + actividad.getIdentificador());
+            System.out.println("Nombre: " + actividad.getNombre());
+            System.out.println("Nivel Educativo: " + actividad.getNivelEducativo());
+            System.out.println("Horario: " + actividad.getHorario());
+            System.out.println("Maximo de asistentes " + actividad.getMaxParticipantes());
+            System.out.println("Maximo de monitores: " + actividad.getMonitoresNecesarios());
+            System.out.println("--------------------------------------");
         }
-         */
     }
 
     public Campamento getCampamento(int id){
