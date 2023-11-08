@@ -148,7 +148,7 @@ public class GestorCampamentos implements Serializable {
         CampamentoDAO camp=new CampamentoDAO();
         Monitor mon=camp.devolverMonitor(idMonitor);
         Campamento campament=camp.devolverCampamento(idCampamento);
-        if(mon.isEducadorEspecial()==true){
+        if(mon.isEducadorEspecial()){
             campament.asociarMonitorEspecial(mon);
         }
 
