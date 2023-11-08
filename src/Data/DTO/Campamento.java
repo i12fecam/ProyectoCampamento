@@ -101,7 +101,6 @@ public class Campamento implements Serializable {
     }
 
     /**
-     *
      * @return Nivel educativo del campamento
      */
     public NivelEducativo getNivelEducativo() {
@@ -188,6 +187,7 @@ public class Campamento implements Serializable {
                 ", actividades=" + actividades.size() +
                 '}';
     }
+
 
     /**
      * Método para asociar una activad al campamento. La actividad se añade si esta es del mismo nivel educativo que el

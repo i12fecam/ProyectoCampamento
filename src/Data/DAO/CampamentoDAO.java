@@ -28,19 +28,9 @@ public class CampamentoDAO {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Campamentos"));
             ps.setDate(1, Date.valueOf(campamento.getFechaInicio()));
             ps.setDate(2, Date.valueOf(campamento.getFechaFinal()));
-
-            if (campamento.getNivelEducativo() == NivelEducativo.INFANTIL) {
-                ps.setString(3, "infantil");
-            } else if (campamento.getNivelEducativo() == NivelEducativo.JUVENIL) {
-                ps.setString(3, "juvenil");
-            } else {
-                ps.setString(3, "adolescente");
-            }
-
+            ps.setString(3, campamento.getNivelEducativo().toString().toUpperCase());
             ps.setInt(4, campamento.getMaxAsistentes());
-
             ps.executeUpdate();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -51,26 +41,12 @@ public class CampamentoDAO {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Actividades"));
             ps.setString(1, actividad.getNombre());
-
-            if (actividad.getNivelEducativo() == NivelEducativo.INFANTIL) {
-                ps.setString(2, "infatil");
-            } else if (actividad.getNivelEducativo() == NivelEducativo.JUVENIL) {
-                ps.setString(2, "juvenil");
-            } else {
-                ps.setString(2, "adolescente");
-            }
-
-            if (actividad.getHorario() == Horario.PARCIAL) {
-                ps.setString(3, "parcial");
-            } else {
-                ps.setString(3, "completa");
-            }
-
+            ps.setString(2, actividad.getNivelEducativo().toString().toUpperCase());
+            ps.setString(3, actividad.getHorario().toString().toUpperCase());
             ps.setInt(4, actividad.getMaxParticipantes());
             ps.setInt(5, actividad.getMonitoresNecesarios());
             ps.setInt(6, actividad.getIdentificador());
             ps.executeUpdate();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -92,9 +68,9 @@ public class CampamentoDAO {
     }
 
 
-    public void asociarMonitorResponsableActividad(int idMonitor, int idActividad) {
+    public void asociar_Monitor_Actividad(int idMonitor, int idActividad) {
         try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor-actividad"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor_actividad"));
             ps.setInt(1, idMonitor);
             ps.setInt(2, idActividad);
             int status = ps.executeUpdate();
@@ -263,7 +239,7 @@ public class CampamentoDAO {
         }
     }
 
-    public ArrayList<Campamento> listar() {
+    public ArrayList<Campamento> listarCampamentos() {
         ArrayList<Campamento> listaCampamentos = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("select_all_Campamentos"));
@@ -275,14 +251,14 @@ public class CampamentoDAO {
                 campamento.setFechaInicio(rs.getDate("fecha_inicio").toLocalDate());
                 campamento.setFechaFinal(rs.getDate("fecha_final").toLocalDate());
                 String n = rs.getString("nivel_educativo");
-                if( n.equals("infantil")){
+                if( n.equals("Infantil")){
                     campamento.setNivelEducativo(NivelEducativo.INFANTIL);
                 }
                 else{
-                    if(n.equals("juvenil")){
+                    if(n.equals("Juvenil")){
                         campamento.setNivelEducativo(NivelEducativo.JUVENIL);
                     }
-                    else if(n.equals("adolescente")){
+                    else if(n.equals("Adolescente")){
                         campamento.setNivelEducativo(NivelEducativo.ADOLESCENTE);
                     }
                 }
@@ -304,14 +280,14 @@ public class CampamentoDAO {
                 Actividad actividad =  new Actividad();
                 actividad.setNombre(rs.getString("nombre"));
                 String n = rs.getString("nivel_educativo");
-                if( n.equals("infantil")){
+                if( n.equals("Infantil")){
                     actividad.setNivelEducativo(NivelEducativo.INFANTIL);
                 }
                 else{
-                    if(n.equals("juvenil")){
+                    if(n.equals("Juvenil")){
                         actividad.setNivelEducativo(NivelEducativo.JUVENIL);
                     }
-                    else if(n.equals("adolescente")){
+                    else if(n.equals("Adolescente")){
                         actividad.setNivelEducativo(NivelEducativo.ADOLESCENTE);
                     }
                 }
@@ -325,6 +301,7 @@ public class CampamentoDAO {
                 actividad.setMaxParticipantes(rs.getInt("max_participantes"));
                 actividad.setMonitoresNecesarios(rs.getInt("monitores_necesarios"));
                 actividad.setIdentificador(rs.getInt("id_actividad"));
+                listaActividades.add(actividad);
             }
         }catch (SQLException e){
             throw new RuntimeException(e);
@@ -343,6 +320,7 @@ public class CampamentoDAO {
                 monitor.setIdentificador(rs.getInt("id_monitor"));
                 monitor.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 monitor.setEducadorEspecial(rs.getBoolean("especial"));
+                listaMonitores.add(monitor);
             }
         }catch (SQLException e){
             throw new RuntimeException(e);

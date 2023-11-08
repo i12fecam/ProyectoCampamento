@@ -1,5 +1,6 @@
 package Business;
 
+import Data.DAO.AsistenteDAO;
 import Data.DAO.CampamentoDAO;
 import Data.DTO.Actividad;
 import Data.DTO.Asistente;
@@ -21,66 +22,42 @@ import java.util.ArrayList;
 public class GestorCampamentos implements Serializable {
 
 
-    /**
-     * empty(default) constructor
-     **/
+    private CampamentoDAO campamentoDAO;
+
     public GestorCampamentos() {
+        this.campamentoDAO = new CampamentoDAO();
+
+    }
+
+    public boolean crearCampamento(Campamento campamento){
+        if (campamento == null) {
+            System.out.println("El campamento es nulo.");
+            return false;
+        }
+        campamentoDAO.crearCampamento(campamento);
+        return true;
+    }
+
+
+
+    public boolean crearMonitor(Monitor monitor){
+        if (monitor == null) {
+            System.out.println("La actividad es nula.");
+            return false;
+        }
+        campamentoDAO.crearMonitor(monitor);
+        return true;
 
     }
 
 
-    /**
-     * Metodo que crea un campamento
-     * @param fechaInicio d
-     * @param fechaFinal c
-     * @param nivelEducativo c
-     * @param maxAsistentes c
-     */
-
-    public void crearCampamento(LocalDate fechaInicio, LocalDate fechaFinal, NivelEducativo nivelEducativo, int maxAsistentes){
-        /*
-        int idCampamento = campamentos.size();
-
-        Campamento campamento = new Campamento(idCampamento,fechaInicio,fechaFinal,nivelEducativo,maxAsistentes);
-
-        campamentos.add(campamento);
-
-         */
-    }
-
-    /**
-     * Metodo que crea un monitor
-     * @param nombre
-     * @param apellidos
-     * @param fechaNacimiento
-     * @param educadorEspecial
-     */
-    public void crearMonitor( String nombre, String apellidos, LocalDate fechaNacimiento, boolean educadorEspecial){
-        /*
-        int identificador = monitores.size();
-
-        Monitor monitor = new Monitor(identificador,nombre,apellido1,apellido2,fechaNacimiento,educadorEspecial);
-
-        monitores.add(monitor);
-        */
-    }
-
-    /**
-     * Metodo que crea una actividad
-     * @param nombre
-     * @param nivelEducativo
-     * @param horario
-     * @param maxParticipantes
-     * @param monitoresNecesarios
-     */
-    public void crearActividad(String nombre, NivelEducativo nivelEducativo, Horario horario, int maxParticipantes, int monitoresNecesarios){
-        /*
-        int identificador = actividades.size();
-        Actividad actividad = new Actividad(nombre,identificador,nivelEducativo,horario,maxParticipantes,monitoresNecesarios);
-
-        actividades.add(actividad);
-
-         */
+    public boolean crearActividad(Actividad actividad){
+        if (actividad == null) {
+            System.out.println("La actividad es nula.");
+            return false;
+        }
+        campamentoDAO.crearActividad(actividad);
+        return true;
     }
 
     /**
@@ -90,17 +67,7 @@ public class GestorCampamentos implements Serializable {
      */
     public void asociarMonitorActividad(int idMonitor,int idActividad)
     {
-        /*
-        Actividad actividad = actividades.get(idActividad);
-        Monitor monitor = monitores.get(idMonitor);
-        actividad.asociarMonitor(monitor);
-        */
-        CampamentoDAO camp = new CampamentoDAO();
-        Actividad act = camp.devolverActividad(idActividad);
-        Monitor mon = camp.devolverMonitor(idMonitor);
-        if(mon.getIdentificador()<act.getMonitoresNecesarios()){
-            camp.asociarMonitorResponsableActividad(idMonitor,idActividad);
-        }
+        campamentoDAO.asociar_Monitor_Actividad(idMonitor,idActividad);
     }
 
     /**
@@ -109,17 +76,8 @@ public class GestorCampamentos implements Serializable {
      * @param idCampamento
      */
     public void asociarActividadCampamento(int idActividad,int idCampamento){
-        /*
-        Actividad actividad = actividades.get(idActividad);
-        Campamento campamento = campamentos.get(idCampamento);
-        campamento.asociarActividad(actividad);
-        */
-        CampamentoDAO camp=new CampamentoDAO();
-        Actividad act=camp.devolverActividad(idActividad);
-        Campamento campament=camp.devolverCampamento(idCampamento);
-        if(act.getNivelEducativo()==campament.getNivelEducativo()){
-            camp.asociar_actividad(idActividad,idCampamento);
-        }
+
+        campamentoDAO.asociar_actividad(idActividad,idCampamento);
 
     }
 
@@ -164,15 +122,16 @@ public class GestorCampamentos implements Serializable {
      * Este método itera a través de la lista de objetos Campamento almacenados en el atributo "campamentos" e imprime
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Campamento.
      */
-    public void toStringCampamentos(){
-        CampamentoDAO camp = new CampamentoDAO();
-        ArrayList<Campamento> listaCampamentos = camp.listar();
+
+    public void toStringCampamentos() {
+        ArrayList<Campamento> listaCampamentos = campamentoDAO.listarCampamentos();
         for (Campamento campamento : listaCampamentos) {
             System.out.println("ID: " + campamento.getIdCampamento());
-            System.out.println("Fecha-inicio: " + campamento.getFechaInicio());
-            System.out.println("Fecha-final: " + campamento.getFechaFinal());
-            System.out.println("Nivel educativo: " + campamento.getNivelEducativo());
-            System.out.println("Maximo de asistentes " + campamento.getMaxAsistentes());
+            System.out.println("Fecha Inicio: " + campamento.getFechaInicio());
+            System.out.println("Fecha Fin: " + campamento.getFechaFinal());
+            System.out.println("Nivel Educativo: " + (campamento.getNivelEducativo().toString()));
+            System.out.println("Asistentes máximos: " + campamento.getMaxAsistentes());
+            //FALTA MONITOR RESPONSABLE Y ESPECIAL//
             System.out.println("--------------------------------------");
         }
     }
@@ -182,15 +141,16 @@ public class GestorCampamentos implements Serializable {
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Monitor.
      */
     public void toStringMonitores(){
-        CampamentoDAO camp=new CampamentoDAO();
-        ArrayList<Monitor> listaMonitores=camp.listarMonitores();
-      for(Monitor monitor : listaMonitores){
+        ArrayList<Monitor> listaMonitores=campamentoDAO.listarMonitores();
+        for(Monitor monitor : listaMonitores){
           System.out.println("ID: " + monitor.getIdentificador());
           System.out.println("Nombre: " + monitor.getNombre());
           System.out.println("Apellidos: "+ monitor.getApellidos());
           System.out.println("Especial: " + monitor.isEducadorEspecial());
           System.out.println("Fecha nacimiento: " + monitor.getFechaNacimiento());
-    }
+          System.out.println("--------------------------------------");
+
+        }
     }
     /**
      * Imprime en la consola una representación en cadena de los objetos Actividad almacenados en la lista "actividades".
@@ -198,13 +158,12 @@ public class GestorCampamentos implements Serializable {
      * en la consola una representación en cadena de cada uno de ellos utilizando el método "toString" de la clase Actividad.
      */
     public void toStringActividades() {
-        CampamentoDAO camp = new CampamentoDAO();
-        ArrayList<Actividad> listaActividad = camp.listarActividad();
+        ArrayList<Actividad> listaActividad = campamentoDAO.listarActividad();
         for( Actividad actividad : listaActividad){
             System.out.println("ID: " + actividad.getIdentificador());
             System.out.println("Nombre: " + actividad.getNombre());
-            System.out.println("Nivel Educativo: " + actividad.getNivelEducativo());
-            System.out.println("Horario: " + actividad.getHorario());
+            System.out.println("Nivel Educativo: " + actividad.getNivelEducativo().toString());
+            System.out.println("Horario: " + actividad.getHorario().toString());
             System.out.println("Maximo de asistentes " + actividad.getMaxParticipantes());
             System.out.println("Maximo de monitores: " + actividad.getMonitoresNecesarios());
             System.out.println("--------------------------------------");
