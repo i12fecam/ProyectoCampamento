@@ -3,6 +3,7 @@ package Business;
 import Data.DAO.CampamentoDAO;
 import Data.DTO.Actividad;
 import Data.DTO.Campamento;
+import Data.DTO.Monitor;
 import Data.Horario;
 import Data.NivelEducativo;
 
@@ -127,6 +128,10 @@ public class GestorCampamentos implements Serializable {
         Campamento campamento = campamentos.get(idCampamento);
         campamento.asociarMonitor(monitor);
         */
+        CampamentoDAO camp=new CampamentoDAO();
+        Monitor mon=camp.devolverMonitor(idMonitor);
+        Campamento campament=camp.devolverCampamento(idCampamento);
+        campament.asociarMonitor(mon);
     }
 
     /**
@@ -139,8 +144,14 @@ public class GestorCampamentos implements Serializable {
         Monitor monitor = monitores.get(idMonitor);
         Campamento campamento = campamentos.get(idCampamento);
         campamento.asociarMonitorEspecial(monitor);
+        */
+        CampamentoDAO camp=new CampamentoDAO();
+        Monitor mon=camp.devolverMonitor(idMonitor);
+        Campamento campament=camp.devolverCampamento(idCampamento);
+        if(mon.isEducadorEspecial()){
+            campament.asociarMonitorEspecial(mon);
+        }
 
-         */
     }
 
     /**
@@ -182,7 +193,6 @@ public class GestorCampamentos implements Serializable {
         for(Actividad it:actividades){
             System.out.println(it.toString());;
         }
-
          */
     }
 
