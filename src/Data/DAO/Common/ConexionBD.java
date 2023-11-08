@@ -29,8 +29,7 @@ ConexionBD {
             System.err.println("Connection to MySQL has failed!");
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.err.println("JDBC Driver not found.");
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return this.connection;
     }

@@ -44,11 +44,11 @@ public class ProyectProperties {
         }
     }
     public String getUrl(){
-        return config.getProperty("url");
+        return config.getProperty("servername");
     }
 
     public String getUsername(){
-        return config.getProperty("username");
+        return config.getProperty("name");
     }
 
     public String getPassword(){
@@ -56,7 +56,11 @@ public class ProyectProperties {
     }
 
     public String getSentente(String name){
-        return  sql.getProperty(name);
+        String result =sql.getProperty(name);
+        if(result == ""){
+            throw new RuntimeException("No se encontro la sentencia SQl del archivo sql.properties");
+        }
+        return  result;
     }
 
 }
