@@ -1,16 +1,11 @@
 package Business;
 
-import Data.DAO.AsistenteDAO;
 import Data.DAO.CampamentoDAO;
 import Data.DTO.Actividad;
-import Data.DTO.Asistente;
 import Data.DTO.Campamento;
 import Data.DTO.Monitor;
-import Data.Horario;
-import Data.NivelEducativo;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 /**
  * GestorCampamentos class
@@ -107,7 +102,7 @@ public class GestorCampamentos implements Serializable {
         Monitor mon=camp.devolverMonitor(idMonitor);
         Campamento campament=camp.devolverCampamento(idCampamento);
         campament.asociarMonitor(mon);
-        camp.monitorResponsable(idMonitor, idCampamento);
+        camp.asignar_monitor_responsable(idMonitor, idCampamento);
     }
 
     /**
@@ -125,7 +120,7 @@ public class GestorCampamentos implements Serializable {
         Monitor mon=camp.devolverMonitor(idMonitor);
         Campamento campament=camp.devolverCampamento(idCampamento);
         campament.asociarMonitorEspecial(mon);
-        camp.monitorEspecial(idMonitor,idCampamento);
+        camp.asignar_monitor_especial(idMonitor,idCampamento);
     }
 
     /**

@@ -8,8 +8,6 @@ import Data.NivelEducativo;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 
 public class CampamentoDAO {
     private ProyectProperties prop;
@@ -96,10 +94,11 @@ public class CampamentoDAO {
         }
     }
 
-    public void monitorResponsable(int idMonitor,int idCampamento){
+    public void asignar_monitor_responsable(int idMonitor, int idCampamento){
         try{
             PreparedStatement ps = con. prepareStatement(prop.getSentente("update_monitorResponsable"));
             ps.setInt(1,idMonitor);
+            ps.setInt(2,idCampamento);
             int status = ps.executeUpdate();
             if (status > 0){
                 System.out.println("Monitor responsable al campamento asociado con exito");
@@ -112,10 +111,11 @@ public class CampamentoDAO {
     }
 
 
-    public void monitorEspecial (int idMonitor, int idCampamento){
+    public void asignar_monitor_especial(int idMonitor, int idCampamento){
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("update_monitorEspecial"));
             ps.setInt(1,idMonitor);
+            ps.setInt(2,idCampamento);
             int status = ps.executeUpdate();
             if ( status > 0){
                 System.out.println("Monitor especial del campamento asociado con exito");
@@ -202,6 +202,7 @@ public class CampamentoDAO {
             ps.setInt(1,idCampamento);
             ResultSet rs = ps.executeQuery();
             Campamento camp=new Campamento();
+            rs.next();
             String n = rs.getString("nivel_educativo");
             if( n.equals("infantil")){
                 camp.setNivelEducativo(NivelEducativo.INFANTIL);
@@ -225,10 +226,11 @@ public class CampamentoDAO {
     }
     public Monitor devolverMonitor(int idMonitor){
         try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_campamento_id"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_monitor_id"));
             ps.setInt(1,idMonitor);
             ResultSet rs = ps.executeQuery();
             Monitor mon=new Monitor();
+            rs.next();
             mon.setNombre(rs.getString("nombre"));
             mon.setIdentificador(rs.getInt("id_monitor"));
             mon.setEducadorEspecial(rs.getBoolean("especial"));
@@ -237,6 +239,7 @@ public class CampamentoDAO {
 
             return mon;
         }catch (SQLException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
