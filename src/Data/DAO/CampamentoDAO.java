@@ -9,18 +9,32 @@ import Data.NivelEducativo;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * CampamentoDAO class
+ * @author Noelia Ruiz
+ * @author Antonio Javier Quintero
+ * @author Abigail Fernández
+ * @author Fátima Caballero
+ */
 public class CampamentoDAO {
     private ProyectProperties prop;
     private ConexionBD bd;
     private Connection con;
 
 
+    /**
+     * Empty(default) class
+     */
     public CampamentoDAO() {
         prop = new ProyectProperties();
         bd = new ConexionBD();
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
     }
 
+    /**
+     * Este método inserta en la base de datos un nuevo campamento
+     * @param campamento
+     */
     public void crearCampamento(Campamento campamento) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Campamentos"));
@@ -35,6 +49,10 @@ public class CampamentoDAO {
     }
 
 
+    /**
+     * Este método inserta en la base de datos una nueva actividad
+     * @param actividad
+     */
     public void crearActividad(Actividad actividad) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Actividades"));
@@ -50,6 +68,10 @@ public class CampamentoDAO {
         }
     }
 
+    /**
+     * Este método inserta en la base de datos un nuevo monitor
+     * @param monitor
+     */
     public void crearMonitor(Monitor monitor) {
 
         try {
@@ -64,8 +86,12 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
     }
-
-
+    /**
+     * Asocia un monitor a una actividad en la base de datos.
+     *
+     * @param idMonitor     El ID del monitor a asociar.
+     * @param idActividad   El ID de la actividad a la que se asociará el monitor.
+     */
     public void asociar_Monitor_Actividad(int idMonitor, int idActividad) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_monitor_actividad"));
@@ -81,7 +107,12 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Asocia una actividad a un campamento en la base de datos.
+     *
+     * @param id_actividad   El ID de la actividad a asociar.
+     * @param id_campamento  El ID del campamento al que se asociará la actividad.
+     */
     public void asociar_actividad(int id_actividad, int id_campamento) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_actividad_campamento"));
@@ -98,7 +129,12 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Asigna un monitor como responsable de un campamento en la base de datos.
+     *
+     * @param idMonitor      El ID del monitor que se asignará como responsable.
+     * @param idCampamento   El ID del campamento al que se asignará el monitor como responsable.
+     */
     public void asignar_monitor_responsable(int idMonitor, int idCampamento){
         try{
             PreparedStatement ps = con. prepareStatement(prop.getSentente("update_monitorResponsable"));

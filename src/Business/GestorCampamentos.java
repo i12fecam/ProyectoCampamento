@@ -19,11 +19,19 @@ public class GestorCampamentos implements Serializable {
 
     private CampamentoDAO campamentoDAO;
 
+    /**
+     * empty(default) constructor
+     */
     public GestorCampamentos() {
         this.campamentoDAO = new CampamentoDAO();
 
     }
 
+    /**
+     * Método que crea un campamento
+     * @param campamento
+     * @return false si el campamento es null, true si no es null
+     */
     public boolean crearCampamento(Campamento campamento){
         if (campamento == null) {
             System.out.println("El campamento es nulo.");
@@ -34,10 +42,14 @@ public class GestorCampamentos implements Serializable {
     }
 
 
-
+    /**
+     * Método que crea un monitor
+     * @param monitor
+     * @return true si el monitor es nulo, false ni no lo es
+     */
     public boolean crearMonitor(Monitor monitor){
         if (monitor == null) {
-            System.out.println("La actividad es nula.");
+            System.out.println("El monitor es nulo.");
             return false;
         }
         campamentoDAO.crearMonitor(monitor);
@@ -46,6 +58,11 @@ public class GestorCampamentos implements Serializable {
     }
 
 
+    /**
+     * Método que crea una actividad
+     * @param actividad
+     * @return true si la actividad no es nula,false si es nula
+     */
     public boolean crearActividad(Actividad actividad){
         if (actividad == null) {
             System.out.println("La actividad es nula.");
