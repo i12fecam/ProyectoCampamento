@@ -51,31 +51,8 @@ public class InscripcionDAO {
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
-
-
     }
 
-    public boolean esFechaInscripcionInvalida(Inscripcion inscripcion){ //ahora creo que esta funcion no es tan necesario porque estoy comprobando por la primary key
-        try{
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("fecha_inscripcion_valida"));
-            ps.setInt(1,inscripcion.getIdParticipante());
-            ps.setInt(2,inscripcion.getIdCampamento());
-            ResultSet res = ps.executeQuery();
-            int count = 0;
-            while(res.next()){
-                count++;
-            }
-            if(count > 0){
-                return false;
-            }
-            else{
-                return true;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        //TODO : Cambiar para que devuelva bool--------------
-    }
 
     /**
      *
@@ -129,6 +106,21 @@ public class InscripcionDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int GetInscritos(int id_campamentos){
+        int nInscritos = -1;
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_n_inscritos"));
+            ps.setInt(1,id_campamentos);
+
+            ResultSet rs = ps.executeQuery();
+            nInscritos = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nInscritos;
+
     }
 
 

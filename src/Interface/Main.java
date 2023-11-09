@@ -369,9 +369,8 @@ public class Main {
                         } else {
                             throw new RuntimeException("Error al capturar el horario");
                         }
-                        Asistente asistente = gestorAsistentes.getAsistente(idAsistente);
-                        Campamento campamento = gestorCampamentos.getCampamento(idCampamento);
-                        gestorInscripciones.crearInscripcion( asistente, campamento, LocalDate.parse(inscrip), horario);
+
+                        gestorInscripciones.crearInscripcion( idAsistente,idCampamento, LocalDate.parse(inscrip), horario);
                         System.out.println("Inscripcion creada con exito");
                     }catch (Exception e){
                         System.out.println("Error al crear la inscripcion: " + e.getMessage());

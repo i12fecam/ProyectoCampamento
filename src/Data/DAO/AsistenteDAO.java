@@ -83,14 +83,36 @@ public class AsistenteDAO {
                 asistente.setNombre(rs.getString("nombre"));
                 asistente.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 asistente.setAtencionEspecial(rs.getInt("especial") == 1);
-                //REVISAR//
                 asistente.setApellidos(rs.getString("apellidos"));
-                //
+
                 listaAsistentes.add(asistente);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return listaAsistentes;
+    }
+
+    public Asistente getAsistente(int id_asistente){
+        Asistente asistente = new Asistente();
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_asistente_id"));
+            ps.setInt(1,id_asistente);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+
+            asistente.setIdentificador(rs.getInt("id_asistente"));
+            asistente.setNombre(rs.getString("nombre"));
+            asistente.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+            asistente.setAtencionEspecial(rs.getInt("especial") == 1);
+            asistente.setApellidos(rs.getString("apellidos"));
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  asistente;
     }
 }

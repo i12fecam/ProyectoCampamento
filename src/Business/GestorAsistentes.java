@@ -77,7 +77,5 @@ public class GestorAsistentes implements Serializable{
         }
     }
 
-    public Asistente getAsistente(int id){
-        return null;
-    }
+
 }

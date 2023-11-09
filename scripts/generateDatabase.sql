@@ -47,3 +47,24 @@ values ('Alfredo','Flores de la fuente','1980-05-12',0);
 
 Insert into Campamentos (fecha_inicio, fecha_final, nivel_educativo, max_asistentes, monitor_responsable, monitor_especial)
 values ('2003-04-01','2003-05-01','Juvenil',3,0,0);
+
+Insert into Campamentos (fecha_inicio, fecha_final, nivel_educativo, max_asistentes, monitor_responsable, monitor_especial)
+values ('2030-04-01','2030-05-08','Adolescente',12,0,0);
+
+Insert into Campamentos (fecha_inicio, fecha_final, nivel_educativo, max_asistentes, monitor_responsable, monitor_especial)
+values ('2025-04-01','2025-05-01','Infantil',2,0,0);
+
+Insert into Monitores (nombre, apellidos, fecha_nacimiento, especial)
+values ('Daniel','Rivera Torres', 1980-04-02,1);
+
+Insert into Monitores (nombre, apellidos, fecha_nacimiento, especial)
+values ('Nuria','Castro Silva', 1985-11-02,0);
+
+Insert into Monitores (nombre, apellidos, fecha_nacimiento, especial)
+values ('Jose','Herrera Morales', 1983-01-23,1);
+
+Insert into Monitores (nombre, apellidos, fecha_nacimiento, especial)
+values ('Daniel','Rivera Torres', 1980-04-02,1);
+
+Insert into Monitores (nombre, apellidos, fecha_nacimiento, especial)
+values ('Lucia','Castro Vargas', 1980-04-02,1);

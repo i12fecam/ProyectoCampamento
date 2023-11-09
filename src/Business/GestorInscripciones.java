@@ -1,5 +1,6 @@
 package Business;
 
+import Data.DAO.AsistenteDAO;
 import Data.DAO.CampamentoDAO;
 import Data.DAO.InscripcionDAO;
 import Data.DTO.Asistente;
@@ -37,22 +38,20 @@ public class GestorInscripciones implements Serializable{
      * @param fechaInscripcion
      * @param horario
      */
-    public void crearInscripcion(Asistente asistente, Campamento campamento, LocalDate fechaInscripcion, Horario horario){
+    public void crearInscripcion(int id_asistente,int id_campamento, LocalDate fechaInscripcion, Horario horario){
 
         InscripcionDAO ins = new InscripcionDAO();
         CampamentoDAO camp = new CampamentoDAO();
-
+        AsistenteDAO asis = new AsistenteDAO();
+        Asistente asistente = asis.getAsistente(id_asistente);
+        Campamento campamento = camp.devolverCampamento(id_campamento);
         float precio;
-        //comprobar si el asistente ya esta inscrito en el campamento
-        /*
-        if(ins.esFechaInscripcionInvalida()){
-
-            throw new RuntimeException("Fecha Inscripcion invalida");
-        }
-        */
 
         //comprobar si el campamento sigue teniendo espacio
-        //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+       if(ins.GetInscritos(id_campamento) > campamento.getMaxAsistentes())
+       {
+           throw new RuntimeException("El campamento ya se encuentra lleno");
+       }
 
 
         //mirar si es tardia
@@ -69,42 +68,21 @@ public class GestorInscripciones implements Serializable{
         }
 
         //comprobar si necesita monitor especial
-        if(asistente !=null && campamento !=null) {
-            if (asistente.isAtencionEspecial() && !campamento.tieneMonitorEspecial()) {
-                //añadir monitor especial al campamento
-                System.out.println("!!!!ATENCION: Después de esta operación asegurese de añadir un monitor especial al campamento");
-            }
+
+        if (asistente.isAtencionEspecial() && !campamento.tieneMonitorEspecial()) {
+            //añadir monitor especial al campamento
+            System.out.println("!!!!ATENCION: Después de esta operación asegurese de añadir un monitor especial al campamento");
         }
+
         //calcular precio
         if(horario == Horario.PARCIAL){
             precio = 100;
-            precio = precio + camp.getNumActividades(campamento,Horario.PARCIAL)*20;
+            precio = precio + camp.getNumActividadesParciales(campamento.getIdCampamento())*20;
         }else{
             precio = 300;
         }
         //se crea la inscripción
         ins.nuevaInscripcion(new Inscripcion(asistente.getIdentificador(),campamento.getIdCampamento(),fechaInscripcion,precio,tipoInscripcion,horario));
-        /*
-        if(tardia){
-            InscriptionFactoryTardia factoria = new InscriptionFactoryTardia();
-            if(horario == Horario.COMPLETA){
-                inscripciones.add(factoria.crearInscripcionCompleta(idAsistente,idCampamento,fechaInscripcion,precio));
-            }
-            else{
-                inscripciones.add(factoria.crearInscripcionParcial(idAsistente,idCampamento,fechaInscripcion,precio));
-            }
-
-        }
-        else{
-            InscriptionFactoryTemprana factoria = new InscriptionFactoryTemprana();
-            if(horario == Horario.COMPLETA){
-                inscripciones.add(factoria.crearInscripcionCompleta(idAsistente,idCampamento,fechaInscripcion,precio));
-            }
-            else{
-                inscripciones.add(factoria.crearInscripcionParcial(idAsistente,idCampamento,fechaInscripcion,precio));
-            }
-        }
-        */
         System.out.println("El precio de la inscripcion es de: " + precio);
 
 

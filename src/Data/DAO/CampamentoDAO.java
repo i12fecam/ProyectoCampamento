@@ -177,12 +177,21 @@ public class CampamentoDAO {
     }
 
     /**
-     * @param campamento campamento del cual se mira las actividades
-     * @param horario    horario de las actividades que se cuentan
-     * @return numero de actividades del campamento segun su horario
+     * @param idCampamento
+     * @return número de actividades del campamento exclusivamente parciales
      */
-    public int getNumActividades(Campamento campamento, Horario horario) {
-        return 0;
+    public int getNumActividadesParciales(int idCampamento){
+        int nActividades = -1;
+        try {
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_n_actividades_parciales"));
+            ps.setInt(1,idCampamento);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            nActividades = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  nActividades;
     }
 
     /**
