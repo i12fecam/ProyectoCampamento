@@ -68,8 +68,9 @@ public class CampamentoDAO {
         }
     }
 
+
     /**
-     * Este método inserta en la base de datos un nuevo monitor
+     * Este método inserta en la base de datos un monitor en la tabla Monitores
      * @param monitor
      */
     public void crearMonitor(Monitor monitor) {
@@ -164,6 +165,7 @@ public class CampamentoDAO {
             ps.setInt(1,idMonitor);
             ps.setInt(2,idCampamento);
             int status = ps.executeUpdate();
+            //Aquí no se puede imprimir nada por pantalla
             if ( status > 0){
                 System.out.println("Monitor especial del campamento asociado con exito");
             }else{
@@ -307,7 +309,6 @@ public class CampamentoDAO {
 
             return mon;
         }catch (SQLException e) {
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
