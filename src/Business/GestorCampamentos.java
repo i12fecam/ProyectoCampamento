@@ -75,7 +75,7 @@ public class GestorCampamentos implements Serializable {
      * @param idActividad
      * @param idCampamento
      */
-    public void asociarActividadCampamento(int idActividad,int idCampamento){
+    public void asociarActividadCampamento(int idCampamento,int idActividad){
 
         /*
         Actividad actividad = actividades.get(idActividad);

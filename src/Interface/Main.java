@@ -310,7 +310,7 @@ public class Main {
                         gestorCampamentos.toStringCampamentos();
                         int idCampamento = scanner.nextInt();
                         scanner.nextLine();
-                        gestorCampamentos.asociarActividadCampamento(idCampamento,idCampamento);
+                        gestorCampamentos.asociarActividadCampamento(idCampamento,idActividad);
                     }catch (Exception e){
                         System.out.println("Se produjo un error asociando la actividad con el campamento: " + e.getMessage());
                     }
