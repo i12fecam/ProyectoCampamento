@@ -206,18 +206,21 @@ public class Campamento implements Serializable {
      * @param monitor Monitor que se desea ascoiar
      */
     public void asociarMonitor(Monitor monitor) {
-        boolean monitorEncargadoActividad=false;
-        for (Actividad it : actividades) {
-            if (it.getMonitores().contains(monitor)) {
-                monitorEncargadoActividad=true;
-                break;
+        try {
+
+            boolean monitorEncargadoActividad = false;
+            for (Actividad it : actividades) {
+                if (it.getMonitores().contains(monitor)) {
+                    monitorEncargadoActividad = true;
+                    break;
+                }
             }
+            if (monitorEncargadoActividad && !monitores.contains(monitor)) {
+                monitores.add(monitor);
+            }
+        }catch (RuntimeException e){
+            e.printStackTrace();
         }
-        if (monitorEncargadoActividad && !monitores.contains(monitor)) {
-            monitores.add(monitor);
-        } else {
-            System.out.println("El monitor no esta asociado a ninguna actividad del campamento o ya esta asociado");
-            throw new RuntimeException("Error al asociar Monitor");        }
     }
 
     /**
