@@ -115,6 +115,12 @@ public class CampamentoDAO {
         }
     }
 
+    /**
+     * Metodo para modificar el campamento en la base de datos y añadir monitor especial
+     * @param idMonitor Id del monitor especial a añadir en el campamento en la base de datos
+     * @param idCampamento Id del campamento a modificar en la base de datos
+     * @throws RuntimeException Si hay un error de conexion con la base de datos.
+     */
 
     public void asignar_monitor_especial(int idMonitor, int idCampamento){
         try {
@@ -142,7 +148,9 @@ public class CampamentoDAO {
     }
 
     /**
-     * @return Todos los camapamentos en los que se puede inscribir en esa fecha
+     * Metodo para listar todos los campamentos que son incribibles.
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     * @return Devuelve un vector con todos los camapamentos en los que se pueden inscribir en esa fecha
      */
     public ArrayList<Campamento> getCampamentosInscribibles() {
         try {
@@ -165,6 +173,12 @@ public class CampamentoDAO {
 
     }
 
+    /**
+     * Metodo para extraer las caracteristicas de una actividad dado un id de una actividad.
+     * @param idActividad Id de la actividad que queremos extraer la informacion.
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     * @return Retorna la informacion de dicha actividad.
+     */
     public Actividad devolverActividad(int idActividad) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("select_actividad_id"));
@@ -201,6 +215,12 @@ public class CampamentoDAO {
 
     }
 
+    /**
+     * Metodo para extraer las caracteristicas de un campamento dado su identificador.
+     * @param idCampamento Id del campamento del que se quiere extraer la informacion.
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     * @return Devuelve la informacion de dicho campamento.
+     */
     public Campamento devolverCampamento(int idCampamento){
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("select_campamento_id"));
@@ -229,6 +249,13 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo para extraer informacion de un monitor dado su identificador.
+     * @param idMonitor Id del monitor del que se quiere extraer la informacion.
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     * @return Devuelve la informacion de dicho monitor.
+     */
     public Monitor devolverMonitor(int idMonitor){
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("select_monitor_id"));
@@ -248,6 +275,13 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo para listar todos los campamentos que existen en la base de datos
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     * @return Devuelve una lista con toda la informacion de todos los campamentos que existen en
+     *         la base de datos.
+     */
 
     public ArrayList<Campamento> listarCampamentos() {
         ArrayList<Campamento> listaCampamentos = new ArrayList<>();
@@ -281,6 +315,13 @@ public class CampamentoDAO {
         }
         return listaCampamentos;
     }
+
+    /**
+     * Metodo para listar todas las actividades que existen en la base de datos
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     * @return Devuelve una lista con la informacion de todas las actividades que existen en la
+     *         base de datos.
+     */
     public ArrayList<Actividad> listarActividad(){
         ArrayList<Actividad> listaActividades = new ArrayList<>();
         try{
@@ -318,6 +359,13 @@ public class CampamentoDAO {
         }
         return listaActividades;
     }
+
+    /**
+     * Metodo para listar todos los monitores que exiten en la base de datos
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     * @return Devuelve una lista con toda la informacion de todos los monitores existentes en la
+     *         base de datos.
+     */
     public ArrayList<Monitor> listarMonitores(){
         ArrayList<Monitor> listaMonitores = new ArrayList<>();
         try{
