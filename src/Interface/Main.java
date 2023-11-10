@@ -67,24 +67,21 @@ public class Main {
 
         while (true) {
             System.out.println("Opciones para gestionar a los asistentes:");
-            System.out.println("1. Dar de alta");
+            System.out.println("1. Dar de alta asistente");
             System.out.println("2. Modificar asistente");
-            System.out.println("3. Listar a los asistentes actuales");
+            System.out.println("3. Listar asistentes");
             System.out.println("0. Volver al menu principal");
 
             String opcion2 = scanner.nextLine();
 
             switch (opcion2) {
                 case "1":
-                    System.out.println("Dar de alta a un asistente:");
-
-                    // Recopilar la información del asistente desde el usuario
+                    // Recopilar la información del asistente
                     try {
                         System.out.print("Nombre: ");
                         String nombre = scanner.nextLine();
                         System.out.print("Apellidos: ");
                         String apellidos = scanner.nextLine();
-                        System.out.println("Esto es lo que coge" + apellidos);
                         System.out.print("Fecha de Nacimiento (YYYY-MM-DD): ");
                         String fechaNacimientoStr = scanner.nextLine();
                         System.out.print("Atencion Especial (true/false): ");
@@ -93,7 +90,6 @@ public class Main {
                         // Crear una instancia de Asistente con la información recopilada
                         // El Id se pone por defecto a 0 y la base de datos se encargará de dar su valor real
                         Asistente nuevoAsistente = new Asistente(0,nombre, apellidos, LocalDate.parse(fechaNacimientoStr), atencionEspecial);
-                        System.out.println(nuevoAsistente.toString());
                         // Dar de alta al asistente
                         gestorAsistentes.darAlta(nuevoAsistente);
                     }catch (Exception e){

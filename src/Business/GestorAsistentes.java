@@ -70,9 +70,9 @@ public class GestorAsistentes implements Serializable{
         for (Asistente asistente : listaAsistentes) {
             System.out.println("ID: " + asistente.getIdentificador());
             System.out.println("Nombre: " + asistente.getNombre());
+            System.out.println("Apellidos: " + asistente.getApellidos());
             System.out.println("Fecha de nacimiento: " + asistente.getFechaNacimiento());
             System.out.println("Atención especial: " + (asistente.isAtencionEspecial() ? "Sí" : "No"));
-            System.out.println("Apellidos: " + asistente.getApellidos());
             System.out.println("--------------------------------------");
         }
     }
