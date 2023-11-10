@@ -131,48 +131,9 @@ public class Campamento implements Serializable {
         this.maxAsistentes = maxAsistentes;
     }
 
-    /**
-     * Establece la lista con los monitores del campamento
-     * @param monitores
-     */
-    public void setMonitores(ArrayList<Monitor> monitores) {this.monitores = monitores;}
 
-    /**
-     *
-     * @return Lista con los monitores del campamento
-     */
-    public ArrayList<Monitor> getMonitores() {return monitores;}
 
-    /**
-     *
-     * @return Lista con las actividades del campamento
-     */
-    public ArrayList<Actividad> getActividades() {return actividades;}
 
-    /**
-     * Establece la lista con las actividades del campamento
-     * @param actividades
-     */
-    public void setActividades(ArrayList<Actividad> actividades) {this.actividades = actividades;}
-
-    /**
-     * @return numAsistentes
-     */
-    public int getNumAsistentes() {
-        return numAsistentes;
-    }
-
-    /**
-     * @param numAsistentes
-     */
-    public void setNumAsistentes(int numAsistentes) {
-        this.numAsistentes = numAsistentes;
-    }
-
-    /**
-     * Imprime la informacion del campamento
-     * @return Cadena con la informacion del campamento
-     */
 
     @Override
     public String toString() {
@@ -189,16 +150,7 @@ public class Campamento implements Serializable {
     }
 
 
-    /**
-     * Método para asociar una activad al campamento. La actividad se añade si esta es del mismo nivel educativo que el
-     * campamento y si previamente no se encuentra añadida a la lista de actividades de dicho campamento
-     * @param actividad La actividad que se desea asociar
-     */
-    public void asociarActividad(Actividad actividad) {
-        if(actividad.getNivelEducativo()== this.nivelEducativo && !actividades.contains(actividad)){
-            actividades.add(actividad);
-        }
-    }
+
 
     /**
      * Método para asociar un monitor al campamento. Un monitor se añade a la lista si no se encuentra en la lista de
@@ -242,10 +194,7 @@ public class Campamento implements Serializable {
             throw new RuntimeException("Error al asociar Monitor Especial");
         }
     }
-    public boolean equals (Campamento campamento) {
-        return campamento.idCampamento == this.idCampamento;
 
-    }
     public boolean tieneMonitorEspecial(){
         if(monitores!=null) {
             for (Monitor it : monitores) {
@@ -257,22 +206,6 @@ public class Campamento implements Serializable {
         return false;
     }
 
-    /**
-     * Método que nos permite incrementar el número de asistentes de un campamento
-     */
-    public void anadirAsistenteCampamento() {
-        if (comprobarAsistentes()) {
-            numAsistentes++;
-        }
-    }
-
-    /**
-     * Método para añadir comprobar si el número de asistentes a un campamento es menor que el número máximo de asistentes
-     * @return true si numAsistentes<maxAsistentes, si no devuelve false
-     */
-    public boolean comprobarAsistentes() {
-        return numAsistentes < maxAsistentes;
-    }
 }
 
 

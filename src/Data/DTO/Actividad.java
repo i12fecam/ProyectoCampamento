@@ -144,11 +144,7 @@ public class Actividad implements Serializable {
      */
     public ArrayList<Monitor> getMonitores() {return monitores;}
 
-    /**
-     * Establece la lista con los monitores asociados a la actividad
-     * @param monitores
-     */
-    public void setMonitores(ArrayList<Monitor> monitores) {this.monitores = monitores;}
+
 
     /**
      * Imprime la información de la actividad
@@ -167,28 +163,6 @@ public class Actividad implements Serializable {
                 '}';
     }
 
-
-    /**
-     * Método para asociar un monitor a una actividad. Solo se asocian si no s ha sobrepasado el limite de monitores
-     * necesarios y si además dicho monitor no se encuentra previamente añadido en la lista de los monitores de la
-     * actividad
-     * @param monitor Monitor que se desea asociar
-     */
-    public void asociarMonitor(Monitor monitor) {
-        if (!monitores.contains(monitor) ) {
-            if(monitores.size()<getMonitoresNecesarios()) {
-                monitores.add(monitor);
-            }else{
-                throw new RuntimeException("Nº monitores necesarios alcanzado");
-            }
-        } else {
-            throw new RuntimeException("Este monitor ya esta añadido");
-        }
-    }
-    public boolean equals (Actividad actividad) {
-        return actividad.identificador == this.identificador;
-
-    }
 
 
 }
