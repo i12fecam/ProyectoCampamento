@@ -37,8 +37,12 @@ Para poder utilizar nuestro software vamos a necesitar tener instalada esta vers
 Para que todo funcione correctamente, hemos necesitado tener instalado **mysql-connector-java-5.1.47**. A través de este enlace lo podemos descargar:
 https://downloads.mysql.com/archives/c-j/
 
+Para poder ejecutar nuestro programa,debemos estar conectados a la red de la UCO a través de la VPN o bien debemos estar conectados a uconet. Aquí os dejo el enlace para que podáis conectaros a la UCO  a través de la VPN:
+https://www.uco.es/servicios/informatica/conexion-externa-con-openvpn
+
 Podemos llevar a cabo la ejecución de nuestro programa a través de la terminal.
 En primer lugar, debemos asegurarnos de que la estructura de nuestro proyecto es la siguiente:
+
 ![Captura de pantalla 2023-11-10 222732.png](Captura%20de%20pantalla%202023-11-10%20222732.png)
 ![Captura de pantalla 2023-11-10 222942.png](Captura%20de%20pantalla%202023-11-10%20222942.png)
 Una vez estemos en la carpeta ProyectoCampamento debemos utilizar dos comandos:
@@ -73,6 +77,7 @@ _C:\Program Files\Java\jdk1.8.0_341\bin_
 Reinicia la línea de comandos o la sesión de usuario para que los cambios surtan efecto.
 ### Problema: "java.io.FileNotFoundException"
 Para resolver este problema,debemos copiar los archivos config.properties y sql.properties en la ruta especificada en el error.
+![Captura de pantalla 2023-11-08 202111.png](Captura%20de%20pantalla%202023-11-08%20202111.png)
 ## ✒️Developers
 
 | [<sub>i12rumon </sub>](https://github.com/i12rumon)
