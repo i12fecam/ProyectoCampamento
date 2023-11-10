@@ -89,11 +89,7 @@ public class GestorCampamentos implements Serializable {
      */
     public void asociarActividadCampamento(int idCampamento,int idActividad){
 
-        /*
-        Actividad actividad = actividades.get(idActividad);
-        Campamento campamento = campamentos.get(idCampamento);
-        campamento.asociarActividad(actividad);
-        */
+
         CampamentoDAO camp=new CampamentoDAO();
         Actividad act=camp.devolverActividad(idActividad);
         Campamento campament=camp.devolverCampamento(idCampamento);
@@ -110,11 +106,7 @@ public class GestorCampamentos implements Serializable {
      * @param idCampamento
      */
     public void asociarMonitorResponsableCampamento(int idMonitor, int idCampamento){
-        /*
-        Monitor monitor = monitores.get(idMonitor);
-        Campamento campamento = campamentos.get(idCampamento);
-        campamento.asociarMonitor(monitor);
-        */
+
         CampamentoDAO camp=new CampamentoDAO();
         Monitor mon=camp.devolverMonitor(idMonitor);
         Campamento campament=camp.devolverCampamento(idCampamento);
@@ -128,11 +120,7 @@ public class GestorCampamentos implements Serializable {
      * @param idCampamento
      */
     public void asociarMonitorEspecialCampamento(int idMonitor, int idCampamento){
-        /*
-        Monitor monitor = monitores.get(idMonitor);
-        Campamento campamento = campamentos.get(idCampamento);
-        campamento.asociarMonitorEspecial(monitor);
-        */
+
         CampamentoDAO camp=new CampamentoDAO();
         Monitor mon=camp.devolverMonitor(idMonitor);
         Campamento campament=camp.devolverCampamento(idCampamento);
