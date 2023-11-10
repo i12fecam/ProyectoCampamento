@@ -90,14 +90,12 @@ public class GestorCampamentos implements Serializable {
     public void asociarActividadCampamento(int idCampamento,int idActividad){
 
 
-        CampamentoDAO camp=new CampamentoDAO();
-        Actividad act=camp.devolverActividad(idActividad);
-        Campamento campament=camp.devolverCampamento(idCampamento);
-        if(act.getNivelEducativo()==campament.getNivelEducativo()){
-            camp.asociar_actividad(idActividad,idCampamento);
+
+        Actividad act=campamentoDAO.devolverActividad(idActividad);
+        Campamento campament=campamentoDAO.devolverCampamento(idCampamento);
+        if(act.getNivelEducativo()==campament.getNivelEducativo()) {
+            campamentoDAO.asociar_actividad(idActividad, idCampamento);
         }
-
-
     }
 
     /**
@@ -107,11 +105,10 @@ public class GestorCampamentos implements Serializable {
      */
     public void asociarMonitorResponsableCampamento(int idMonitor, int idCampamento){
 
-        CampamentoDAO camp=new CampamentoDAO();
-        Monitor mon=camp.devolverMonitor(idMonitor);
-        Campamento campament=camp.devolverCampamento(idCampamento);
+        Monitor mon=campamentoDAO.devolverMonitor(idMonitor);
+        Campamento campament=campamentoDAO.devolverCampamento(idCampamento);
         campament.asociarMonitor(mon);
-        camp.asignar_monitor_responsable(idMonitor, idCampamento);
+        campamentoDAO.asignar_monitor_responsable(idMonitor, idCampamento);
     }
 
     /**
@@ -121,12 +118,12 @@ public class GestorCampamentos implements Serializable {
      */
     public void asociarMonitorEspecialCampamento(int idMonitor, int idCampamento){
 
-        CampamentoDAO camp=new CampamentoDAO();
-        Monitor mon=camp.devolverMonitor(idMonitor);
-        Campamento campament=camp.devolverCampamento(idCampamento);
+        Monitor mon=campamentoDAO.devolverMonitor(idMonitor);
+        Campamento campament=campamentoDAO.devolverCampamento(idCampamento);
         campament.asociarMonitorEspecial(mon);
-        camp.asignar_monitor_especial(idMonitor,idCampamento);
+        campamentoDAO.asignar_monitor_especial(idMonitor,idCampamento);
     }
+
 
     /**
      * Imprime en la consola una representación en cadena de los objetos Campamento almacenados en la lista "campamentos".
@@ -142,7 +139,6 @@ public class GestorCampamentos implements Serializable {
             System.out.println("Fecha Fin: " + campamento.getFechaFinal());
             System.out.println("Nivel Educativo: " + (campamento.getNivelEducativo().toString()));
             System.out.println("Asistentes máximos: " + campamento.getMaxAsistentes());
-            //FALTA MONITOR RESPONSABLE Y ESPECIAL//
             System.out.println("--------------------------------------");
         }
     }
