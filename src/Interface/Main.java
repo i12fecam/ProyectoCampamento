@@ -400,10 +400,8 @@ public class Main {
                     break;
                 case "3":
 
-                    ArrayList<Campamento> disponibles = gestorInscripciones.consultarCampamentosDisponibles();
-                    for(Campamento campamento : disponibles){
-                        System.out.println(campamento.toString());
-                    }
+
+                    gestorInscripciones.consultarCampamentosDisponibles();
                     break;
                 case "0":
                     return;

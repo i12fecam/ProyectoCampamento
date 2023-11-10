@@ -104,10 +104,20 @@ public class GestorInscripciones implements Serializable{
      * Metodo que permite consultar los campamentos disponibles
      * @return lista de campamentos disponibles
      */
-    public ArrayList<Campamento> consultarCampamentosDisponibles() {
+    public void consultarCampamentosDisponibles() {
 
         CampamentoDAO camp = new CampamentoDAO();
-        return camp.getCampamentosInscribibles();
+
+        ArrayList<Campamento> listaCampamentos = camp.getCampamentosInscribibles();
+        for (Campamento campamento : listaCampamentos) {
+            System.out.println("ID: " + campamento.getIdCampamento());
+            System.out.println("Fecha Inicio: " + campamento.getFechaInicio());
+            System.out.println("Fecha Fin: " + campamento.getFechaFinal());
+            System.out.println("Nivel Educativo: " + (campamento.getNivelEducativo().toString()));
+            System.out.println("Asistentes máximos: " + campamento.getMaxAsistentes());
+            //FALTA MONITOR RESPONSABLE Y ESPECIAL//
+            System.out.println("--------------------------------------");
+        }
     }
 
 }

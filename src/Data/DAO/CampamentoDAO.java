@@ -206,10 +206,23 @@ public class CampamentoDAO {
             ArrayList<Campamento> vector = new ArrayList<>();
             while (rs.next()) {
                 Campamento camp = new Campamento();
-                camp.setIdCampamento(rs.getInt("id"));//no se si poner id o id_campamento
-                camp.setFechaInicio(rs.getDate("fecha_inicio").toLocalDate());
-                rs.getString("nivel_educativo");
+                String n = rs.getString("nivel_educativo");
+                switch (n) {
+                    case "Infantil":
+                        camp.setNivelEducativo(NivelEducativo.INFANTIL);
+                        break;
+                    case "Juvenil":
+                        camp.setNivelEducativo(NivelEducativo.JUVENIL);
+                        break;
+                    case "Adolescente":
+                        camp.setNivelEducativo(NivelEducativo.ADOLESCENTE);
+                        break;
+                }
+
                 camp.setMaxAsistentes(rs.getInt("max_asistentes"));
+                camp.setIdCampamento(rs.getInt("id"));
+                camp.setFechaFinal(rs.getDate("fecha_final").toLocalDate());
+                camp.setFechaInicio(rs.getDate("fecha_inicio").toLocalDate());
                 //aqui se podria poner la foreign key de los montores especiales y responsables
                 vector.add(camp);
             }
