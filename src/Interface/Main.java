@@ -383,7 +383,7 @@ public class Main {
                         int ident = scanner.nextInt();
 
                         System.out.println("Introduzca el identificador del campamento: ");
-                        gestorCampamentos.toStringCampamentos();
+                        gestorInscripciones.consultarCampamentosDisponibles();
                         int idcamp = scanner.nextInt();
 
                         if(gestorInscripciones.cancelarInscripcion(ident, idcamp)){
