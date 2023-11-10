@@ -33,7 +33,8 @@ public class CampamentoDAO {
 
     /**
      * Este método inserta en la base de datos un nuevo campamento
-     * @param campamento
+     * @param campamento Campamento que se quiere añadir
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
      */
     public void crearCampamento(Campamento campamento) {
         try {
@@ -51,7 +52,8 @@ public class CampamentoDAO {
 
     /**
      * Este método inserta en la base de datos una nueva actividad
-     * @param actividad
+     * @param actividad Actividad que se quiere añadir
+     * @throws  RuntimeException Si hay un error de conexion con la base de datos
      */
     public void crearActividad(Actividad actividad) {
         try {
@@ -71,7 +73,8 @@ public class CampamentoDAO {
 
     /**
      * Este método inserta en la base de datos un monitor en la tabla Monitores
-     * @param monitor
+     * @param monitor Monitor que se quiere añadir
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
      */
     public void crearMonitor(Monitor monitor) {
 
@@ -92,6 +95,7 @@ public class CampamentoDAO {
      *
      * @param idMonitor     El ID del monitor a asociar.
      * @param idActividad   El ID de la actividad a la que se asociará el monitor.
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
      */
     public void asociar_Monitor_Actividad(int idMonitor, int idActividad) {
         try {
@@ -113,6 +117,7 @@ public class CampamentoDAO {
      *
      * @param id_actividad   El ID de la actividad a asociar.
      * @param id_campamento  El ID del campamento al que se asociará la actividad.
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
      */
     public void asociar_actividad(int id_actividad, int id_campamento) {
         try {
@@ -135,6 +140,7 @@ public class CampamentoDAO {
      *
      * @param idMonitor      El ID del monitor que se asignará como responsable.
      * @param idCampamento   El ID del campamento al que se asignará el monitor como responsable.
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
      */
     public void asignar_monitor_responsable(int idMonitor, int idCampamento){
         try{
@@ -177,8 +183,10 @@ public class CampamentoDAO {
     }
 
     /**
-     * @param idCampamento
+     * Metodo para extraer las actividades parciales que tiene un campamento dado su id
+     * @param idCampamento Id del campamento del que se quiero extraer la informacion
      * @return número de actividades del campamento exclusivamente parciales
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
      */
     public int getNumActividadesParciales(int idCampamento){
         int nActividades = -1;
@@ -230,7 +238,6 @@ public class CampamentoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     /**

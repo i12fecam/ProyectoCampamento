@@ -27,6 +27,12 @@ public class InscripcionDAO {
     protected void finalize(){
         bd.closeConnection();
     }
+
+    /**
+     * Metodo para insertar una inscripcion a la base de datos
+     * @param inscripcion Inscripcion que se va a guardar
+     * @throws RuntimeException Si hay un error al conectarse con la base de datos
+     */
     public void nuevaInscripcion(Inscripcion inscripcion) {
 
         try {
@@ -55,8 +61,9 @@ public class InscripcionDAO {
 
 
     /**
-     *
-     * @param inscripcion
+     * Metodo para eliminar una inscipcion de la base de datos dada una incripcion
+     * @param inscripcion Inscripcion que se quiere eliminar
+     * @throws RuntimeException Si hay algun error al conectarse con la base de datos
      */
     public void cancelarInscripcion(Inscripcion inscripcion){
         try {
@@ -70,10 +77,11 @@ public class InscripcionDAO {
     }
 
     /***
-     *
-     * @param id_asistente
-     * @param id_campamento
+     * Metodo para extraer una inscripcion de un asistente a un campamento de la base de datos
+     * @param id_asistente Id del asistente de la inscripcion
+     * @param id_campamento Id del campamento inscrito
      * @return Inscripcion descrita por id asistente e id campamento
+     * @throws RuntimeException Si hay un error en la conexion con la base de datos
      */
     public Inscripcion getInscripcion(int id_asistente,int id_campamento){
         try{
@@ -109,6 +117,12 @@ public class InscripcionDAO {
         }
     }
 
+    /**
+     * Metodo para extraer las personas que hay inscritas en un campamento dado su id
+     * @param id_campamentos Id del campamento a buscar
+     * @return Numero de las personas inscritas a ese campamento
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     */
     public int GetInscritos(int id_campamentos){
         int nInscritos = -1;
         try {

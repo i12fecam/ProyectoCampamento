@@ -105,18 +105,21 @@ public class GestorInscripciones implements Serializable{
      * @return lista de campamentos disponibles
      */
     public void consultarCampamentosDisponibles() {
+        try {
+            CampamentoDAO camp = new CampamentoDAO();
 
-        CampamentoDAO camp = new CampamentoDAO();
-
-        ArrayList<Campamento> listaCampamentos = camp.getCampamentosInscribibles();
-        for (Campamento campamento : listaCampamentos) {
-            System.out.println("ID: " + campamento.getIdCampamento());
-            System.out.println("Fecha Inicio: " + campamento.getFechaInicio());
-            System.out.println("Fecha Fin: " + campamento.getFechaFinal());
-            System.out.println("Nivel Educativo: " + (campamento.getNivelEducativo().toString()));
-            System.out.println("Asistentes máximos: " + campamento.getMaxAsistentes());
-            //FALTA MONITOR RESPONSABLE Y ESPECIAL//
-            System.out.println("--------------------------------------");
+            ArrayList<Campamento> listaCampamentos = camp.getCampamentosInscribibles();
+            for (Campamento campamento : listaCampamentos) {
+                System.out.println("ID: " + campamento.getIdCampamento());
+                System.out.println("Fecha Inicio: " + campamento.getFechaInicio());
+                System.out.println("Fecha Fin: " + campamento.getFechaFinal());
+                System.out.println("Nivel Educativo: " + (campamento.getNivelEducativo().toString()));
+                System.out.println("Asistentes máximos: " + campamento.getMaxAsistentes());
+                //FALTA MONITOR RESPONSABLE Y ESPECIAL//
+                System.out.println("--------------------------------------");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

@@ -29,7 +29,7 @@ public class GestorCampamentos implements Serializable {
 
     /**
      * Método que crea un campamento
-     * @param campamento
+     * @param campamento Id del campamento a crear
      * @return false si el campamento es null, true si no es null
      */
     public boolean crearCampamento(Campamento campamento){
@@ -44,7 +44,7 @@ public class GestorCampamentos implements Serializable {
 
     /**
      * Método que crea un monitor
-     * @param monitor
+     * @param monitor Id del monitor a crear
      * @return true si el monitor es nulo, false ni no lo es
      */
     public boolean crearMonitor(Monitor monitor){
@@ -60,7 +60,7 @@ public class GestorCampamentos implements Serializable {
 
     /**
      * Método que crea una actividad
-     * @param actividad
+     * @param actividad Id de la actividad a crear
      * @return true si la actividad no es nula,false si es nula
      */
     public boolean crearActividad(Actividad actividad){
@@ -74,8 +74,8 @@ public class GestorCampamentos implements Serializable {
 
     /**
      * Metodo que asocia un monitor a una actividad
-     * @param idMonitor
-     * @param idActividad
+     * @param idMonitor Id del monitor que se quiere asociar a la actividad
+     * @param idActividad Id de la actividad a la que se quiere asociar la actividad
      */
     public void asociarMonitorActividad(int idMonitor,int idActividad)
     {
@@ -84,8 +84,8 @@ public class GestorCampamentos implements Serializable {
 
     /**
      * Metodo que asocia una actividad a un campamento
-     * @param idActividad
-     * @param idCampamento
+     * @param idActividad Id de la actividad que se quiere asociar al campamento
+     * @param idCampamento Id del campamento al que se quiere asociar la actividad
      */
     public void asociarActividadCampamento(int idCampamento,int idActividad){
 
@@ -102,8 +102,8 @@ public class GestorCampamentos implements Serializable {
 
     /**
      * Metodo que asocia un monitor a un campamento
-     * @param idMonitor
-     * @param idCampamento
+     * @param idMonitor Id del monitor responsable a asociar al campamento
+     * @param idCampamento Id del campamento al que se quiere asociar el monitor
      */
     public void asociarMonitorResponsableCampamento(int idMonitor, int idCampamento){
 
@@ -116,8 +116,8 @@ public class GestorCampamentos implements Serializable {
 
     /**
      * Metodo que asocia un monitor especial a un campamento
-     * @param idMonitor
-     * @param idCampamento
+     * @param idMonitor Id del monitor especial a asociar al campamento
+     * @param idCampamento Id del campamento al que se quiere asociar el monitor
      */
     public void asociarMonitorEspecialCampamento(int idMonitor, int idCampamento){
 

@@ -353,7 +353,7 @@ public class Main {
                         gestorAsistentes.listar();
                         System.out.println("Introduzca el identificador del asistente: ");
                         int idAsistente = scanner.nextInt();
-                        gestorCampamentos.toStringCampamentos();
+                        gestorInscripciones.consultarCampamentosDisponibles();
                         System.out.println("Introduzca el identificador del campamento: ");
                         int idCampamento = scanner.nextInt();
                         scanner.nextLine();
@@ -399,8 +399,6 @@ public class Main {
 
                     break;
                 case "3":
-
-
                     gestorInscripciones.consultarCampamentosDisponibles();
                     break;
                 case "0":
