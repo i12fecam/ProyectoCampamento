@@ -33,8 +33,8 @@ public class GestorInscripciones implements Serializable{
     }
 
     /**
-     * @param asistente
-     * @param campamento
+     * @param id_asistente
+     * @param id_campamento
      * @param fechaInscripcion
      * @param horario
      */
@@ -57,11 +57,11 @@ public class GestorInscripciones implements Serializable{
         //mirar si es tardia
         TipoInscripcion tipoInscripcion;
         if(fechaInscripcion.isBefore(campamento.getFechaInicio().minusDays(15))){
-            tipoInscripcion = TipoInscripcion.TARDIA;
+            tipoInscripcion = TipoInscripcion.TEMPRANA;
         }
         else if(fechaInscripcion.isAfter(campamento.getFechaInicio().minus(15, ChronoUnit.DAYS)) && fechaInscripcion.isBefore(campamento.getFechaInicio().minus(2,ChronoUnit.DAYS))){
 
-            tipoInscripcion = TipoInscripcion.TEMPRANA;
+            tipoInscripcion = TipoInscripcion.TARDIA;
         }
         else{
             throw new RuntimeException("La fecha de inscripcion es demasiado tardia");

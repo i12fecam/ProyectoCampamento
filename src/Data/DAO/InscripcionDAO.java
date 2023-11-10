@@ -30,7 +30,7 @@ public class InscripcionDAO {
     public void nuevaInscripcion(Inscripcion inscripcion) {
 
         try {
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_inscripcion"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Inscripcion"));
 
             ps.setDate(1, Date.valueOf(inscripcion.getFechaInscripcion()));
             ps.setFloat(2, inscripcion.getPrecio());
@@ -77,18 +77,19 @@ public class InscripcionDAO {
      */
     public Inscripcion getInscripcion(int id_asistente,int id_campamento){
         try{
-            PreparedStatement ps = con.prepareStatement(prop.getSentente("get_incripcion"));
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("get_inscripcion"));
             ps.setInt(1,id_asistente);
             ps.setInt(2,id_campamento);
             ResultSet res = ps.executeQuery();
             Inscripcion ins =new Inscripcion();
+            res.next();
             ins.setFechaInscripcion(res.getDate("fecha_inscripcion").toLocalDate());
             ins.setPrecio(res.getFloat("precio"));
             String s = res.getString("horario");
-            if( s.equals("Parcial")){
+            if( s.equals("parcial")){
                 ins.setHorario(Horario.PARCIAL);
             }
-            else if(s.equals("Completa")){
+            else if(s.equals("completa")){
                 ins.setHorario(Horario.COMPLETA);
             }
             else throw new RuntimeException("Esto no deberia pasar");
@@ -115,6 +116,7 @@ public class InscripcionDAO {
             ps.setInt(1,id_campamentos);
 
             ResultSet rs = ps.executeQuery();
+            rs.next();
             nInscritos = rs.getInt(1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
