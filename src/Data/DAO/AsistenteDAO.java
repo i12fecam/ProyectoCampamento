@@ -19,6 +19,9 @@ public class AsistenteDAO {
 
     private Connection con;
 
+    /**
+     * Empty(default) class
+     */
     public AsistenteDAO() {
         prop = new ProyectProperties();
         bd = new ConexionBD();
@@ -26,6 +29,11 @@ public class AsistenteDAO {
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
     }
 
+    /**
+     * Metodo para añadir un asistente en la base de datos
+     * @param asistente Asistente que se quiere añadir
+     * @throws RuntimeException Si hay algun error de conexion con la base de datos
+     */
     public void crear(Asistente asistente) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("insert_Asistentes"));
@@ -48,6 +56,11 @@ public class AsistenteDAO {
 
     }
 
+    /**
+     * Metodo para modificcar un asistente en la base de datos
+     * @param asistente Asistente que se desea modificar
+     * @throws RuntimeException Si hay algun error de conexion con la base de datos
+     */
     public void modificar(Asistente asistente) {
         try {
             PreparedStatement ps = con.prepareStatement(prop.getSentente("update_Asistente"));
@@ -71,6 +84,12 @@ public class AsistenteDAO {
 
     }
 
+    /**
+     * Metodo para listar todos los asistentes que hay en la base de datos
+     * @return Una lista con toda la informacion de todos los asistentes existentes en la base de datos
+     * @throws RuntimeException Si hay algun error de conexion con la base de datos
+     */
+
     public ArrayList<Asistente> listar() {
         ArrayList<Asistente> listaAsistentes = new ArrayList<>();
         try {
@@ -93,6 +112,12 @@ public class AsistenteDAO {
         return listaAsistentes;
     }
 
+    /**
+     * Metodo para extraer toda la informacion de un asistente de la base de datos dado su identificador
+     * @param id_asistente Id del asistente del que se quiere obtener su informacion
+     * @return Devuelve la informacion de dicho asistente
+     * @throws RuntimeException Si hay un error de conexion con la base de datos
+     */
     public Asistente getAsistente(int id_asistente){
         Asistente asistente = new Asistente();
         try {

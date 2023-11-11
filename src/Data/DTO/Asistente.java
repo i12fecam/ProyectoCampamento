@@ -36,11 +36,6 @@ public class Asistente extends Persona implements Serializable {
         this.atencionEspecial = atencionEspecial;
     }
 
-    /**
-     * Convierte los atributos de un objeto en una cadena de texto en formato CSV (Valores Separados por Comas).
-     *
-     * @return Una cadena de texto que contiene los valores de los atributos separados por espacios en blanco y seguidos por un salto de línea.
-     */
 
     /**
      *  Verifica si el Asistente requiere atencion especial

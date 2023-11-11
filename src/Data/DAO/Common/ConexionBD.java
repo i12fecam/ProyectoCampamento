@@ -18,6 +18,16 @@ ConexionBD {
     protected Connection connection = null;
 
 
+    /**
+     * Metodo que establece una conexion con la base de datos MySQL utilizando la URL, nombre y contraseña
+     * proporcionados
+     * @param url URL de la base de datos
+     * @param user Nombre de usuario para la conexion con la base de datos
+     * @param password Contraseña asociada al nombre de usuario para la conexion
+     * @return Una instancia que representa la conexion establecida
+     * @throws RuntimeException Si ocurre algun error durante la carga del controlador JDBC o
+     *                          si se produce una excepcion al intentar establecer la conexion
+     */
     public Connection getConnection(String url, String user, String password){
 
         try{
@@ -36,6 +46,10 @@ ConexionBD {
 
     // We can include here other methods to encapsulate CRUD commands...
 
+    /**
+     * Metodo que cierra la conexion con la base de datos si esta se encontraba abierta
+     * @throws RuntimeException Si se produce cualquier tipo de excepcion al intentar cerrar la conexion
+     */
     public void closeConnection() {
         try {
             if(this.connection != null && !this.connection.isClosed()) {

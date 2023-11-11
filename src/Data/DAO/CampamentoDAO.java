@@ -93,8 +93,8 @@ public class CampamentoDAO {
     /**
      * Asocia un monitor a una actividad en la base de datos.
      *
-     * @param idMonitor     El ID del monitor a asociar.
-     * @param idActividad   El ID de la actividad a la que se asociará el monitor.
+     * @param idMonitor El ID del monitor a asociar.
+     * @param idActividad El ID de la actividad a la que se asociará el monitor.
      * @throws RuntimeException Si hay un error de conexion con la base de datos
      */
     public void asociar_Monitor_Actividad(int idMonitor, int idActividad) {
@@ -241,7 +241,8 @@ public class CampamentoDAO {
     }
 
     /**
-     * Metodo para extraer las caracteristicas de una actividad dado un id de una actividad.
+     * Metodo para extraer las caracteristicas de una actividad de la base de datos
+     * dado un id de una actividad.
      * @param idActividad Id de la actividad que queremos extraer la informacion.
      * @throws RuntimeException Si hay un error de conexion con la base de datos
      * @return Retorna la informacion de dicha actividad.
@@ -283,7 +284,8 @@ public class CampamentoDAO {
     }
 
     /**
-     * Metodo para extraer las caracteristicas de un campamento dado su identificador.
+     * Metodo para extraer las caracteristicas de un campamento de la base de datos
+     * dado su identificador.
      * @param idCampamento Id del campamento del que se quiere extraer la informacion.
      * @throws RuntimeException Si hay un error de conexion con la base de datos
      * @return Devuelve la informacion de dicho campamento.
@@ -318,7 +320,7 @@ public class CampamentoDAO {
     }
 
     /**
-     * Metodo para extraer informacion de un monitor dado su identificador.
+     * Metodo para extraer informacion de un monitor de la base de datos dado su identificador.
      * @param idMonitor Id del monitor del que se quiere extraer la informacion.
      * @throws RuntimeException Si hay un error de conexion con la base de datos
      * @return Devuelve la informacion de dicho monitor.

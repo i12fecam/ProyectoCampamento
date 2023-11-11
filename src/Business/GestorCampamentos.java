@@ -20,11 +20,10 @@ public class GestorCampamentos implements Serializable {
     private CampamentoDAO campamentoDAO;
 
     /**
-     * empty(default) constructor
+     * Empty(default) constructor
      */
     public GestorCampamentos() {
         this.campamentoDAO = new CampamentoDAO();
-
     }
 
     /**

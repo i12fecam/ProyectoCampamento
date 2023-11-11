@@ -16,6 +16,9 @@ public class InscripcionDAO {
 
     private Connection con;
 
+    /**
+     * Empty(default) class
+     */
     public InscripcionDAO(){
         prop = new ProyectProperties();
         bd = new ConexionBD();
@@ -23,6 +26,9 @@ public class InscripcionDAO {
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
     }
 
+    /**
+     * Metodo que finaliza una conexion con la base de datos
+     */
     @Override
     protected void finalize(){
         bd.closeConnection();

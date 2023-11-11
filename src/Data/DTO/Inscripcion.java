@@ -21,8 +21,8 @@ public class Inscripcion  implements Serializable {
     protected TipoInscripcion tipoInscripcion;
 
     protected Horario horario;
-    /*
-    Empty(default) constructor
+    /**
+     *Empty(default) constructor
     */
     public Inscripcion() {
     }

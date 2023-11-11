@@ -26,17 +26,20 @@ public class GestorInscripciones implements Serializable{
     /*Attributes*/
 
 
-
-
-
+    /**
+     * * Empty(default) class
+     */
     public GestorInscripciones(){
     }
 
     /**
-     * @param id_asistente
-     * @param id_campamento
-     * @param fechaInscripcion
-     * @param horario
+     * Metodo para crear una inscripcion
+     * @param id_asistente Id del asistente al que se quiere inscribir
+     * @param id_campamento Id del campamento al que se le inscribir
+     * @param fechaInscripcion Fecha en la que se le esta inscribiendo
+     * @param horario Horario en el que se le va a inscribir en el campamento
+     * @throws RuntimeException Si el campamento esta lleno y no hay espacio para mas inscripciones
+     * @throws RuntimeException Si la fecha de inscripcion es demasiado tardia para el campamento
      */
     public void crearInscripcion(int id_asistente,int id_campamento, LocalDate fechaInscripcion, Horario horario){
 
@@ -84,11 +87,14 @@ public class GestorInscripciones implements Serializable{
         //se crea la inscripción
         ins.nuevaInscripcion(new Inscripcion(asistente.getIdentificador(),campamento.getIdCampamento(),fechaInscripcion,precio,tipoInscripcion,horario));
         System.out.println("El precio de la inscripcion es de: " + precio);
-
-
     }
 
-
+    /**
+     * Metodo que nos permite cancelar una inscripcion de un asistente a un campamento
+     * @param id_asistente Id del asistente al cual se le quiere cancelar la inscripcion
+     * @param id_campamento Id del campamento al que el asistente estaba inscrito y se le quiere borrar
+     * @return True- si la inscripcion ha sido cancelada con exito, False- si no se ha podido cancelar
+     */
     public boolean cancelarInscripcion(int id_asistente,int id_campamento){
 
         InscripcionDAO ins = new InscripcionDAO();
@@ -102,7 +108,7 @@ public class GestorInscripciones implements Serializable{
     }
     /**
      * Metodo que permite consultar los campamentos disponibles
-     * @return lista de campamentos disponibles
+     * @throws RuntimeException Si ocurre cualquier error durante la consulta o impresion de la informacion
      */
     public void consultarCampamentosDisponibles() {
         try {

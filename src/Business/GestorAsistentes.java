@@ -20,7 +20,9 @@ public class GestorAsistentes implements Serializable{
     private AsistenteDAO asistenteDAO;
 
 
-
+    /**
+     * Empty(default) class
+     */
     public GestorAsistentes() {
         this.asistenteDAO = new AsistenteDAO();
     }
@@ -33,7 +35,7 @@ public class GestorAsistentes implements Serializable{
 
     /**
      * Método que permite dar de alta a un asistente
-     * @param asistente
+     * @param asistente Asistente al que se quiere dar de alta
      * @return true excepto si el asistente ya esta dado de alta o es nulo que retorna false
      */
     public boolean darAlta(Asistente asistente) {
@@ -47,7 +49,7 @@ public class GestorAsistentes implements Serializable{
 
     /**
      * Metodo que permite modificar un asistente
-     * @param asistente
+     * @param asistente Asistente que se quiere modificar
      */
     public void ModificarAsistente(Asistente asistente) {
 
