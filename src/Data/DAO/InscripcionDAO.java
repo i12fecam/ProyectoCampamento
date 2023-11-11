@@ -26,13 +26,9 @@ public class InscripcionDAO {
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
     }
 
-    /**
-     * Metodo que finaliza una conexion con la base de datos
-     */
-    @Override
-    protected void finalize(){
-        bd.closeConnection();
-    }
+
+
+
 
     /**
      * Metodo para insertar una inscripcion a la base de datos

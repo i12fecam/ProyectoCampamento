@@ -19,22 +19,24 @@ public class ProyectProperties {
      */
     public ProyectProperties(){
 
-        String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-
+        //String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        //String configPath=Thread.currentThread().getContextClassLoader().getResource("config.properties");
 
         config = new Properties();
         sql = new Properties();
 
         try {
-            configFI = new FileInputStream(rootPath + "config.properties");
+            configFI = new FileInputStream("./config.properties");
             config.load(configFI);
+            configFI.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         try {
-            sqlFI = new FileInputStream(rootPath + "sql.properties");
+            sqlFI = new FileInputStream("./sql.properties");
             sql.load(sqlFI);
+            sqlFI.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -45,6 +47,7 @@ public class ProyectProperties {
      * Metodo que cierra los archivos de configuracion
      * @throws RuntimeException Si ocurre algun error al intentar cerrar los archivos de configuracion
      */
+    /*
     @Override
     protected void finalize(){
         try {
@@ -54,7 +57,7 @@ public class ProyectProperties {
             throw new RuntimeException(e);
         }
     }
-
+    */
     /**
      * Metodo que obtiene la URL del servidor de la base de datos
      * @return La URL del servidor
