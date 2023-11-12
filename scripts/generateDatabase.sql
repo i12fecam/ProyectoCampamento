@@ -8,6 +8,85 @@ truncate Inscripciones;
 truncate Monitores;
 truncate Monitores_Actividades;
 
+
+CREATE TABLE `Actividades` (
+  `id_actividad` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(120) NOT NULL,
+  `nivel_educativo` enum('Infantil','Juvenil','Adolescente') NOT NULL,
+  `horario` enum('parcial','completa') NOT NULL,
+  `max_participantes` int(11) NOT NULL,
+  `monitores_necesarios` int(11) NOT NULL,
+  PRIMARY KEY (`id_actividad`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+
+CREATE TABLE `Asistentes` (
+  `id_asistente` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(120) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `especial` bit(1) NOT NULL,
+  `apellidos` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_asistente`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+
+CREATE TABLE `Campamento_Actividades` (
+  `fk_campamento` int(11) NOT NULL,
+  `fk_actividad` int(11) NOT NULL,
+  PRIMARY KEY (`fk_campamento`,`fk_actividad`),
+  KEY `Campamento_Actividades_Actividades_id_actividad_fk` (`fk_actividad`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `Campamentos` (
+  `id_campamento` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_inicio` date NOT NULL,
+  `fecha_final` date NOT NULL,
+  `nivel_educativo` enum('Infantil','Juvenil','Adolescente') NOT NULL,
+  `max_asistentes` int(11) NOT NULL,
+  `monitor_responsable` int(11) DEFAULT NULL,
+  `monitor_especial` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_campamento`),
+  KEY `Campamentos_Monitores_id_monitor_fk` (`monitor_responsable`),
+  KEY `Campamentos_Monitores_id_monitor_fk2` (`monitor_especial`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+
+
+CREATE TABLE `Inscripciones` (
+  `fecha_inscripcion` date NOT NULL,
+  `precio` float NOT NULL,
+  `horario` enum('parcial','completa') NOT NULL,
+  `fk_asistente` int(11) NOT NULL,
+  `fk_campamento` int(11) NOT NULL,
+  `tipo_inscripcion` enum('temprana','tardia') NOT NULL,
+  PRIMARY KEY (`fk_campamento`,`fk_asistente`),
+  KEY `Inscripciones_Asistentes_id_asistente_fk` (`fk_asistente`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `Monitores` (
+  `id_monitor` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` char(120) NOT NULL,
+  `apellidos` varchar(200) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `especial` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id_monitor`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+
+
+
+CREATE TABLE `Monitores_Actividades` (
+  `fk_monitor` int(11) NOT NULL,
+  `fk_actividad` int(11) NOT NULL,
+  PRIMARY KEY (`fk_actividad`,`fk_monitor`),
+  KEY `Monitores_Actividades_Monitores_id_monitor_fk` (`fk_monitor`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
 insert into Actividades (id_actividad, nombre, nivel_educativo, horario, max_participantes, monitores_necesarios)
 values (1,'Baloncesto','Infantil','parcial',8,2);
 
