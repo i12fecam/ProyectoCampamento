@@ -47,17 +47,24 @@ En primer lugar, debemos asegurarnos de que la estructura de nuestro proyecto es
 ![Captura de pantalla 2023-11-10 222942.png](Captura%20de%20pantalla%202023-11-10%20222942.png)
 Una vez estemos en la carpeta ProyectoCampamento debemos utilizar dos comandos:
 
-    javac -d out -cp "src;lib\mysql-connector-java-5.1.47.jar;ojdbc8.jar" src\Interface\Main.java //Este comando compila un programa escrito en Java y si no hay errores obtenemos el ejecutable.
+    javac -d out -cp "src;lib\mysql-connector.jar" src\Interface\Main.java //Este comando compila un programa escrito en Java y si no hay errores obtenemos el ejecutable.
 
 Una vez hayamos obtenido el Main.class, utilizamos este comando:
 
-    java -cp "out;src;lib/mysql-connector-java-5.1.47.jar;lib/ojdbc8.jar" Interface.Main //Ejecuta el programa Java
+    java -cp "out;src;lib/mysql-connector.jar" Interface.Main //Ejecuta el programa Java
 
 Después de esto ya deberías poder utilizar nuestro programa.
 
 Esto sirve para el sistema operativo Windows.
 
-Si te han aparecido problemas a la hora de utilizar los comandos anteriores, en el punto 5 se da una solución.
+En el caso de linux se tendrá que utilizar, en cambio, los siguientes comandos:
+
+    javac -d out -cp "src:lib\mysql-connector.jar" src\Interface\Main.java //Este comando compila un programa escrito en Java y si no hay errores obtenemos el ejecutable.
+
+    java -cp "out:src:lib/mysql-connector.jar" Interface.Main //Ejecuta el programa Java
+
+
+Si te han aparecido problemas a la hora de utilizar los comandos anteriores, en el punto 4 se da una solución.
 
 ## Problems
 
