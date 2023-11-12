@@ -40,7 +40,7 @@ https://downloads.mysql.com/archives/c-j/
 Para poder ejecutar nuestro programa,debemos estar conectados a la red de la UCO a través de la VPN o bien debemos estar conectados a uconet. Aquí os dejo el enlace para que podáis conectaros a la UCO  a través de la VPN:
 https://www.uco.es/servicios/informatica/conexion-externa-con-openvpn
 
-Podemos llevar a cabo la ejecución de nuestro programa a través de la terminal.
+Podemos llevar a cabo la ejecución de nuestro programa a través de la terminal. Para esto debes acceder a nuestro proyecto en GitHub y bajarte el proyecto.
 En primer lugar, debemos asegurarnos de que la estructura de nuestro proyecto es la siguiente:
 
 ![Captura de pantalla 2023-11-10 222732.png](Captura%20de%20pantalla%202023-11-10%20222732.png)
@@ -51,7 +51,7 @@ Una vez estemos en la carpeta ProyectoCampamento debemos utilizar dos comandos:
 
 Una vez hayamos obtenido el Main.class, utilizamos este comando:
 
-     java -cp "out;src;lib/mysql-connector-java-5.1.47.jar;lib/ojdbc8.jar" Interface.Main //Ejecuta el programa Java
+    java -cp "out;src;lib/mysql-connector-java-5.1.47.jar;lib/ojdbc8.jar" Interface.Main //Ejecuta el programa Java
 
 Después de esto ya deberías poder utilizar nuestro programa.
 
