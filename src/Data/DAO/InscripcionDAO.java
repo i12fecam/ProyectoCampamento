@@ -12,16 +12,14 @@ public class InscripcionDAO {
 
     private ProyectProperties prop;
 
-    private ConexionBD bd;
-
     private Connection con;
 
     /**
      * Empty(default) class
      */
     public InscripcionDAO(){
-        prop = new ProyectProperties();
-        bd = new ConexionBD();
+        prop = ProyectProperties.getInstance();
+        ConexionBD bd = new ConexionBD();
 
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
     }

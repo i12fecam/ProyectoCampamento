@@ -26,7 +26,7 @@ public class CampamentoDAO {
      * Empty(default) class
      */
     public CampamentoDAO() {
-        prop = new ProyectProperties();
+        prop = ProyectProperties.getInstance();
         bd = new ConexionBD();
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
     }

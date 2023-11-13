@@ -15,7 +15,7 @@ import com.mysql.jdbc.Driver;
 public class
 ConexionBD {
 
-    protected Connection connection = null;
+    protected static Connection connection = null;
 
 
     /**
@@ -30,18 +30,20 @@ ConexionBD {
      */
     public Connection getConnection(String url, String user, String password){
 
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            this.connection = DriverManager.getConnection(url, user, password);
-            System.out.println("Database connection successfully opened!");
+        if( connection == null ){
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                this.connection = DriverManager.getConnection(url, user, password);
+                System.out.println("Database connection successfully opened!");
+            }
+            catch (SQLException e) {
+                System.err.println("Connection to MySQL has failed!");
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
-        catch (SQLException e) {
-            System.err.println("Connection to MySQL has failed!");
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return this.connection;
+        return connection;
     }
 
     // We can include here other methods to encapsulate CRUD commands...
@@ -52,8 +54,8 @@ ConexionBD {
      */
     public void closeConnection() {
         try {
-            if(this.connection != null && !this.connection.isClosed()) {
-                this.connection.close();
+            if(connection != null && !connection.isClosed()) {
+                connection.close();
                 System.out.println("Database connection successfully closed!");
             }
         } catch (SQLException e) {

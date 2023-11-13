@@ -8,16 +8,21 @@ public class ProyectProperties {
     private Properties config;
     private Properties sql;
 
-    private FileInputStream configFI;
-    private FileInputStream sqlFI;
+    private static ProyectProperties instance;
 
+    public static ProyectProperties getInstance(){
+        if(instance == null ){
+            instance = new ProyectProperties();
+        }
+        return instance;
+    }
     /**
      * Metodo que carga las propiedades las propiedades del proyecto desde archivos de configuracion.
      * Lee las propiedades de configuracion generales desde "config.properties" y las especificas de
      * SQL desde "sql.properties"
      * @throws RuntimeException Si ocurre algun error al cargar los ficheros de configuracion
      */
-    public ProyectProperties(){
+    private ProyectProperties(){
 
         //String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         //String configPath=Thread.currentThread().getContextClassLoader().getResource("config.properties");
@@ -26,7 +31,7 @@ public class ProyectProperties {
         sql = new Properties();
 
         try {
-            configFI = new FileInputStream("./config.properties");
+            FileInputStream configFI = new FileInputStream("./config.properties");
             config.load(configFI);
             configFI.close();
         } catch (IOException e) {
@@ -34,7 +39,7 @@ public class ProyectProperties {
         }
 
         try {
-            sqlFI = new FileInputStream("./sql.properties");
+            FileInputStream sqlFI = new FileInputStream("./sql.properties");
             sql.load(sqlFI);
             sqlFI.close();
         } catch (IOException e) {
@@ -43,21 +48,7 @@ public class ProyectProperties {
 
     }
 
-    /**
-     * Metodo que cierra los archivos de configuracion
-     * @throws RuntimeException Si ocurre algun error al intentar cerrar los archivos de configuracion
-     */
-    /*
-    @Override
-    protected void finalize(){
-        try {
-            configFI.close();
-            sqlFI.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    */
+
     /**
      * Metodo que obtiene la URL del servidor de la base de datos
      * @return La URL del servidor
@@ -90,7 +81,7 @@ public class ProyectProperties {
      */
     public String getSentente(String name){
         String result =sql.getProperty(name);
-        if(result == ""){
+        if(result.equals("")){
             throw new RuntimeException("No se encontro la sentencia SQl del archivo sql.properties");
         }
         return  result;

@@ -23,7 +23,7 @@ public class AsistenteDAO {
      * Empty(default) class
      */
     public AsistenteDAO() {
-        prop = new ProyectProperties();
+        prop = prop.getInstance();
         bd = new ConexionBD();
 
         con = bd.getConnection(prop.getUrl(), prop.getUsername(), prop.getPassword());
