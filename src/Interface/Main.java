@@ -292,6 +292,7 @@ public class Main {
                         int idCampamento = scanner.nextInt();
                         scanner.nextLine();
                         gestorCampamentos.asociarMonitorEspecialCampamento(idMonitor,idCampamento);
+                        ;
                     }catch (Exception e){
                         System.out.println("Se produjo un error asociando al monitor con el campamento" + e.getMessage() );
                     }

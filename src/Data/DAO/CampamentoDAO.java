@@ -8,6 +8,7 @@ import Data.NivelEducativo;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CampamentoDAO class
@@ -452,6 +453,52 @@ public class CampamentoDAO {
             throw new RuntimeException(e);
         }
         return listaMonitores;
+    }
+    public List<Asistente> DevolverAsistentes_Actividad(int idCampamento) {
+        try{
+            List<Asistente> asistentes = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_Campamentos_Asistentes_id"));
+            ps.setInt(1,idCampamento);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                Asistente asistente = new Asistente();
+                asistente.setIdentificador(rs.getInt("id_asistente"));
+                asistentes.add(asistente);
+            }
+            return asistentes;
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public List<Actividad> DevolverActividades_Campamento(int idCampamento){
+        try{
+            List<Actividad> actividades = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement(prop.getSentente("select_Campamentos_Actividades_id"));
+            ps.setInt(1,idCampamento);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                Actividad actividad = new Actividad();
+                actividad.setIdentificador(rs.getInt("fk_actividad"));
+                PreparedStatement ls = con.prepareStatement(prop.getSentente("select_Monitores_actividad"));
+                ls.setInt(1,actividad.getIdentificador());
+                ResultSet ss = ls.executeQuery();
+                ArrayList<Monitor> Monitores=new ArrayList<>();
+                while(ss.next()) {
+                    Monitor monitor=new Monitor();
+                    monitor.setApellidos(ss.getString(3));
+                    monitor.setFechaNacimiento(ss.getDate(4).toLocalDate());
+                    monitor.setNombre(ss.getString(2));
+                    monitor.setIdentificador(ss.getInt(1));
+                    monitor.setEducadorEspecial(ss.getBoolean(5));
+                    Monitores.add(monitor);
+                }
+                actividad.setMonitores(Monitores);
+                actividades.add(actividad);
+            }
+            return actividades;
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
